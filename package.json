@@ -31,6 +31,7 @@
     "babel-preset-stage-3": "^6.24.1",
     "babelify": "^7.3.0",
     "browserify": "^14.1.0",
+    "cssify": "^1.0.3",
     "eslint": "^3.19.0",
     "eslint-plugin-flowtype": "^2.33.0",
     "flow-bin": "^0.47.0",
@@ -48,6 +49,7 @@
     "js-md5": "^0.4.2",
     "react": "^15.5.4",
     "react-autosuggest": "^9.0.1",
+    "react-spinkit": "^3.0.0",
     "styled-components": "^2.0.0"
   }
 }

@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { toPx } from '../utils'
 
 export const AvatarContainer = styled.div`
   display: inline-block;
@@ -84,10 +85,13 @@ export const TagClose = styled(Tag)`
   }
 `
 export const Container = styled.div`
+  position: relative;
   border: 1px solid #CCC;
   padding: 5px;
   margin: 10px auto;
-  display: ${p => p.inline ? 'inline-block' : 'block'}
+  min-width: ${p => toPx(p.width) || 'auto'};
+  min-height: ${p => toPx(p.height) || 'auto'};
+  display: ${p => p.inline ? 'inline-block' : 'block'};
 `
 
 export const Label = styled.div`

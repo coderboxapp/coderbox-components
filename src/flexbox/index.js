@@ -9,10 +9,12 @@ const FlexComponent = (
     alignItems: 'flex-start' | 'center' | 'flex-end' | 'stretch',
     children: any,
   }) => {
+  let Element = Flex.extend(``)
+
   return (
-    <Flex {...props}>
+    <Element {...props}>
       {props.children}
-    </Flex>
+    </Element>
   )
 }
 
