@@ -3,11 +3,11 @@ import React from 'react'
 import { times, map } from 'lodash'
 import { Overlay, Spinner } from './styles'
 
-const SpinnerComponent = (props: { show: boolean, size: ?number, color: ?string, label: ?string }) => {
+const SpinnerComponent = (props: { hide: boolean, size: ?number, color: ?string, label: ?string }) => {
   let divs = times(12, String)
 
   return (
-    <Overlay show={props.show}>
+    <Overlay hide={props.hide}>
       <Spinner size={props.size} color={props.color}>
         {map(divs, (div, index) => <div key={index} />)}
       </Spinner>

@@ -16,7 +16,7 @@ npm install coderbox-components --save
 Works with [browserify](https://github.com/substack/node-browserify) and should work with [webpack](https://github.com/visionmedia/superagent/wiki/SuperAgent-for-Webpack).
 
 # Demo
-[See Demo Page](https://coderboxapp.github.io/coderbox-components/)
+[See Demo Page](https://coderboxapp.github.io/coderbox-components-demo/)
 
 # Components List
 

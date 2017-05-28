@@ -93,6 +93,26 @@ export const Container = styled.div`
   min-height: ${p => toPx(p.height) || 'auto'};
   display: ${p => p.inline ? 'inline-block' : 'block'};
 `
+export const DemoContainer = Container.extend`
+  text-align: left;
+  padding: 45px 10px 5px 10px;
+
+  &:before {
+    position: absolute;
+    left: 0;
+    top: 0;
+    padding: 1em;
+    color: #aaa;
+    font-size: smaller;
+    font-weight: 500;
+    content: 'EXAMPLE';
+  }
+
+  & > label {
+    display: block;
+    margin-bottom: 10px;
+  }
+`
 
 export const Label = styled.div`
   color: #888;

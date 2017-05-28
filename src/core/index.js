@@ -3,7 +3,7 @@ import Avatar from './components/Avatar'
 import Tags from './components/Tags'
 import Logo from './components/Logo'
 import Button from './components/Button'
-import { Label, Container } from './styles'
+import { Label, Container, DemoContainer } from './styles'
 
 export {
   Avatar,
@@ -11,5 +11,6 @@ export {
   Logo,
   Button,
   Label,
-  Container
+  Container,
+  DemoContainer
 }
