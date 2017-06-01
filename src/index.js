@@ -6,6 +6,7 @@ import utils from './utils'
 
 export * from 'core'
 export * from 'date-utils'
+export * from 'form'
 export {
   Autocomplete,
   Spinner,

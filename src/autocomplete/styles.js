@@ -41,7 +41,7 @@ export default {
     boxSizing: 'border-box',
     border: '1px solid #dadada',
     borderRadius: 4,
-    padding: '6px 8px',
+    padding: '8px 8px',
     outline: 'none'
   }
 }

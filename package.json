@@ -4,6 +4,10 @@
   "description": "React Components",
   "main": "lib/index.js",
   "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/coderboxapp/coderbox-components.git"
+  },
   "keywords": [
     "react",
     "components"
@@ -48,6 +52,7 @@
   "dependencies": {
     "js-md5": "^0.4.2",
     "moment": "^2.18.1",
+    "proptypes": "^1.0.0",
     "react": "^15.5.4",
     "react-autosuggest": "^9.0.1",
     "react-dom": "^15.5.4",

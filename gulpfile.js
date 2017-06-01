@@ -38,7 +38,7 @@ gulp.task('build', () => {
 
 gulp.task('watch', () => {
   var args = Object.assign(watchify.args, { debug: true })
-  var bundler = watchify(makeBundler('test.js', args))
+  var bundler = watchify(makeBundler('index.js', args))
 
   bundler.on('update', function () {
     make(bundler)
