@@ -54211,7 +54211,7 @@ var AutocompleteTags = function (_React$Component) {
   }, {
     key: 'onKeyDown',
     value: function onKeyDown(e) {
-      if (e.keyCode === Keys.ENTER || e.keyCode === Keys.TAB || e.keyCode === Keys.COMMA) {
+      if (e.keyCode === Keys.ENTER || e.keyCode === Keys.COMMA) {
         e.preventDefault();
 
         if (this.state.suggestion) {
@@ -54610,12 +54610,26 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var ButtonComponent = function ButtonComponent(_ref) {
   var _ref$color = _ref.color,
       color = _ref$color === undefined ? 'base' : _ref$color,
+      _ref$textColor = _ref.textColor,
+      textColor = _ref$textColor === undefined ? 'base' : _ref$textColor,
+      _ref$primary = _ref.primary,
+      primary = _ref$primary === undefined ? false : _ref$primary,
+      _ref$success = _ref.success,
+      success = _ref$success === undefined ? false : _ref$success,
       onClick = _ref.onClick,
       children = _ref.children;
 
+  if (primary) {
+    color = textColor = 'primary';
+  }
+
+  if (success) {
+    color = textColor = 'success';
+  }
+
   return _react2.default.createElement(
     _styles.ButtonStyle,
-    { color: color, onClick: function (_onClick) {
+    { color: color, textColor: textColor, onClick: function (_onClick) {
         function onClick(_x) {
           return _onClick.apply(this, arguments);
         }
@@ -54818,7 +54832,7 @@ var AvatarImageStyle = exports.AvatarImageStyle = _styledComponents2.default.div
 });
 
 var ButtonStyle = exports.ButtonStyle = _styledComponents2.default.button(_templateObject3, function (p) {
-  return (0, _utils.parseColor)(p.color, p.theme.textColors);
+  return (0, _utils.parseColor)(p.textColor, p.theme.textColors);
 }, function (p) {
   return (0, _utils.parseColor)(p.color, p.theme.colors);
 });
@@ -55439,7 +55453,7 @@ var Form = function (_React$Component) {
           { className: 'react-form-buttons' },
           this.props.showSave && _react2.default.createElement(
             _core.Button,
-            { color: 'primary', onClick: function onClick() {
+            { primary: true, onClick: function onClick() {
                 return _this2.props.onSave(_this2);
               } },
             this.props.saveLabel

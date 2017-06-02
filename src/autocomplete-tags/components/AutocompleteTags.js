@@ -87,7 +87,6 @@ class AutocompleteTags extends React.Component<any, Props, State> {
   onKeyDown (e: KeyboardEvent) {
     if (
       e.keyCode === Keys.ENTER ||
-      e.keyCode === Keys.TAB ||
       e.keyCode === Keys.COMMA
     ) {
       e.preventDefault()
