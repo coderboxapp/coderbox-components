@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 import { toPx } from '../utils'
 
-export const AvatarContainer = styled.div`
+export const AvatarStyle = styled.div`
   display: inline-block;
   padding: 10px;
   border: 1px solid ${props => props.theme.borderColors['base']};
@@ -11,7 +11,7 @@ export const AvatarContainer = styled.div`
   text-align: center;
 `
 
-export const AvatarImage = styled.div`
+export const AvatarImageStyle = styled.div`
   width: ${props => props.size};
   height: ${props => props.size};
   border-radius: ${props => props.theme.borderRadius};
@@ -21,7 +21,7 @@ export const AvatarImage = styled.div`
   background-position: center center;
 `
 
-export const Button = styled.button`
+export const ButtonStyle = styled.button`
   display: inline-block;
   border: none;
   border-radius: 0px;
@@ -38,18 +38,18 @@ export const Button = styled.button`
   }
 `
 
-export const Logo = styled.div`
+export const LogoStyle = styled.div`
   display: 'inline-block';
   vertical-align: 'middle';
   width: ${props => props.size};
   height: ${props => props.size};
 `
 
-export const LogoSvg = styled.svg`
+export const LogoSvgStyle = styled.svg`
   fill: ${props => props.theme.colors[props.color]};
 `
 
-export const Tag = styled.div`
+export const TagStyle = styled.div`
   display: inline-block;
   font-family: 'Inconsolata', monospace;
   font-size: 12px;
@@ -60,7 +60,6 @@ export const Tag = styled.div`
   color: ${props => props.theme.textColors[props.color]};
   background: ${props => props.theme.colors[props.color]};
   cursor: pointer;
-  text-transform: lowercase;
   outline: none;
   border-radius: 2px;
   line-height: 22px;
@@ -70,7 +69,7 @@ export const Tag = styled.div`
   }
 `
 
-export const TagClose = styled(Tag)`
+export const TagCloseStyle = styled(TagStyle)`
   padding-right: 0;
 
   &:after {

@@ -54112,9 +54112,227 @@ var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
+var _lodash = require('lodash');
+
+var _styles = require('../styles');
+
+var _core = require('../../core');
+
+var _autocomplete = require('../../autocomplete');
+
+var _autocomplete2 = _interopRequireDefault(_autocomplete);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Keys = {
+  ENTER: 13,
+  TAB: 9,
+  COMMA: 188,
+  BACKSPACE: 8,
+  UP_ARROW: 38,
+  DOWN_ARROW: 40
+};
+
+var AutocompleteTags = function (_React$Component) {
+  _inherits(AutocompleteTags, _React$Component);
+
+  function AutocompleteTags() {
+    var _ref;
+
+    var _temp, _this, _ret;
+
+    _classCallCheck(this, AutocompleteTags);
+
+    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = AutocompleteTags.__proto__ || Object.getPrototypeOf(AutocompleteTags)).call.apply(_ref, [this].concat(args))), _this), _this.state = {
+      tags: _this.props.value || [],
+      suggestion: null
+    }, _temp), _possibleConstructorReturn(_this, _ret);
+  }
+
+  _createClass(AutocompleteTags, [{
+    key: 'componentWillReceiveProps',
+    value: function componentWillReceiveProps(nextProps) {
+      if (nextProps.value && (0, _lodash.isArray)(nextProps.value)) {
+        this.setState({ tags: nextProps.value });
+      }
+    }
+  }, {
+    key: 'addTag',
+    value: function addTag(tag) {
+      var tags = this.state.tags.concat();
+
+      if ((0, _lodash.findIndex)(tags, function (t) {
+        return t.name === tag.name;
+      }) === -1) {
+        tags.push(_lodash.assign.apply(undefined, _toConsumableArray(tag).concat([{ name: this.props.toLowercase ? tag.name.toLocaleLowerCase() : tag.name }])));
+
+        if (this.props.allowNew) {
+          this.setState({ tags: tags });
+          if (this.props.onChange) {
+            this.props.onChange(tags);
+          }
+        } else {
+          if ((0, _lodash.findIndex)(this.props.suggestions, function (t) {
+            return t.name === tag.name;
+          }) > -1) {
+            this.setState({ tags: tags });
+            if (this.props.onChange) {
+              this.props.onChange(tags);
+            }
+          }
+        }
+      }
+    }
+  }, {
+    key: 'removeTag',
+    value: function removeTag(tag) {
+      var tags = (0, _lodash.remove)(this.state.tags, function (t) {
+        return t.name !== tag.name;
+      });
+
+      this.setState({ tags: tags });
+
+      if (this.props.onChange) {
+        this.props.onChange(tags);
+      }
+    }
+  }, {
+    key: 'onKeyDown',
+    value: function onKeyDown(e) {
+      if (e.keyCode === Keys.ENTER || e.keyCode === Keys.TAB || e.keyCode === Keys.COMMA) {
+        e.preventDefault();
+
+        if (this.state.suggestion) {
+          this.addTag(this.state.suggestion);
+          this.setState({ suggestion: null });
+        }
+      }
+
+      if (e.keyCode === Keys.BACKSPACE && this.state.tags.length > 0) {
+        if (!this.state.suggestion || this.state.suggestion.name === '') {
+          this.removeTag((0, _lodash.last)(this.state.tags));
+        }
+      }
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+      var _this2 = this;
+
+      var _props = this.props,
+          suggestions = _props.suggestions,
+          color = _props.color,
+          placeholder = _props.placeholder;
+      var _state = this.state,
+          tags = _state.tags,
+          suggestion = _state.suggestion;
+
+
+      return _react2.default.createElement(
+        _styles.AutocompleteTagsStyle,
+        { className: 'react-autocomplete-tags' },
+        _react2.default.createElement(
+          _styles.TagsStyle,
+          { display: tags.length > 0 },
+          _react2.default.createElement(_core.Tags, { color: color, tags: tags, onClick: function onClick(tag) {
+              return _this2.removeTag(tag);
+            }, withClose: true })
+        ),
+        _react2.default.createElement(_autocomplete2.default, {
+          value: suggestion,
+          suggestions: suggestions,
+          placeholder: placeholder,
+          onChange: function onChange(s) {
+            return _this2.setState({ suggestion: s });
+          },
+          onKeyDown: function onKeyDown(e) {
+            return _this2.onKeyDown(e);
+          }
+        })
+      );
+    }
+  }]);
+
+  return AutocompleteTags;
+}(_react2.default.Component);
+
+AutocompleteTags.defaultProps = {
+  color: 'primary',
+  allowNew: false,
+  toLowercase: false
+};
+exports.default = AutocompleteTags;
+
+},{"../../autocomplete":238,"../../core":244,"../styles":237,"lodash":109,"react":176}],236:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _AutocompleteTags = require('./components/AutocompleteTags');
+
+var _AutocompleteTags2 = _interopRequireDefault(_AutocompleteTags);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+exports.default = _AutocompleteTags2.default;
+
+},{"./components/AutocompleteTags":235}],237:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.TagsStyle = exports.AutocompleteTagsStyle = undefined;
+
+var _templateObject = _taggedTemplateLiteral(['\n  padding: 4px;\n  box-sizing: border-box;\n  border: 1px solid rgb(218, 218, 218);\n  border-radius: 4px;\n\n  & input {\n    border: 1px dashed #e8e8e8 !important;\n  }\n'], ['\n  padding: 4px;\n  box-sizing: border-box;\n  border: 1px solid rgb(218, 218, 218);\n  border-radius: 4px;\n\n  & input {\n    border: 1px dashed #e8e8e8 !important;\n  }\n']),
+    _templateObject2 = _taggedTemplateLiteral(['\n  display: ', ';\n  margin-bottom: 4px;\n'], ['\n  display: ', ';\n  margin-bottom: 4px;\n']);
+
+var _styledComponents = require('styled-components');
+
+var _styledComponents2 = _interopRequireDefault(_styledComponents);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
+
+var AutocompleteTagsStyle = exports.AutocompleteTagsStyle = _styledComponents2.default.div(_templateObject);
+
+var TagsStyle = exports.TagsStyle = _styledComponents2.default.div(_templateObject2, function (p) {
+  return p.display ? 'block' : 'none';
+});
+
+},{"styled-components":209}],238:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
 var _reactAutosuggest = require('react-autosuggest');
 
 var _reactAutosuggest2 = _interopRequireDefault(_reactAutosuggest);
+
+var _lodash = require('lodash');
 
 var _styles = require('./styles');
 
@@ -54131,17 +54349,22 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 var AutoComplete = function (_React$Component) {
   _inherits(AutoComplete, _React$Component);
 
-  function AutoComplete(props) {
+  function AutoComplete() {
+    var _ref;
+
+    var _temp, _this, _ret;
+
     _classCallCheck(this, AutoComplete);
 
-    var _this = _possibleConstructorReturn(this, (AutoComplete.__proto__ || Object.getPrototypeOf(AutoComplete)).call(this, props));
+    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
 
-    _this.state = {
+    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = AutoComplete.__proto__ || Object.getPrototypeOf(AutoComplete)).call.apply(_ref, [this].concat(args))), _this), _this.state = {
       searchText: '',
       suggestion: null,
       suggestions: []
-    };
-    return _this;
+    }, _temp), _possibleConstructorReturn(_this, _ret);
   }
 
   _createClass(AutoComplete, [{
@@ -54154,6 +54377,10 @@ var AutoComplete = function (_React$Component) {
   }, {
     key: 'componentWillReceiveProps',
     value: function componentWillReceiveProps(nextProps) {
+      if (nextProps.value === null) {
+        this.setState({ searchText: '' });
+      }
+
       if (nextProps.value) {
         this.setState({ searchText: nextProps.value.name || '' });
       }
@@ -54196,16 +54423,17 @@ var AutoComplete = function (_React$Component) {
   }, {
     key: 'onChange',
     value: function onChange(event, props) {
-      this.setState({ searchText: props.newValue });
-
+      this.setState({ searchText: (0, _lodash.trim)(props.newValue) });
       if (this.props.onChange) {
-        this.props.onChange(this.firstSuggestion(props.newValue) || { name: props.newValue });
+        this.props.onChange(this.firstSuggestion(props.newValue) || { name: (0, _lodash.trim)(props.newValue) });
       }
     }
   }, {
-    key: 'onKeyPress',
-    value: function onKeyPress(event) {
-      if (event.key === 'Enter') {}
+    key: 'onKeyDown',
+    value: function onKeyDown(event) {
+      if (this.props.onKeyDown) {
+        this.props.onKeyDown(event);
+      }
     }
   }, {
     key: 'onSuggestionsFetchRequested',
@@ -54230,8 +54458,8 @@ var AutoComplete = function (_React$Component) {
         onChange: function onChange(e, data) {
           return _this2.onChange(e, data);
         },
-        onKeyPress: function onKeyPress(e) {
-          return _this2.onKeyPress(e);
+        onKeyDown: function onKeyDown(e) {
+          return _this2.onKeyDown(e);
         }
       };
 
@@ -54264,7 +54492,7 @@ var AutoComplete = function (_React$Component) {
 
 exports.default = AutoComplete;
 
-},{"./styles":236,"react":176,"react-autosuggest":142}],236:[function(require,module,exports){
+},{"./styles":239,"lodash":109,"react":176,"react-autosuggest":142}],239:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -54317,7 +54545,7 @@ exports.default = {
   }
 };
 
-},{}],237:[function(require,module,exports){
+},{}],240:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -54348,9 +54576,9 @@ var AvatarComponent = function AvatarComponent(_ref) {
   var image = url || 'https://www.gravatar.com/avatar/' + hash + '?s=' + size;
 
   return _react2.default.createElement(
-    _styles.AvatarContainer,
+    _styles.AvatarStyle,
     null,
-    _react2.default.createElement(_styles.AvatarImage, { image: image, size: size + 'px' }),
+    _react2.default.createElement(_styles.AvatarImageStyle, { image: image, size: size + 'px' }),
     edit && _react2.default.createElement(
       'a',
       {
@@ -54364,7 +54592,7 @@ var AvatarComponent = function AvatarComponent(_ref) {
 };
 exports.default = AvatarComponent;
 
-},{"../styles":242,"js-md5":108,"react":176}],238:[function(require,module,exports){
+},{"../styles":245,"js-md5":108,"react":176}],241:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -54386,15 +54614,27 @@ var ButtonComponent = function ButtonComponent(_ref) {
       children = _ref.children;
 
   return _react2.default.createElement(
-    _styles.Button,
-    { color: color, onClick: onClick },
+    _styles.ButtonStyle,
+    { color: color, onClick: function (_onClick) {
+        function onClick(_x) {
+          return _onClick.apply(this, arguments);
+        }
+
+        onClick.toString = function () {
+          return _onClick.toString();
+        };
+
+        return onClick;
+      }(function (e) {
+        return onClick && onClick(e);
+      }) },
     children
   );
 };
 
 exports.default = ButtonComponent;
 
-},{"../styles":242,"react":176}],239:[function(require,module,exports){
+},{"../styles":245,"react":176}],242:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -54416,13 +54656,13 @@ var LogoComponent = function LogoComponent(_ref) {
       color = _ref$color === undefined ? 'base' : _ref$color;
 
   return _react2.default.createElement(
-    _styles.Logo,
+    _styles.LogoStyle,
     { size: size + 'px' },
     _react2.default.createElement(
       'a',
       { href: '/' },
       _react2.default.createElement(
-        _styles.LogoSvg,
+        _styles.LogoSvgStyle,
         {
           color: color,
           version: '1.1',
@@ -54441,7 +54681,7 @@ var LogoComponent = function LogoComponent(_ref) {
 
 exports.default = LogoComponent;
 
-},{"../styles":242,"react":176}],240:[function(require,module,exports){
+},{"../styles":245,"react":176}],243:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -54465,15 +54705,15 @@ var TagsComponent = function TagsComponent(_ref) {
       withClose = _ref$withClose === undefined ? false : _ref$withClose,
       onClick = _ref.onClick;
 
-  var TagElement = withClose ? _styles.TagClose : _styles.Tag;
+  var TagElement = withClose ? _styles.TagCloseStyle : _styles.TagStyle;
 
   return _react2.default.createElement(
     'div',
     null,
-    tags.map(function (tag) {
+    tags.map(function (tag, index) {
       return _react2.default.createElement(
         TagElement,
-        { key: tag._id, color: color, onClick: function (_onClick) {
+        { key: index, color: color, onClick: function (_onClick) {
             function onClick() {
               return _onClick.apply(this, arguments);
             }
@@ -54494,7 +54734,7 @@ var TagsComponent = function TagsComponent(_ref) {
 
 exports.default = TagsComponent;
 
-},{"../styles":242,"react":176}],241:[function(require,module,exports){
+},{"../styles":245,"react":176}],244:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -54530,20 +54770,20 @@ exports.Label = _styles.Label;
 exports.Container = _styles.Container;
 exports.DemoContainer = _styles.DemoContainer;
 
-},{"./components/Avatar":237,"./components/Button":238,"./components/Logo":239,"./components/Tags":240,"./styles":242}],242:[function(require,module,exports){
+},{"./components/Avatar":240,"./components/Button":241,"./components/Logo":242,"./components/Tags":243,"./styles":245}],245:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.Label = exports.DemoContainer = exports.Container = exports.TagClose = exports.Tag = exports.LogoSvg = exports.Logo = exports.Button = exports.AvatarImage = exports.AvatarContainer = undefined;
+exports.Label = exports.DemoContainer = exports.Container = exports.TagCloseStyle = exports.TagStyle = exports.LogoSvgStyle = exports.LogoStyle = exports.ButtonStyle = exports.AvatarImageStyle = exports.AvatarStyle = undefined;
 
 var _templateObject = _taggedTemplateLiteral(['\n  display: inline-block;\n  padding: 10px;\n  border: 1px solid ', ';\n  border-radius: ', ';\n  box-shadow: ', ';\n  background-color: white;\n  text-align: center;\n'], ['\n  display: inline-block;\n  padding: 10px;\n  border: 1px solid ', ';\n  border-radius: ', ';\n  box-shadow: ', ';\n  background-color: white;\n  text-align: center;\n']),
     _templateObject2 = _taggedTemplateLiteral(['\n  width: ', ';\n  height: ', ';\n  border-radius: ', ';\n  background-image: url(\'', '\');\n  background-size: contain;\n  background-repeat: no-repeat;\n  background-position: center center;\n'], ['\n  width: ', ';\n  height: ', ';\n  border-radius: ', ';\n  background-image: url(\'', '\');\n  background-size: contain;\n  background-repeat: no-repeat;\n  background-position: center center;\n']),
     _templateObject3 = _taggedTemplateLiteral(['\n  display: inline-block;\n  border: none;\n  border-radius: 0px;\n  padding: 8px 35px;\n  font-family: inherit;\n  font-weight: 400;\n  color: ', ';\n  background: ', ';\n  cursor: pointer;\n  outline: none;\n\n  &:hover {\n    opacity: 0.80;\n  }\n'], ['\n  display: inline-block;\n  border: none;\n  border-radius: 0px;\n  padding: 8px 35px;\n  font-family: inherit;\n  font-weight: 400;\n  color: ', ';\n  background: ', ';\n  cursor: pointer;\n  outline: none;\n\n  &:hover {\n    opacity: 0.80;\n  }\n']),
     _templateObject4 = _taggedTemplateLiteral(['\n  display: \'inline-block\';\n  vertical-align: \'middle\';\n  width: ', ';\n  height: ', ';\n'], ['\n  display: \'inline-block\';\n  vertical-align: \'middle\';\n  width: ', ';\n  height: ', ';\n']),
     _templateObject5 = _taggedTemplateLiteral(['\n  fill: ', ';\n'], ['\n  fill: ', ';\n']),
-    _templateObject6 = _taggedTemplateLiteral(['\n  display: inline-block;\n  font-family: \'Inconsolata\', monospace;\n  font-size: 12px;\n  margin: 2px 4px 2px 0px;\n  padding: 0px 12px 0px 12px;\n  border: 1px solid ', ';\n  box-shadow: ', ';\n  color: ', ';\n  background: ', ';\n  cursor: pointer;\n  text-transform: lowercase;\n  outline: none;\n  border-radius: 2px;\n  line-height: 22px;\n\n  &:hover {\n    opacity: 0.85;\n  }\n'], ['\n  display: inline-block;\n  font-family: \'Inconsolata\', monospace;\n  font-size: 12px;\n  margin: 2px 4px 2px 0px;\n  padding: 0px 12px 0px 12px;\n  border: 1px solid ', ';\n  box-shadow: ', ';\n  color: ', ';\n  background: ', ';\n  cursor: pointer;\n  text-transform: lowercase;\n  outline: none;\n  border-radius: 2px;\n  line-height: 22px;\n\n  &:hover {\n    opacity: 0.85;\n  }\n']),
+    _templateObject6 = _taggedTemplateLiteral(['\n  display: inline-block;\n  font-family: \'Inconsolata\', monospace;\n  font-size: 12px;\n  margin: 2px 4px 2px 0px;\n  padding: 0px 12px 0px 12px;\n  border: 1px solid ', ';\n  box-shadow: ', ';\n  color: ', ';\n  background: ', ';\n  cursor: pointer;\n  outline: none;\n  border-radius: 2px;\n  line-height: 22px;\n\n  &:hover {\n    opacity: 0.85;\n  }\n'], ['\n  display: inline-block;\n  font-family: \'Inconsolata\', monospace;\n  font-size: 12px;\n  margin: 2px 4px 2px 0px;\n  padding: 0px 12px 0px 12px;\n  border: 1px solid ', ';\n  box-shadow: ', ';\n  color: ', ';\n  background: ', ';\n  cursor: pointer;\n  outline: none;\n  border-radius: 2px;\n  line-height: 22px;\n\n  &:hover {\n    opacity: 0.85;\n  }\n']),
     _templateObject7 = _taggedTemplateLiteral(['\n  padding-right: 0;\n\n  &:after {\n    display: inline-block;\n    content: \'\\2715\';\n    font-size: 11px;\n    border-left: 1px solid ', ';\n    margin-left: 8px;\n    width: 23px;\n    text-align: center;\n    vertical-align: middle;\n  }\n'], ['\n  padding-right: 0;\n\n  &:after {\n    display: inline-block;\n    content: \'\\\\2715\';\n    font-size: 11px;\n    border-left: 1px solid ', ';\n    margin-left: 8px;\n    width: 23px;\n    text-align: center;\n    vertical-align: middle;\n  }\n']),
     _templateObject8 = _taggedTemplateLiteral(['\n  position: relative;\n  border: 1px solid #CCC;\n  padding: 5px;\n  margin: 10px auto;\n  min-width: ', ';\n  min-height: ', ';\n  display: ', ';\n'], ['\n  position: relative;\n  border: 1px solid #CCC;\n  padding: 5px;\n  margin: 10px auto;\n  min-width: ', ';\n  min-height: ', ';\n  display: ', ';\n']),
     _templateObject9 = _taggedTemplateLiteral(['\n  text-align: left;\n  padding: 45px 10px 5px 10px;\n\n  &:before {\n    position: absolute;\n    left: 0;\n    top: 0;\n    padding: 1em;\n    color: #aaa;\n    font-size: smaller;\n    font-weight: 500;\n    content: \'EXAMPLE\';\n  }\n\n  & > label {\n    display: block;\n    margin-bottom: 10px;\n  }\n'], ['\n  text-align: left;\n  padding: 45px 10px 5px 10px;\n\n  &:before {\n    position: absolute;\n    left: 0;\n    top: 0;\n    padding: 1em;\n    color: #aaa;\n    font-size: smaller;\n    font-weight: 500;\n    content: \'EXAMPLE\';\n  }\n\n  & > label {\n    display: block;\n    margin-bottom: 10px;\n  }\n']),
@@ -54559,7 +54799,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
 
-var AvatarContainer = exports.AvatarContainer = _styledComponents2.default.div(_templateObject, function (props) {
+var AvatarStyle = exports.AvatarStyle = _styledComponents2.default.div(_templateObject, function (props) {
   return props.theme.borderColors['base'];
 }, function (props) {
   return props.theme.borderRadius;
@@ -54567,7 +54807,7 @@ var AvatarContainer = exports.AvatarContainer = _styledComponents2.default.div(_
   return props.theme.shadow;
 });
 
-var AvatarImage = exports.AvatarImage = _styledComponents2.default.div(_templateObject2, function (props) {
+var AvatarImageStyle = exports.AvatarImageStyle = _styledComponents2.default.div(_templateObject2, function (props) {
   return props.size;
 }, function (props) {
   return props.size;
@@ -54577,23 +54817,23 @@ var AvatarImage = exports.AvatarImage = _styledComponents2.default.div(_template
   return props.image;
 });
 
-var Button = exports.Button = _styledComponents2.default.button(_templateObject3, function (props) {
+var ButtonStyle = exports.ButtonStyle = _styledComponents2.default.button(_templateObject3, function (props) {
   return props.theme.textColors[props.color];
 }, function (props) {
   return props.theme.colors[props.color];
 });
 
-var Logo = exports.Logo = _styledComponents2.default.div(_templateObject4, function (props) {
+var LogoStyle = exports.LogoStyle = _styledComponents2.default.div(_templateObject4, function (props) {
   return props.size;
 }, function (props) {
   return props.size;
 });
 
-var LogoSvg = exports.LogoSvg = _styledComponents2.default.svg(_templateObject5, function (props) {
+var LogoSvgStyle = exports.LogoSvgStyle = _styledComponents2.default.svg(_templateObject5, function (props) {
   return props.theme.colors[props.color];
 });
 
-var Tag = exports.Tag = _styledComponents2.default.div(_templateObject6, function (props) {
+var TagStyle = exports.TagStyle = _styledComponents2.default.div(_templateObject6, function (props) {
   return props.theme.borderColors[props.color];
 }, function (props) {
   return props.theme.shadow;
@@ -54603,7 +54843,7 @@ var Tag = exports.Tag = _styledComponents2.default.div(_templateObject6, functio
   return props.theme.colors[props.color];
 });
 
-var TagClose = exports.TagClose = (0, _styledComponents2.default)(Tag)(_templateObject7, function (props) {
+var TagCloseStyle = exports.TagCloseStyle = (0, _styledComponents2.default)(TagStyle)(_templateObject7, function (props) {
   return props.theme.borderColors[props.color];
 });
 var Container = exports.Container = _styledComponents2.default.div(_templateObject8, function (p) {
@@ -54617,7 +54857,7 @@ var DemoContainer = exports.DemoContainer = Container.extend(_templateObject9);
 
 var Label = exports.Label = _styledComponents2.default.div(_templateObject10);
 
-},{"../utils":257,"styled-components":209}],243:[function(require,module,exports){
+},{"../utils":261,"styled-components":209}],246:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -54863,7 +55103,7 @@ var DatePickerComponent = function DatePickerComponent(props) {
 };
 exports.default = DatePickerComponent;
 
-},{"../../flexbox":247,"moment":113,"react":176}],244:[function(require,module,exports){
+},{"../../flexbox":250,"moment":113,"react":176}],247:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -55007,7 +55247,7 @@ var DateRangeComponent = function (_React$Component) {
 
 exports.default = DateRangeComponent;
 
-},{"../../flexbox":247,"../styles":246,"./DatePicker":243,"react":176}],245:[function(require,module,exports){
+},{"../../flexbox":250,"../styles":249,"./DatePicker":246,"react":176}],248:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -55028,7 +55268,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 exports.DatePicker = _DatePicker2.default;
 exports.DateRange = _DateRange2.default;
 
-},{"./components/DatePicker":243,"./components/DateRange":244}],246:[function(require,module,exports){
+},{"./components/DatePicker":246,"./components/DateRange":247}],249:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -55051,7 +55291,7 @@ var Icon = exports.Icon = _styledComponents2.default.i(_templateObject);
 
 var DateRangeContainer = exports.DateRangeContainer = _styledComponents2.default.div(_templateObject2);
 
-},{"styled-components":209}],247:[function(require,module,exports){
+},{"styled-components":209}],250:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -55078,7 +55318,7 @@ var FlexComponent = function FlexComponent(props) {
 
 exports.default = FlexComponent;
 
-},{"./styles":248,"react":176}],248:[function(require,module,exports){
+},{"./styles":251,"react":176}],251:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -55104,7 +55344,7 @@ var Flex = exports.Flex = _styledComponents2.default.div(_templateObject, functi
   return p.alignItems || 'flex-start';
 });
 
-},{"styled-components":209}],249:[function(require,module,exports){
+},{"styled-components":209}],252:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -55142,7 +55382,6 @@ var Form = function (_React$Component) {
     var _this = _possibleConstructorReturn(this, (Form.__proto__ || Object.getPrototypeOf(Form)).call(this, props));
 
     _this.items = [];
-    _this.state = {};
     return _this;
   }
 
@@ -55221,65 +55460,36 @@ var Form = function (_React$Component) {
 }(_react2.default.Component);
 
 Form.propTypes = {
-  'showButtons': _proptypes2.default.bool,
-  'showSave': _proptypes2.default.bool,
-  'showCancel': _proptypes2.default.bool,
-  'saveLabel': _proptypes2.default.string,
-  'cancelLabel': _proptypes2.default.string,
-  'onSave': _proptypes2.default.func,
-  'onCancel': _proptypes2.default.func
+  showButtons: _proptypes2.default.bool,
+  showSave: _proptypes2.default.bool,
+  showCancel: _proptypes2.default.bool,
+  saveLabel: _proptypes2.default.string,
+  cancelLabel: _proptypes2.default.string,
+  onSave: _proptypes2.default.func,
+  onCancel: _proptypes2.default.func
 };
 
 Form.defaultProps = {
-  'saveLabel': 'Save',
-  'cancelLabel': 'Cancel',
-  'showButtons': true,
-  'showSave': true,
-  'showCancel': true,
-  'onSave': function onSave() {
+  saveLabel: 'Save',
+  cancelLabel: 'Cancel',
+  showButtons: true,
+  showSave: true,
+  showCancel: true,
+  onSave: function onSave() {
     return true;
   },
-  'onCancel': function onCancel() {
+  onCancel: function onCancel() {
     return true;
   }
 };
 
 Form.childContextTypes = {
-  'form': _proptypes2.default.object
-};
-
-Form.validators = {};
-Form.validators.email = function (value) {
-  var re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-  return re.test(value);
-};
-Form.validators.minLength = function (value) {
-  return value && value.length >= 3;
-};
-Form.validators.minLengthObject = function (value) {
-  return value && value.name && value.name.length >= 3;
-};
-Form.validators.name = function (value) {
-  if (!value) {
-    return false;
-  }
-
-  var tmp = value.split(' ');
-
-  if (tmp.length < 2) {
-    return false;
-  }
-
-  return tmp[0].length >= 3 && tmp[1].length >= 3;
-};
-
-Form.validators.selected = function (value) {
-  return value.length > 0;
+  form: _proptypes2.default.object
 };
 
 exports.default = Form;
 
-},{"../../core":241,"../styles":252,"proptypes":133,"react":176}],250:[function(require,module,exports){
+},{"../../core":244,"../styles":256,"proptypes":133,"react":176}],253:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -55449,13 +55659,47 @@ FormItem.contextTypes = {
 
 exports.default = FormItem;
 
-},{"../styles":252,"lodash":109,"proptypes":133,"react":176}],251:[function(require,module,exports){
+},{"../styles":256,"lodash":109,"proptypes":133,"react":176}],254:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.FormItem = exports.Form = undefined;
+
+var Validators = {
+  email: function email(value) {
+    var re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return re.test(value);
+  },
+
+  minLength: function minLength(value) {
+    return value && value.length >= 3;
+  },
+
+  name: function name(value) {
+    if (!value) {
+      return false;
+    }
+
+    var tmp = value.split(' ');
+
+    if (tmp.length < 2) {
+      return false;
+    }
+
+    return tmp[0].length >= 3 && tmp[1].length >= 3;
+  }
+};
+
+exports.default = Validators;
+
+},{}],255:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.FormValidators = exports.FormItem = exports.Form = undefined;
 
 var _Form = require('./components/Form');
 
@@ -55465,12 +55709,17 @@ var _FormItem = require('./components/FormItem');
 
 var _FormItem2 = _interopRequireDefault(_FormItem);
 
+var _FormValidators = require('./components/FormValidators');
+
+var _FormValidators2 = _interopRequireDefault(_FormValidators);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 exports.Form = _Form2.default;
 exports.FormItem = _FormItem2.default;
+exports.FormValidators = _FormValidators2.default;
 
-},{"./components/Form":249,"./components/FormItem":250}],252:[function(require,module,exports){
+},{"./components/Form":252,"./components/FormItem":253,"./components/FormValidators":254}],256:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -55479,7 +55728,7 @@ Object.defineProperty(exports, "__esModule", {
 exports.FormItemStyle = exports.FormStyle = undefined;
 
 var _templateObject = _taggedTemplateLiteral(['\n  margin: auto;\n  text-align: left;\n\n  & .react-form-buttons {\n    padding: 5px 0px;\n  }\n\n  & button {\n    margin-right: 5px;\n  }\n\n  & label.error {\n    display: inline-block;\n    font-size: 11px;\n    font-weight: 400;\n    color: red;\n    margin: 5px 5px 5px 5px;\n  }\n'], ['\n  margin: auto;\n  text-align: left;\n\n  & .react-form-buttons {\n    padding: 5px 0px;\n  }\n\n  & button {\n    margin-right: 5px;\n  }\n\n  & label.error {\n    display: inline-block;\n    font-size: 11px;\n    font-weight: 400;\n    color: red;\n    margin: 5px 5px 5px 5px;\n  }\n']),
-    _templateObject2 = _taggedTemplateLiteral(['\n  padding: 5px 0px;\n\n  & label {\n    font-weight: 600;\n    margin-bottom: 5px;\n  }\n\n  & select,\n  & textarea,\n  & input[type="text"],\n  & input[type="number"],\n  & input[type="email"],\n  & input[type="email"] {\n    width: 100%;\n    box-sizing: border-box;\n    border: 1px solid rgb(218, 218, 218);\n    border-radius: 4px;\n    padding: 8px 8px;\n    outline: none;\n  }\n'], ['\n  padding: 5px 0px;\n\n  & label {\n    font-weight: 600;\n    margin-bottom: 5px;\n  }\n\n  & select,\n  & textarea,\n  & input[type="text"],\n  & input[type="number"],\n  & input[type="email"],\n  & input[type="email"] {\n    width: 100%;\n    box-sizing: border-box;\n    border: 1px solid rgb(218, 218, 218);\n    border-radius: 4px;\n    padding: 8px 8px;\n    outline: none;\n  }\n']);
+    _templateObject2 = _taggedTemplateLiteral(['\n  padding: 5px 0px;\n\n  & label {\n    font-weight: 600;\n    margin-bottom: 5px;\n  }\n\n  & select,\n  & textarea,\n  & input[type="text"],\n  & input[type="number"],\n  & input[type="email"],\n  & input[type="email"] {\n    width: 100%;\n    box-sizing: border-box;\n    border: 1px solid rgb(218, 218, 218);\n    border-radius: 4px;\n    padding: 12px 8px;\n    outline: none;\n  }\n'], ['\n  padding: 5px 0px;\n\n  & label {\n    font-weight: 600;\n    margin-bottom: 5px;\n  }\n\n  & select,\n  & textarea,\n  & input[type="text"],\n  & input[type="number"],\n  & input[type="email"],\n  & input[type="email"] {\n    width: 100%;\n    box-sizing: border-box;\n    border: 1px solid rgb(218, 218, 218);\n    border-radius: 4px;\n    padding: 12px 8px;\n    outline: none;\n  }\n']);
 
 var _styledComponents = require('styled-components');
 
@@ -55493,13 +55742,13 @@ var FormStyle = exports.FormStyle = _styledComponents2.default.div(_templateObje
 
 var FormItemStyle = exports.FormItemStyle = _styledComponents2.default.div(_templateObject2);
 
-},{"styled-components":209}],253:[function(require,module,exports){
+},{"styled-components":209}],257:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.utils = exports.theme = exports.Flex = exports.Spinner = exports.Autocomplete = undefined;
+exports.utils = exports.theme = exports.Flex = exports.Spinner = exports.AutocompleteTags = exports.Autocomplete = undefined;
 
 var _core = require('./core');
 
@@ -55541,6 +55790,10 @@ var _autocomplete = require('./autocomplete');
 
 var _autocomplete2 = _interopRequireDefault(_autocomplete);
 
+var _autocompleteTags = require('./autocomplete-tags');
+
+var _autocompleteTags2 = _interopRequireDefault(_autocompleteTags);
+
 var _flexbox = require('./flexbox');
 
 var _flexbox2 = _interopRequireDefault(_flexbox);
@@ -55560,12 +55813,13 @@ var _utils2 = _interopRequireDefault(_utils);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 exports.Autocomplete = _autocomplete2.default;
+exports.AutocompleteTags = _autocompleteTags2.default;
 exports.Spinner = _spinner2.default;
 exports.Flex = _flexbox2.default;
 exports.theme = _theme2.default;
 exports.utils = _utils2.default;
 
-},{"./autocomplete":235,"./core":241,"./date-utils":245,"./flexbox":247,"./form":251,"./spinner":254,"./theme":256,"./utils":257}],254:[function(require,module,exports){
+},{"./autocomplete":238,"./autocomplete-tags":236,"./core":244,"./date-utils":248,"./flexbox":250,"./form":255,"./spinner":258,"./theme":260,"./utils":261}],258:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -55604,7 +55858,7 @@ var SpinnerComponent = function SpinnerComponent(props) {
 };
 exports.default = SpinnerComponent;
 
-},{"./styles":255,"lodash":109,"react":176}],255:[function(require,module,exports){
+},{"./styles":259,"lodash":109,"react":176}],259:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -55640,7 +55894,7 @@ var Spinner = exports.Spinner = _styledComponents2.default.div(_templateObject3,
   return (0, _utils.parseColor)(p.color, p.theme);
 }, scale);
 
-},{"../utils":257,"styled-components":209}],256:[function(require,module,exports){
+},{"../utils":261,"styled-components":209}],260:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -55668,7 +55922,7 @@ var theme = {
 
 exports.default = theme;
 
-},{}],257:[function(require,module,exports){
+},{}],261:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -55703,4 +55957,4 @@ var parseColor = exports.parseColor = function parseColor(value, theme) {
   }
 };
 
-},{"lodash":109}]},{},[253]);
+},{"lodash":109}]},{},[257]);

@@ -1,18 +1,30 @@
 // @flow
 import React from 'react'
 import Autosuggest from 'react-autosuggest'
+import { trim } from 'lodash'
 import styles from './styles'
-import type { Props, State, Suggestion } from './types'
+import type { Tag } from 'coderbox'
 
-class AutoComplete extends React.Component {
-  state: State
-  constructor (props: Props) {
-    super(props)
-    this.state = {
-      searchText: '',
-      suggestion: null,
-      suggestions: []
-    }
+type Props = {
+  value?: Tag,
+  suggestions: Tag[],
+  onChange: (suggestion: Tag) => void,
+  onKeyDown: (event: KeyboardEvent) => void,
+  placeholder: string,
+  renderSuggestion: Function
+}
+
+type State = {
+  searchText: string,
+  suggestion: ?Tag,
+  suggestions: Tag[]
+}
+
+class AutoComplete extends React.Component<any, Props, State> {
+  state = {
+    searchText: '',
+    suggestion: null,
+    suggestions: []
   }
 
   componentWillMount () {
@@ -22,12 +34,16 @@ class AutoComplete extends React.Component {
   }
 
   componentWillReceiveProps (nextProps: Props) {
+    if (nextProps.value === null) {
+      this.setState({ searchText: '' })
+    }
+
     if (nextProps.value) {
       this.setState({ searchText: nextProps.value.name || '' })
     }
   }
 
-  renderSuggestion (suggestion: Suggestion) {
+  renderSuggestion (suggestion: Tag) {
     return (
       <div>
         {suggestion.name}
@@ -60,20 +76,20 @@ class AutoComplete extends React.Component {
       })).shift()
   }
 
-  onSuggestion (event: any, props: { suggestion: Suggestion}) {
+  onSuggestion (event: any, props: { suggestion: Tag}) {
     this.setState({ suggestion: props.suggestion })
   }
 
   onChange (event :any, props: { newValue: string }) {
-    this.setState({ searchText: props.newValue })
-
+    this.setState({ searchText: trim(props.newValue) })
     if (this.props.onChange) {
-      this.props.onChange(this.firstSuggestion(props.newValue) || { name: props.newValue })
+      this.props.onChange(this.firstSuggestion(props.newValue) || { name: trim(props.newValue) })
     }
   }
 
-  onKeyPress (event: any) {
-    if (event.key === 'Enter') {
+  onKeyDown (event: KeyboardEvent) {
+    if (this.props.onKeyDown) {
+      this.props.onKeyDown(event)
     }
   }
 
@@ -91,7 +107,7 @@ class AutoComplete extends React.Component {
       placeholder: this.props.placeholder,
       value: this.state.searchText,
       onChange: (e, data) => this.onChange(e, data),
-      onKeyPress: e => this.onKeyPress(e)
+      onKeyDown: e => this.onKeyDown(e)
     }
 
     return (

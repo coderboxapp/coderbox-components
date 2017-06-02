@@ -39,7 +39,7 @@ export const FormItemStyle = styled.div`
     box-sizing: border-box;
     border: 1px solid rgb(218, 218, 218);
     border-radius: 4px;
-    padding: 8px 8px;
+    padding: 12px 8px;
     outline: none;
   }
 `

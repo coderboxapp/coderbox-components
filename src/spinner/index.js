@@ -3,7 +3,14 @@ import React from 'react'
 import { times, map } from 'lodash'
 import { Overlay, Spinner } from './styles'
 
-const SpinnerComponent = (props: { hide: boolean, size: ?number, color: ?string, label: ?string }) => {
+type SpinnerProps = {
+  hide: boolean,
+  size?: number,
+  color?: string,
+  label?: string,
+}
+
+const SpinnerComponent = (props: SpinnerProps) => {
   let divs = times(12, String)
 
   return (

@@ -1,27 +1,24 @@
 // @flow
 import React from 'react'
-import { Tag, TagClose } from '../styles'
+import { TagStyle, TagCloseStyle } from '../styles'
 
-type TagType = {
-  _id: number,
-  name: string
-}
+import type { Tag } from 'coderbox'
 
 type Props = {
-  tags: TagType[],
-  color: 'base' | 'primary',
-  withClose: boolean,
-  onClick: (tag: TagType) => void
+  tags: Tag[],
+  color?: 'base' | 'primary' | 'success',
+  withClose?: boolean,
+  onClick?: (tag: Tag) => void
 }
 
 const TagsComponent = ({ tags = [], color = 'base', withClose = false, onClick }: Props) => {
-  const TagElement = withClose ? TagClose : Tag
+  const TagElement = withClose ? TagCloseStyle : TagStyle
 
   return (
     <div>
       {
-        tags.map(tag => {
-          return <TagElement key={tag._id} color={color} onClick={() => onClick && onClick(tag)}>{tag.name}</TagElement>
+        tags.map((tag, index) => {
+          return <TagElement key={index} color={color} onClick={() => onClick && onClick(tag)}>{tag.name}</TagElement>
         }
       )}
     </div>

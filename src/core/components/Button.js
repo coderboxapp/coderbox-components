@@ -1,18 +1,18 @@
 // @flow
 import React from 'react'
-import { Button } from '../styles'
+import { ButtonStyle } from '../styles'
 
 type Props = {
-  color: 'base' | 'primary' | 'success',
-  onClick: Function,
-  children: []
+  color?: 'base' | 'primary' | 'success',
+  onClick?: Function,
+  children?: any
 }
 
 const ButtonComponent = ({ color = 'base', onClick, children }: Props) => {
   return (
-    <Button color={color} onClick={onClick}>
+    <ButtonStyle color={color} onClick={(e) => onClick && onClick(e)}>
       {children}
-    </Button>
+    </ButtonStyle>
   )
 }
 

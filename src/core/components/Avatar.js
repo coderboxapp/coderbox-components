@@ -1,13 +1,13 @@
 // @flow
 import React from 'react'
 import md5 from 'js-md5'
-import { AvatarContainer, AvatarImage } from '../styles'
+import { AvatarStyle, AvatarImageStyle } from '../styles'
 
 type Props = {
   email: ?string,
   url: string,
-  size: number,
-  edit: boolean,
+  size?: number,
+  edit?: boolean,
 }
 
 const AvatarComponent = ({ email, url, size = 140, edit = false }: Props) => {
@@ -15,8 +15,8 @@ const AvatarComponent = ({ email, url, size = 140, edit = false }: Props) => {
   let image = url || 'https://www.gravatar.com/avatar/' + hash + '?s=' + size
 
   return (
-    <AvatarContainer>
-      <AvatarImage image={image} size={`${size}px`} />
+    <AvatarStyle>
+      <AvatarImageStyle image={image} size={`${size}px`} />
       {edit &&
         <a
           href='https://en.gravatar.com/support/activating-your-account/'
@@ -25,7 +25,7 @@ const AvatarComponent = ({ email, url, size = 140, edit = false }: Props) => {
         >
           Change picture
         </a>}
-    </AvatarContainer>
+    </AvatarStyle>
   )
 }
 
