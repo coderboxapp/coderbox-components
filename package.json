@@ -1,6 +1,6 @@
 {
   "name": "coderbox-components",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "React Components",
   "main": "lib/index.js",
   "scripts": {},
