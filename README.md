@@ -23,9 +23,11 @@ Works with [browserify](https://github.com/substack/node-browserify) and should 
 ```
 .
 ├── Autocomplete               #
+├── AutocompleteTags           #
 ├── Tags                       # 
 ├── Flex                       # 
 ├── Logo                       # 
+├── Button                     #
 ├── Spinner                    #
 ```
 # Compile
