@@ -35,7 +35,7 @@ export const Spinner = styled.div`
   }
 
   & > div::before {
-    background-color: ${p => parseColor(p.color, p.theme)};
+    background-color: ${p => parseColor(p.color, p.theme.colors)};
     content: '';
     display: block;
     margin: 0 auto;

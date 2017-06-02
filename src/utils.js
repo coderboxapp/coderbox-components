@@ -8,17 +8,17 @@ export const toPx = value => {
   return value
 }
 
-export const parseColor = (value, theme) => {
+export const parseColor = (value, colors) => {
   if (!value) {
-    return theme.colors.base
+    return colors.base
   }
 
   switch (value) {
     case 'primary':
-      return theme.colors.primary
+      return colors.primary
 
     case 'success':
-      return theme.colors.success
+      return colors.success
 
     default:
       return value

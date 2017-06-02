@@ -3,7 +3,7 @@ import React from 'react'
 import { ButtonStyle } from '../styles'
 
 type Props = {
-  color?: 'base' | 'primary' | 'success',
+  color?: 'base' | 'primary' | 'success' | string,
   onClick?: Function,
   children?: any
 }

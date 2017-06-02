@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { toPx } from '../utils'
+import { toPx, parseColor } from '../utils'
 
 export const AvatarStyle = styled.div`
   display: inline-block;
@@ -22,14 +22,16 @@ export const AvatarImageStyle = styled.div`
 `
 
 export const ButtonStyle = styled.button`
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   border: none;
   border-radius: 0px;
   padding: 8px 35px;
   font-family: inherit;
   font-weight: 400;
-  color: ${props => props.theme.textColors[props.color]};
-  background: ${props => props.theme.colors[props.color]};
+  color: ${p => parseColor(p.color, p.theme.textColors)};
+  background: ${p => parseColor(p.color, p.theme.colors)};
   cursor: pointer;
   outline: none;
 

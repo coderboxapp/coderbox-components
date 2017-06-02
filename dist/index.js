@@ -54780,7 +54780,7 @@ exports.Label = exports.DemoContainer = exports.Container = exports.TagCloseStyl
 
 var _templateObject = _taggedTemplateLiteral(['\n  display: inline-block;\n  padding: 10px;\n  border: 1px solid ', ';\n  border-radius: ', ';\n  box-shadow: ', ';\n  background-color: white;\n  text-align: center;\n'], ['\n  display: inline-block;\n  padding: 10px;\n  border: 1px solid ', ';\n  border-radius: ', ';\n  box-shadow: ', ';\n  background-color: white;\n  text-align: center;\n']),
     _templateObject2 = _taggedTemplateLiteral(['\n  width: ', ';\n  height: ', ';\n  border-radius: ', ';\n  background-image: url(\'', '\');\n  background-size: contain;\n  background-repeat: no-repeat;\n  background-position: center center;\n'], ['\n  width: ', ';\n  height: ', ';\n  border-radius: ', ';\n  background-image: url(\'', '\');\n  background-size: contain;\n  background-repeat: no-repeat;\n  background-position: center center;\n']),
-    _templateObject3 = _taggedTemplateLiteral(['\n  display: inline-block;\n  border: none;\n  border-radius: 0px;\n  padding: 8px 35px;\n  font-family: inherit;\n  font-weight: 400;\n  color: ', ';\n  background: ', ';\n  cursor: pointer;\n  outline: none;\n\n  &:hover {\n    opacity: 0.80;\n  }\n'], ['\n  display: inline-block;\n  border: none;\n  border-radius: 0px;\n  padding: 8px 35px;\n  font-family: inherit;\n  font-weight: 400;\n  color: ', ';\n  background: ', ';\n  cursor: pointer;\n  outline: none;\n\n  &:hover {\n    opacity: 0.80;\n  }\n']),
+    _templateObject3 = _taggedTemplateLiteral(['\n  display: inline-flex;\n  align-items: center;\n  justify-content: center;\n  border: none;\n  border-radius: 0px;\n  padding: 8px 35px;\n  font-family: inherit;\n  font-weight: 400;\n  color: ', ';\n  background: ', ';\n  cursor: pointer;\n  outline: none;\n\n  &:hover {\n    opacity: 0.80;\n  }\n'], ['\n  display: inline-flex;\n  align-items: center;\n  justify-content: center;\n  border: none;\n  border-radius: 0px;\n  padding: 8px 35px;\n  font-family: inherit;\n  font-weight: 400;\n  color: ', ';\n  background: ', ';\n  cursor: pointer;\n  outline: none;\n\n  &:hover {\n    opacity: 0.80;\n  }\n']),
     _templateObject4 = _taggedTemplateLiteral(['\n  display: \'inline-block\';\n  vertical-align: \'middle\';\n  width: ', ';\n  height: ', ';\n'], ['\n  display: \'inline-block\';\n  vertical-align: \'middle\';\n  width: ', ';\n  height: ', ';\n']),
     _templateObject5 = _taggedTemplateLiteral(['\n  fill: ', ';\n'], ['\n  fill: ', ';\n']),
     _templateObject6 = _taggedTemplateLiteral(['\n  display: inline-block;\n  font-family: \'Inconsolata\', monospace;\n  font-size: 12px;\n  margin: 2px 4px 2px 0px;\n  padding: 0px 12px 0px 12px;\n  border: 1px solid ', ';\n  box-shadow: ', ';\n  color: ', ';\n  background: ', ';\n  cursor: pointer;\n  outline: none;\n  border-radius: 2px;\n  line-height: 22px;\n\n  &:hover {\n    opacity: 0.85;\n  }\n'], ['\n  display: inline-block;\n  font-family: \'Inconsolata\', monospace;\n  font-size: 12px;\n  margin: 2px 4px 2px 0px;\n  padding: 0px 12px 0px 12px;\n  border: 1px solid ', ';\n  box-shadow: ', ';\n  color: ', ';\n  background: ', ';\n  cursor: pointer;\n  outline: none;\n  border-radius: 2px;\n  line-height: 22px;\n\n  &:hover {\n    opacity: 0.85;\n  }\n']),
@@ -54817,10 +54817,10 @@ var AvatarImageStyle = exports.AvatarImageStyle = _styledComponents2.default.div
   return props.image;
 });
 
-var ButtonStyle = exports.ButtonStyle = _styledComponents2.default.button(_templateObject3, function (props) {
-  return props.theme.textColors[props.color];
-}, function (props) {
-  return props.theme.colors[props.color];
+var ButtonStyle = exports.ButtonStyle = _styledComponents2.default.button(_templateObject3, function (p) {
+  return (0, _utils.parseColor)(p.color, p.theme.textColors);
+}, function (p) {
+  return (0, _utils.parseColor)(p.color, p.theme.colors);
 });
 
 var LogoStyle = exports.LogoStyle = _styledComponents2.default.div(_templateObject4, function (props) {
@@ -55891,7 +55891,7 @@ var Spinner = exports.Spinner = _styledComponents2.default.div(_templateObject3,
 }, function (p) {
   return (0, _utils.toPx)(p.size) || '50px';
 }, function (p) {
-  return (0, _utils.parseColor)(p.color, p.theme);
+  return (0, _utils.parseColor)(p.color, p.theme.colors);
 }, scale);
 
 },{"../utils":261,"styled-components":209}],260:[function(require,module,exports){
@@ -55940,17 +55940,17 @@ var toPx = exports.toPx = function toPx(value) {
   return value;
 };
 
-var parseColor = exports.parseColor = function parseColor(value, theme) {
+var parseColor = exports.parseColor = function parseColor(value, colors) {
   if (!value) {
-    return theme.colors.base;
+    return colors.base;
   }
 
   switch (value) {
     case 'primary':
-      return theme.colors.primary;
+      return colors.primary;
 
     case 'success':
-      return theme.colors.success;
+      return colors.success;
 
     default:
       return value;
