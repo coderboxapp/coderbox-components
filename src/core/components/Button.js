@@ -3,14 +3,32 @@ import React from 'react'
 import { ButtonStyle } from '../styles'
 
 type Props = {
-  color?: 'base' | 'primary' | 'success' | string,
+  color?: string,
+  textColor?: string,
+  primary: boolean,
+  success: boolean,
   onClick?: Function,
-  children?: any
+  children?: any,
 }
 
-const ButtonComponent = ({ color = 'base', onClick, children }: Props) => {
+const ButtonComponent = ({
+  color = 'base',
+  textColor = 'base',
+  primary = false,
+  success = false,
+  onClick,
+  children
+}: Props) => {
+  if (primary) {
+    color = textColor = 'primary'
+  }
+
+  if (success) {
+    color = textColor = 'success'
+  }
+
   return (
-    <ButtonStyle color={color} onClick={(e) => onClick && onClick(e)}>
+    <ButtonStyle color={color} onClick={e => onClick && onClick(e)}>
       {children}
     </ButtonStyle>
   )

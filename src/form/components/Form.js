@@ -52,7 +52,7 @@ class Form extends React.Component {
         {this.props.showButtons
           ? <div className='react-form-buttons'>
             {this.props.showSave &&
-            <Button color='primary' onClick={() => this.props.onSave(this)}>
+            <Button primary onClick={() => this.props.onSave(this)}>
               {this.props.saveLabel}
             </Button>}
             {this.props.showCancel &&
