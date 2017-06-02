@@ -30,7 +30,7 @@ export const ButtonStyle = styled.button`
   padding: 8px 35px;
   font-family: inherit;
   font-weight: 400;
-  color: ${p => parseColor(p.color, p.theme.textColors)};
+  color: ${p => parseColor(p.textColor, p.theme.textColors)};
   background: ${p => parseColor(p.color, p.theme.colors)};
   cursor: pointer;
   outline: none;
