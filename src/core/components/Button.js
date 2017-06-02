@@ -28,7 +28,7 @@ const ButtonComponent = ({
   }
 
   return (
-    <ButtonStyle color={color} onClick={e => onClick && onClick(e)}>
+    <ButtonStyle color={color} textColor={textColor} onClick={e => onClick && onClick(e)}>
       {children}
     </ButtonStyle>
   )
