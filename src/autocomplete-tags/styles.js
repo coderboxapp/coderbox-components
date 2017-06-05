@@ -7,7 +7,7 @@ export const AutocompleteTagsStyle = styled.div`
   border-radius: 4px;
 
   & input {
-    border: 1px dashed #e8e8e8 !important;
+    border: 1px dashed ${p => p.theme.borderColors.base} !important;
   }
 `
 

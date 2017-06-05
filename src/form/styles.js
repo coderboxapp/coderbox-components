@@ -37,7 +37,7 @@ export const FormItemStyle = styled.div`
   & input[type="email"] {
     width: 100%;
     box-sizing: border-box;
-    border: 1px solid rgb(218, 218, 218);
+    border: 1px solid ${p => p.theme.borderColors.base};
     border-radius: 4px;
     padding: 12px 8px;
     outline: none;

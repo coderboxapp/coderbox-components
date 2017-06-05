@@ -4,18 +4,18 @@ import { toPx, parseColor } from '../utils'
 export const AvatarStyle = styled.div`
   display: inline-block;
   padding: 10px;
-  border: 1px solid ${props => props.theme.borderColors['base']};
-  border-radius: ${props => props.theme.borderRadius};
-  box-shadow: ${props => props.theme.shadow};
+  border: 1px solid ${p => p.theme.borderColors.base};
+  border-radius: ${p => p.theme.borderRadius};
+  box-shadow: ${p => p.theme.shadow};
   background-color: white;
   text-align: center;
 `
 
 export const AvatarImageStyle = styled.div`
-  width: ${props => props.size};
-  height: ${props => props.size};
-  border-radius: ${props => props.theme.borderRadius};
-  background-image: url('${props => props.image}');
+  width: ${p => p.size};
+  height: ${p => p.size};
+  border-radius: ${p => p.theme.borderRadius};
+  background-image: url('${p => p.image}');
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center center;
@@ -43,12 +43,12 @@ export const ButtonStyle = styled.button`
 export const LogoStyle = styled.div`
   display: 'inline-block';
   vertical-align: 'middle';
-  width: ${props => props.size};
-  height: ${props => props.size};
+  width: ${p => p.size};
+  height: ${p => p.size};
 `
 
 export const LogoSvgStyle = styled.svg`
-  fill: ${props => props.theme.colors[props.color]};
+  fill: ${p => p.theme.colors[p.color]};
 `
 
 export const TagStyle = styled.div`
@@ -57,10 +57,10 @@ export const TagStyle = styled.div`
   font-size: 12px;
   margin: 2px 4px 2px 0px;
   padding: 0px 12px 0px 12px;
-  border: 1px solid ${props => props.theme.borderColors[props.color]};
-  box-shadow: ${props => props.theme.shadow};
-  color: ${props => props.theme.textColors[props.color]};
-  background: ${props => props.theme.colors[props.color]};
+  border: 1px solid ${p => p.theme.borderColors[p.color]};
+  box-shadow: ${p => p.theme.shadow};
+  color: ${p => p.theme.textColors[p.color]};
+  background: ${p => p.theme.colors[p.color]};
   cursor: pointer;
   outline: none;
   border-radius: 2px;
@@ -78,7 +78,7 @@ export const TagCloseStyle = styled(TagStyle)`
     display: inline-block;
     content: '\\2715';
     font-size: 11px;
-    border-left: 1px solid ${props => props.theme.borderColors[props.color]};
+    border-left: 1px solid ${p => p.theme.borderColors[p.color]};
     margin-left: 8px;
     width: 23px;
     text-align: center;
@@ -87,7 +87,7 @@ export const TagCloseStyle = styled(TagStyle)`
 `
 export const Container = styled.div`
   position: relative;
-  border: 1px solid #CCC;
+  border: 1px solid ${p => p.theme.borderColors.base};
   padding: 5px;
   margin: 10px auto;
   min-width: ${p => toPx(p.width) || 'auto'};
