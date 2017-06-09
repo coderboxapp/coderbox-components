@@ -2,7 +2,7 @@
 import React from 'react'
 import { TagStyle, TagCloseStyle } from '../styles'
 
-import type { Tag } from 'coderbox'
+import type { Tag } from 'coderbox-components'
 
 type Props = {
   tags: Tag[],

@@ -3,8 +3,6 @@ import React from 'react'
 import Flex from '../../flexbox'
 import moment from 'moment'
 
-// import type { DateRange } from './types'
-
 const DatePickerComponent = (props: { value: Date, onChange: Function, hideMonths?: boolean, }) => {
   let month = moment(props.value).month()
   let year = moment(props.value).year()

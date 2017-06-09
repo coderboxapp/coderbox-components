@@ -3,7 +3,7 @@ import React from 'react'
 import Autosuggest from 'react-autosuggest'
 import { trim } from 'lodash'
 import styles from './styles'
-import type { Tag } from 'coderbox'
+import type { Tag } from 'coderbox-components'
 
 type Props = {
   value?: Tag,

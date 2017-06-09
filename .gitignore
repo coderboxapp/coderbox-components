@@ -1,4 +1,3 @@
 node_modules/**/*
-flow-typed/**/*
 *hot-update*
 *npm-debug*

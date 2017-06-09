@@ -1,10 +1,9 @@
 [ignore]
-.*/node_modules/styled-components/.*
+.*/styled-components/.*
 
 [include]
 
 [libs]
-flow-typed
-dom
+types
 
 [options]

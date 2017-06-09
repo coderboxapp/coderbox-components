@@ -5,7 +5,7 @@ import Flex from '../../flexbox'
 import { DateRangeContainer, Icon } from '../styles'
 
 // Types
-import type { DateRange } from '../types'
+import type { DateRange } from 'coderbox-components'
 import type Moment from 'moment'
 
 type Props = {
