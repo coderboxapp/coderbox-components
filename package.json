@@ -1,9 +1,11 @@
 {
   "name": "coderbox-components",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "description": "React Components",
   "main": "lib/index.js",
-  "scripts": {},
+  "scripts": {
+    "gulp": "gulp"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/coderboxapp/coderbox-components.git"
@@ -28,7 +30,7 @@
   "author": "Ghiura Alexandru <ghalex@gmail.com>",
   "license": "ISC",
   "devDependencies": {
-    "babel": "^6.23.0",
+    "babel-cli": "^6.24.1",
     "babel-core": "^6.20.0",
     "babel-eslint": "^7.2.3",
     "babel-plugin-module-resolver": "^2.4.0",
@@ -56,11 +58,11 @@
   "dependencies": {
     "js-md5": "^0.4.2",
     "moment": "^2.18.1",
-    "proptypes": "^1.0.0",
+    "proptypes": "^1.1.0",
     "react": "^15.5.4",
     "react-autosuggest": "^9.0.1",
     "react-dom": "^15.5.4",
     "react-spinkit": "^3.0.0",
-    "styled-components": "^2.0.0"
+    "styled-components": "^2.0.1"
   }
 }
