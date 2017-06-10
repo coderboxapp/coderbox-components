@@ -5,6 +5,7 @@ import { AutocompleteTagsStyle, TagsStyle } from './styles'
 import { Tags } from '../core'
 import Autocomplete from '../autocomplete'
 
+// Types
 import type { Tag } from 'coderbox-components'
 
 type Props = {
@@ -53,10 +54,7 @@ class AutocompleteTags extends React.Component<any, Props, State> {
     let tags = this.state.tags.concat()
 
     if (findIndex(tags, t => t.name === tag.name) === -1) {
-      tags.push(assign(
-        ...tag,
-        {name: this.props.toLowercase ? tag.name.toLocaleLowerCase() : tag.name}
-      ))
+      tags.push(assign({}, tag, {name: this.props.toLowercase ? tag.name.toLocaleLowerCase() : tag.name}))
 
       if (this.props.allowNew) {
         this.setState({tags: tags})
@@ -84,12 +82,12 @@ class AutocompleteTags extends React.Component<any, Props, State> {
     }
   }
 
-  onKeyDown (e: KeyboardEvent) {
+  onKeyDown (evt: KeyboardEvent) {
     if (
-      e.keyCode === Keys.ENTER ||
-      e.keyCode === Keys.COMMA
+      evt.keyCode === Keys.ENTER ||
+      evt.keyCode === Keys.COMMA
     ) {
-      e.preventDefault()
+      evt.preventDefault()
 
       if (this.state.suggestion) {
         this.addTag(this.state.suggestion)
@@ -97,7 +95,7 @@ class AutocompleteTags extends React.Component<any, Props, State> {
       }
     }
 
-    if (e.keyCode === Keys.BACKSPACE && this.state.tags.length > 0) {
+    if (evt.keyCode === Keys.BACKSPACE && this.state.tags.length > 0) {
       if (!this.state.suggestion || this.state.suggestion.name === '') {
         this.removeTag(last(this.state.tags))
       }
@@ -117,8 +115,8 @@ class AutocompleteTags extends React.Component<any, Props, State> {
           value={suggestion}
           suggestions={suggestions}
           placeholder={placeholder}
-          onChange={s => this.setState({suggestion: s})}
-          onKeyDown={e => this.onKeyDown(e)}
+          onChange={(suggestion: Tag) => this.setState({suggestion: suggestion})}
+          onKeyDown={(evt: KeyboardEvent) => this.onKeyDown(evt)}
         />
       </AutocompleteTagsStyle>
     )

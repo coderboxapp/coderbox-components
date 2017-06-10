@@ -8,16 +8,20 @@ import type { Tag } from 'coderbox-components'
 type Props = {
   value?: Tag,
   suggestions: Tag[],
+  placeholder: string,
   onChange: (suggestion: Tag) => void,
   onKeyDown: (event: KeyboardEvent) => void,
-  placeholder: string,
-  renderSuggestion: Function
+  renderSuggestion: () => void
 }
 
 type State = {
   searchText: string,
   suggestion: ?Tag,
   suggestions: Tag[]
+}
+
+type SuggestionData = {
+  suggestion: Tag
 }
 
 class AutoComplete extends React.Component<any, Props, State> {
@@ -76,14 +80,14 @@ class AutoComplete extends React.Component<any, Props, State> {
       })).shift()
   }
 
-  onSuggestion (event: any, props: { suggestion: Tag}) {
-    this.setState({ suggestion: props.suggestion })
+  onSuggestion (event: Event, data: SuggestionData) {
+    this.setState({ suggestion: data.suggestion })
   }
 
-  onChange (event :any, props: { newValue: string }) {
-    this.setState({ searchText: trim(props.newValue) })
+  onChange (event :Event, data: { newValue: string }) {
+    this.setState({ searchText: trim(data.newValue) })
     if (this.props.onChange) {
-      this.props.onChange(this.firstSuggestion(props.newValue) || { name: trim(props.newValue) })
+      this.props.onChange(this.firstSuggestion(data.newValue) || { name: trim(data.newValue) })
     }
   }
 
@@ -93,8 +97,8 @@ class AutoComplete extends React.Component<any, Props, State> {
     }
   }
 
-  onSuggestionsFetchRequested (props: { value: string }) {
-    this.setState({ suggestions: this.fetchSuggestions(props.value) })
+  onSuggestionsFetchRequested (data: { value: string }) {
+    this.setState({ suggestions: this.fetchSuggestions(data.value) })
   }
 
   onSuggestionsClearRequested () {
@@ -106,20 +110,20 @@ class AutoComplete extends React.Component<any, Props, State> {
     const inputProps = {
       placeholder: this.props.placeholder,
       value: this.state.searchText,
-      onChange: (e, data) => this.onChange(e, data),
-      onKeyDown: e => this.onKeyDown(e)
+      onChange: (e: Event, data: { newValue: string }) => this.onChange(e, data),
+      onKeyDown: (e: KeyboardEvent) => this.onKeyDown(e)
     }
 
     return (
       <Autosuggest
         theme={styles}
         suggestions={suggestions}
-        getSuggestionValue={suggestion => suggestion.name}
+        getSuggestionValue={(suggestion: Tag) => suggestion.name}
         renderSuggestion={this.props.renderSuggestion || this.renderSuggestion}
-        onSuggestionSelected={(e, data) => this.onSuggestion(e, data)}
-        onSuggestionsFetchRequested={data => this.onSuggestionsFetchRequested(data)}
+        onSuggestionSelected={(e: Event, data: SuggestionData) => this.onSuggestion(e, data)}
+        onSuggestionsFetchRequested={(data: { value: string }) => this.onSuggestionsFetchRequested(data)}
         onSuggestionsClearRequested={() => this.onSuggestionsClearRequested()}
-        shouldRenderSuggestions={value => value.trim().length > 1}
+        shouldRenderSuggestions={(value: string) => value.trim().length > 1}
         inputProps={inputProps}
       />
     )

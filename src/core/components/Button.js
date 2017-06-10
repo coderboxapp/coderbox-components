@@ -5,10 +5,11 @@ import { ButtonStyle } from '../styles'
 type Props = {
   color?: string,
   textColor?: string,
+  className?: string,
   primary: boolean,
   success: boolean,
-  onClick?: Function,
   children?: any,
+  onClick?: (evt: Event) => void,
 }
 
 const ButtonComponent = ({
@@ -16,6 +17,7 @@ const ButtonComponent = ({
   textColor = 'base',
   primary = false,
   success = false,
+  className = '',
   onClick,
   children
 }: Props) => {
@@ -28,7 +30,7 @@ const ButtonComponent = ({
   }
 
   return (
-    <ButtonStyle color={color} textColor={textColor} onClick={e => onClick && onClick(e)}>
+    <ButtonStyle className={className} color={color} textColor={textColor} onClick={(evt: Event) => onClick && onClick(evt)}>
       {children}
     </ButtonStyle>
   )

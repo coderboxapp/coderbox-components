@@ -4,12 +4,13 @@ import { LogoStyle, LogoSvgStyle } from '../styles'
 
 type Props = {
   color: 'base' | 'primary' | 'success',
-  size: number
+  size: number,
+  className?: string
 }
 
-const LogoComponent = ({ size = 50, color = 'base' }: Props) => {
+const LogoComponent = ({ size = 50, color = 'base', className = '' }: Props) => {
   return (
-    <LogoStyle size={`${size}px`}>
+    <LogoStyle size={`${size}px`} className={className}>
       <a href='/'>
         <LogoSvgStyle
           color={color}

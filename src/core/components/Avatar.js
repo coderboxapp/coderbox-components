@@ -7,15 +7,22 @@ type Props = {
   email: ?string,
   url: string,
   size?: number,
+  className?: string,
   edit?: boolean,
 }
 
-const AvatarComponent = ({ email, url, size = 140, edit = false }: Props) => {
-  let hash = md5(email || '')
-  let image = url || 'https://www.gravatar.com/avatar/' + hash + '?s=' + size
+const AvatarComponent = ({
+  email,
+  url,
+  size = 140,
+  className = '',
+  edit = false
+}: Props) => {
+  let hash: string = md5(email || '')
+  let image: string = url || 'https://www.gravatar.com/avatar/' + hash + '?s=' + size
 
   return (
-    <AvatarStyle>
+    <AvatarStyle className={className}>
       <AvatarImageStyle image={image} size={`${size}px`} />
       {edit &&
         <a

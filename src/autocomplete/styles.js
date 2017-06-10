@@ -1,4 +1,4 @@
-
+// @flow
 export default {
   container: {
     position: 'relative'
