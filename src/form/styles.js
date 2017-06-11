@@ -29,7 +29,6 @@ export const FormItemStyle = styled.div`
     margin-bottom: 5px;
   }
 
-  & select,
   & textarea,
   & input[type="text"],
   & input[type="number"],
@@ -37,9 +36,14 @@ export const FormItemStyle = styled.div`
   & input[type="email"] {
     width: 100%;
     box-sizing: border-box;
+    font-family: ${p => p.theme.fontFamily};
     border: 1px solid ${p => p.theme.borderColors.base};
     border-radius: 4px;
-    padding: 12px 8px;
+    padding: 8px 8px;
     outline: none;
+  }
+
+  & textarea {
+    padding: 12px 12px;
   }
 `

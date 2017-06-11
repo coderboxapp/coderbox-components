@@ -1,6 +1,6 @@
 // @flow
 import React from 'react'
-import Flex from '../../flexbox'
+import { DatePickerContainer } from '../styles'
 import moment from 'moment'
 
 const DatePickerComponent = (props: { value: Date, onChange: Function, hideMonths?: boolean, }) => {
@@ -8,7 +8,7 @@ const DatePickerComponent = (props: { value: Date, onChange: Function, hideMonth
   let year = moment(props.value).year()
 
   return (
-    <Flex>
+    <DatePickerContainer>
       {
         !props.hideMonths &&
           <select value={month} onChange={e => props.onChange(moment().year(year).month(e.target.value))}>
@@ -57,7 +57,7 @@ const DatePickerComponent = (props: { value: Date, onChange: Function, hideMonth
         <option value='1991'>1991</option>
         <option value='1990'>1990</option>
       </select>
-    </Flex>
+    </DatePickerContainer>
   )
 }
 

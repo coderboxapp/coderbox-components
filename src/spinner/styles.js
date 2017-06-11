@@ -1,30 +1,38 @@
 import styled, { keyframes } from 'styled-components'
 import { toPx, parseColor } from '../utils'
 
-export const Overlay = styled.div`
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  display: ${p => p.hide ? 'none' : 'flex'};
-  z-index: 999;
-  position: absolute;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  background-color: rgba(255, 255, 255, 0.4);
-`
-
 const scale = keyframes`
   0%, 80%, 100% { transform: scale(0.0) }
   40% { transform: scale(1.0) }
 `
 
+export const SpinnerContainer = styled.div`
+  display: ${p => p.hide ? 'none' : 'flex'};
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+`
+
+export const Overlay = styled.div`
+  position: absolute;
+  display: ${p => p.hideOverlay ? 'none' : 'block'};
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 900;
+  background-color: ${p => p.theme.overlay};
+`
+export const SpinnerLabel = styled.label`
+  z-index: 950;
+`
+
 export const Spinner = styled.div`
   position: relative;
+  z-index: 950;
   width: ${p => toPx(p.size) || '50px'};
   height: ${p => toPx(p.size) || '50px'};
-  margin-bottom: 10px;
+  margin-bottom: ${p => p.hideLabel ? '0px' : '10px'};
 
   & > div {
     position: absolute;
@@ -39,8 +47,8 @@ export const Spinner = styled.div`
     content: '';
     display: block;
     margin: 0 auto;
-    width: 20%;
-    height: 20%;
+    width: 18%;
+    height: 18%;
     border-radius: 100%;
     animation: ${scale} 1.2s infinite ease-in-out;
     animation-fill-mode: both;

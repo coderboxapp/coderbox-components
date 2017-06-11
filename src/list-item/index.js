@@ -1,169 +1,106 @@
 // @flow
 import React from 'react'
-import moment from 'moment'
-import Markdown from 'react-markdown'
-import { trim } from 'lodash'
-// libs
-import { Tags } from '../core'
+import { assign } from 'lodash'
+
+import ListItem from './components/ListItem'
+import ListItemForm from './components/ListItemForm'
+import Spinner from '../spinner'
 
 // styles
-import {
-  ContainerStyle,
-  LogoStyle,
-  DatesStyle,
-  TitleSubtitleStyle,
-  MarkdownStyle,
-  ToolbarStyle
-} from './styles'
+import { ToolbarStyle, ContainerStyle, SpinnerStyle } from './styles'
 
 // types
-import type { ListItem, Tag } from 'coderbox-components'
+import type { Item } from 'coderbox-components'
 
 type Props = {
-  item: ListItem,
-  isOdd?: boolean,
-  className?: string,
-  hideBlocks?: string[],
-  renderExtra: (item: ListItem) => any,
-  onEdit: () => void,
+  item: Item,
+  className: string,
+  hideBlocks: string[],
+  formSettings?: any,
+  renderForm: (item: Item, onSave: Function, onCancel: Function) => any,
+  renderExtra: (item: Item) => any,
+  onSave: (data: any) => void,
   onDelete: () => void,
 }
 
 type State = {
-  readMore: boolean,
+  editMode: boolean,
+  isSaving: boolean,
 }
 
-class ListItemComponent extends React.Component<any, Props, State> {
+class ListItemContainer extends React.Component<any, Props, State> {
   static defaultProps = { hideBlocks: [], className: '' }
-  state = { readMore: true }
+  state = { editMode: false, isSaving: false }
 
-  toggleReadMore () {
-    this.setState({ readMore: !this.state.readMore })
+  componentWillReceiveProps () {
+    this.setState({ isSaving: false })
   }
 
-  readMore (text: string, max: number = 100) {
-    let { readMore } = this.state
-    if (!readMore) return text
+  handleFormSave = (form: any) => {
+    let { item, onSave } = this.props
 
-    if (text.length > max) {
-      return text.substring(0, max) + '...'
+    if (form.validate()) {
+      let data = form.data()
+      onSave(assign({}, item, data))
+      this.setState({ editMode: false, isSaving: true })
     }
-
-    return text
   }
 
-  renderDate (startDate: Date, endDate: Date) {
-    let { hideBlocks } = this.props
-    if (hideBlocks && hideBlocks.indexOf('date') > -1) return null
-
-    return (
-      <DatesStyle className='ListItem-dates' alignItems='center'>
-        <div>{moment(startDate).format('MMM/YYYY')}</div>
-        <i className='material-icons'>trending_flat</i>
-        <div>{endDate ? moment(endDate).format('MMM/YYYY') : 'Present'}</div>
-      </DatesStyle>
-    )
+  handleFormCancel = () => {
+    this.setState({ editMode: false })
   }
 
-  renderTitleSubtitle (title: string, subtitle: string) {
-    let { hideBlocks } = this.props
-    if (hideBlocks && hideBlocks.indexOf('title') > -1) return null
-
-    return (
-      <TitleSubtitleStyle className='ListItem-title-subtitle'>
-        <div className='ListItem-title'>{title}</div>
-        <div className='ListItem-subtitle'>
-          <a href='#'>@ {subtitle}</a>
-        </div>
-      </TitleSubtitleStyle>
-    )
-  }
-
-  renderDescription (description: string) {
-    let { hideBlocks } = this.props
-    if (hideBlocks && hideBlocks.indexOf('description') > -1) return null
-
-    var child = (
-      <a onClick={() => this.toggleReadMore()} className='ListItem-readmore'>
-        {this.state.readMore ? '+ Read More' : '- Read Less'}
-      </a>
-    )
-    var max = 120
-
-    if (description.length < max) {
-      child = null
-    }
-
-    return (
-      <MarkdownStyle className='ListItem-description'>
-        <Markdown source={this.readMore(description, max)} childAfter={child} />
-      </MarkdownStyle>
-    )
-  }
-
-  renderTags (tags: Tag[]) {
-    let { hideBlocks } = this.props
-    if (hideBlocks && hideBlocks.indexOf('tags') > -1) return null
-
-    return <Tags className='ListItem-tags' tags={tags} />
+  handleEdit = () => {
+    this.setState({ editMode: true })
   }
 
   renderToolbar () {
-    let { onEdit, onDelete, hideBlocks } = this.props
-    if (hideBlocks && hideBlocks.indexOf('toolbar') > -1) return null
+    let { onDelete, hideBlocks } = this.props
+    if (
+      this.state.editMode ||
+      (hideBlocks && hideBlocks.indexOf('toolbar') > -1)
+    ) {
+      return null
+    }
 
     return (
       <ToolbarStyle className='ListItem-toolbar'>
-        {onEdit
-          ? <i className='material-icons' onClick={() => onEdit()}>
-              edit
-            </i>
-          : null}
-        {onDelete
-          ? <i className='material-icons' onClick={() => onDelete()}>
-              clear
-            </i>
-          : null}
+        {this.state.isSaving
+          ? <SpinnerStyle>
+            <Spinner color='primary' size={30} hideLabel hideOverlay />
+          </SpinnerStyle>
+          : <div>
+            <i className='material-icons' onClick={() => this.handleEdit()}>
+                edit
+              </i>
+            <i className='material-icons' onClick={() => onDelete()}>
+                delete
+              </i>
+          </div>}
       </ToolbarStyle>
     )
   }
 
-  renderLogo (image: string) {
-    return (
-      <LogoStyle className='ListItem-logo'>
-        <div style={{ backgroundImage: 'url("' + image + '")' }} />
-      </LogoStyle>
-    )
-  }
-
   render () {
-    let { item, className, renderExtra } = this.props
-
-    if (!className) {
-      className = ''
-    }
-
-    if (this.props.isOdd) {
-      className += ' odd'
-    }
+    let { item, className, renderForm, formSettings } = this.props
+    let { editMode } = this.state
 
     return (
-      <ContainerStyle className={`ListItem ${className}`} alignItems='stretch'>
-        <div className='ListItem-left'>
-          {this.renderLogo(item.image)}
-        </div>
-        <div className='ListItem-right'>
-          {this.renderDate(item.startDate, item.endDate)}
-          {this.renderTitleSubtitle(item.title, item.subtitle)}
-          {this.renderTags(item.tags)}
-          {this.renderDescription(trim(item.description))}
-          {renderExtra &&
-            <div className='ListItem-extra'>{renderExtra(item)}</div>}
-          {this.renderToolbar()}
-        </div>
+      <ContainerStyle className={className}>
+        {editMode
+          ? renderForm
+              ? renderForm(item, this.handleFormSave, this.handleFormCancel)
+              : <ListItemForm
+                item={item}
+                formSettings={formSettings}
+                onSave={this.handleFormSave}
+                onCancel={this.handleFormCancel}
+                />
+          : <ListItem item={item} />}
+        {this.renderToolbar()}
       </ContainerStyle>
     )
   }
 }
 
-export default ListItemComponent
+export default ListItemContainer

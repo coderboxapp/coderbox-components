@@ -20,6 +20,9 @@ export const parseColor = (value, colors) => {
     case 'success':
       return colors.success
 
+    case 'gray':
+      return colors.gray
+
     default:
       return value
   }

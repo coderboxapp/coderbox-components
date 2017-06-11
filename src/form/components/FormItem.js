@@ -1,6 +1,6 @@
 import React, { createElement } from 'react'
 import PropTypes from 'proptypes'
-import { isUndefined } from 'lodash'
+import { isUndefined, isString } from 'lodash'
 import { FormItemStyle } from '../styles'
 
 class FormItem extends React.Component {
@@ -35,7 +35,17 @@ class FormItem extends React.Component {
   }
 
   onChange (event) {
-    let value = this.props.valueFromEvent(event)
+    let { valueFromEvent, component } = this.props
+
+    if (!valueFromEvent) {
+      if (isString(component)) {
+        valueFromEvent = event => event.target.value
+      } else {
+        valueFromEvent = event => event
+      }
+    }
+
+    let value = valueFromEvent(event)
     this.setState({ value: value })
 
     if (this.props.onChange) {
@@ -95,8 +105,7 @@ FormItem.propTypes = {
 FormItem.defaultProps = {
   componentProps: {},
   defaultValue: undefined,
-  valueField: 'value',
-  valueFromEvent: event => event.target.value
+  valueField: 'value'
 }
 
 FormItem.contextTypes = {

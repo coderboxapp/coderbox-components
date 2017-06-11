@@ -11,14 +11,13 @@ declare module 'coderbox-components' {
     end: ?Date
   }
 
-  declare type ListItem = {
+  declare type Item = {
     id: number,
     title: string,
     subtitle: string,
     image: string,
     tags: Tag[],
-    startDate: Date,
-    endDate: Date,
+    dateRange: DateRange,
     icon: string,
     description: string
   }

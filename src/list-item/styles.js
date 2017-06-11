@@ -1,16 +1,25 @@
 import styled from 'styled-components'
 import Flex from '../flexbox'
 
-export const ContainerStyle = styled(Flex)`
+export const ContainerStyle = styled.div`
+  position: relative;
+`
+
+export const ItemStyle = styled(Flex)`
   position: relative;
 
   & > div:first-child {
     margin-right: 15px;
   }
+
   & a {
     cursor: pointer;
     color: ${p => p.theme.colors.primary};
   }
+`
+
+export const FormStyle = styled.div`
+  background-color: #F7F7F7;
 `
 
 export const LogoStyle = styled.div`
@@ -91,5 +100,13 @@ export const MarkdownStyle = styled.div`
     background-color: #FAFAFA;
     border: 1px solid #E5E5E5;
     border-radius: 2px;
+  }
+`
+
+export const SpinnerStyle = styled.div`
+  position: relative;
+  margin: 0px 5px;
+  & label {
+    margin-right: 10px;
   }
 `

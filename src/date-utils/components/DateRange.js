@@ -19,12 +19,8 @@ type State = {
   range: DateRange,
 }
 
-class DateRangeComponent extends React.Component {
-  state: State
-  constructor (props: Props) {
-    super(props)
-    this.state = { range: props.range || { start: new Date() } }
-  }
+class DateRangeComponent extends React.Component<any, Props, State> {
+  state = { range: this.props.range || { start: new Date() } }
 
   componentWillReceiveProps (nextProps: Props) {
     if (nextProps.range !== this.props.range) {
