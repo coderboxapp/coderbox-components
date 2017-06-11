@@ -1,21 +1,25 @@
 // @flow
 import React from 'react'
-import { Flex } from './styles'
+import { FlexStyle } from './styles'
 
-const FlexComponent = (
-  props: {
-    column?: boolean,
-    justifyContent?: 'flex-start' | 'center' | 'flex-end' | 'space-between',
-    alignItems?: 'flex-start' | 'center' | 'flex-end' | 'stretch',
-    children?: any,
-  }) => {
-  let Element = Flex.extend(``)
+type Props = {
+  column?: boolean,
+  justifyContent?: 'flex-start' | 'center' | 'flex-end' | 'space-between',
+  alignItems?: 'flex-start' | 'center' | 'flex-end' | 'stretch',
+  className?: string,
+  children?: any
+}
 
+const FlexComponent = (props: Props) => {
   return (
-    <Element {...props}>
+    <FlexStyle className={props.className} {...props}>
       {props.children}
-    </Element>
+    </FlexStyle>
   )
+}
+
+FlexComponent.defaultProps = {
+  className: ''
 }
 
 export default FlexComponent

@@ -12,6 +12,8 @@
 
 ```
 npm install coderbox-components --save
+```
+```
 yarn add coderbox-components
 ```
 Works with [browserify](https://github.com/substack/node-browserify) and should work with [webpack](https://github.com/visionmedia/superagent/wiki/SuperAgent-for-Webpack).

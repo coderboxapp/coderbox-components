@@ -1,5 +1,6 @@
 import Autocomplete from 'autocomplete'
 import AutocompleteTags from 'autocomplete-tags'
+import ListItem from 'list-item'
 import Flex from 'flexbox'
 import Spinner from 'spinner'
 import theme from './theme'
@@ -11,6 +12,7 @@ export * from 'form'
 export {
   Autocomplete,
   AutocompleteTags,
+  ListItem,
   Spinner,
   Flex,
   theme,

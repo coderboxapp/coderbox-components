@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-export const Flex = styled.div`
+export const FlexStyle = styled.div`
   display: flex;
   flex-direction: ${p => p.column ? 'column' : 'row'};
   justify-content: ${p => p.justifyContent || 'flex-start'};

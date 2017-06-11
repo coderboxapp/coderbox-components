@@ -2,7 +2,8 @@ const theme = {
   colors: {
     base: '#F3F3F3',
     primary: '#1B8CEB',
-    success: '#72CF89'
+    success: '#72CF89',
+    gray: '#888888'
   },
   textColors: {
     base: '#000000',
@@ -10,7 +11,7 @@ const theme = {
     success: '#FFFFFF'
   },
   borderColors: {
-    base: '#CCCCCC',
+    base: '#d8d8d8',
     primary: '#106CB9',
     success: '#3BAB57'
   },

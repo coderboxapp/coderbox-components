@@ -14,6 +14,7 @@ type Props = {
   allowNew: boolean,
   toLowercase: boolean,
   placeholder?: string,
+  className?: string,
   onChange?: (tags: Tag[]) => void,
   color?: 'base' | 'primary' | 'success'
 }
@@ -35,6 +36,7 @@ const Keys = {
 class AutocompleteTags extends React.Component<any, Props, State> {
   static defaultProps = {
     color: 'primary',
+    className: '',
     allowNew: false,
     toLowercase: false
   }
@@ -103,11 +105,15 @@ class AutocompleteTags extends React.Component<any, Props, State> {
   }
 
   render () {
-    let { suggestions, color, placeholder } = this.props
+    let { suggestions, color, placeholder, className } = this.props
     let { tags, suggestion } = this.state
 
+    if (!className) {
+      className = ''
+    }
+
     return (
-      <AutocompleteTagsStyle className='react-autocomplete-tags'>
+      <AutocompleteTagsStyle className={`AutocompleteTags ${className}`}>
         <TagsStyle display={tags.length > 0}>
           <Tags color={color} tags={tags} onClick={(tag) => this.removeTag(tag)} withClose />
         </TagsStyle>
