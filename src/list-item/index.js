@@ -17,6 +17,7 @@ type Props = {
   className: string,
   hideBlocks: string[],
   formSettings?: any,
+  transform: (data: any) => Item,
   renderForm: (item: Item, onSave: Function, onCancel: Function) => any,
   renderExtra: (item: Item) => any,
   onSave: (data: any) => void,
@@ -29,7 +30,7 @@ type State = {
 }
 
 class ListItemContainer extends React.Component<any, Props, State> {
-  static defaultProps = { hideBlocks: [], className: '' }
+  static defaultProps = { hideBlocks: [], className: '', transform: item => item }
   state = { editMode: false, isSaving: false }
 
   componentWillReceiveProps () {
@@ -82,7 +83,7 @@ class ListItemContainer extends React.Component<any, Props, State> {
   }
 
   render () {
-    let { item, className, renderForm, formSettings } = this.props
+    let { item, transform, className, renderForm, formSettings } = this.props
     let { editMode } = this.state
 
     return (
@@ -96,7 +97,7 @@ class ListItemContainer extends React.Component<any, Props, State> {
                 onSave={this.handleFormSave}
                 onCancel={this.handleFormCancel}
                 />
-          : <ListItem item={item} />}
+          : <ListItem item={transform(item)} />}
         {this.renderToolbar()}
       </ContainerStyle>
     )

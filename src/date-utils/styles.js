@@ -11,7 +11,7 @@ export const DateRangeContainer = styled.div`
   & select {
     border: 1px solid ${p => p.theme.borderColors.base};
     border-radius: 4px;
-    padding: 4px 8px;
+    padding: 4px 4px;
   }
 `
 
