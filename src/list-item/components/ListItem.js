@@ -20,10 +20,11 @@ import {
 import type { Item, Tag, DateRange } from 'coderbox-components'
 
 type Props = {
-  item: Item,
+  item: Object,
   isOdd?: boolean,
-  className?: string,
+  className: string,
   hideBlocks?: string[],
+  transform: (data: Object) => Item,
   renderExtra: (item: Item) => any
 }
 
@@ -31,9 +32,14 @@ type State = {
   readMore: boolean
 }
 
-class ListItemComponent extends React.Component<any, Props, State> {
-  static defaultProps = { hideBlocks: [], className: '' }
+class ListItem extends React.Component<any, Props, State> {
   state = { readMore: true }
+
+  static defaultProps = {
+    hideBlocks: [],
+    className: '',
+    transform: (data) => data
+  }
 
   toggleReadMore () {
     this.setState({ readMore: !this.state.readMore })
@@ -119,15 +125,9 @@ class ListItemComponent extends React.Component<any, Props, State> {
   }
 
   render () {
-    let { item, className, renderExtra } = this.props
-
-    if (!className) {
-      className = ''
-    }
-
-    if (this.props.isOdd) {
-      className += ' odd'
-    }
+    let { item, isOdd, className, transform, renderExtra } = this.props
+    item = transform(item)
+    className += isOdd ? ' odd' : ''
 
     return (
       <ItemStyle className={`ListItem ${className}`} alignItems='stretch'>
@@ -146,4 +146,4 @@ class ListItemComponent extends React.Component<any, Props, State> {
   }
 }
 
-export default ListItemComponent
+export default ListItem

@@ -37,6 +37,7 @@ export const FormItemStyle = styled.div`
     width: 100%;
     box-sizing: border-box;
     font-family: ${p => p.theme.fontFamily};
+    font-size: 14px;
     border: 1px solid ${p => p.theme.borderColors.base};
     border-radius: 4px;
     padding: 8px 8px;

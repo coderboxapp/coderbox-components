@@ -16,12 +16,12 @@ import type { Tag } from 'coderbox-components'
 type Props = {
   item: Object,
   suggestedTags?: Tag[],
-  formSettings?: any,
+  settings?: any,
   onSave: Function,
   onCancel: Function,
 }
 
-const formDefaultSettings = {
+const defaultSettings = {
   title: {
     name: 'title',
     label: 'Title:',
@@ -76,13 +76,13 @@ const formDefaultSettings = {
   }
 }
 
-const ListItemForm = ({ item, formSettings, onSave, onCancel }: Props) => {
-  let settings = merge({}, formDefaultSettings, formSettings || {})
-  let settingsKeys: string[] = sortBy(keys(settings), key => settings[key].sort)
+const ListItemForm = ({ item, settings, onSave, onCancel }: Props) => {
+  let mergedSettings = merge({}, defaultSettings, settings || {})
+  let settingsKeys: string[] = sortBy(keys(mergedSettings), key => mergedSettings[key].sort)
   let children = []
 
   settingsKeys.forEach((key, index) => {
-    let elementProps = settings[key]
+    let elementProps = mergedSettings[key]
     let value = item[elementProps.name]
 
     if (isArray(value)) {
@@ -101,7 +101,7 @@ const ListItemForm = ({ item, formSettings, onSave, onCancel }: Props) => {
   })
 
   return (
-    <FormStyle>
+    <FormStyle className='ListItemForm'>
       <Form onSave={onSave} onCancel={onCancel}>
         {children}
       </Form>

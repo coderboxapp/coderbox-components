@@ -1,10 +1,6 @@
 import styled from 'styled-components'
 import Flex from '../flexbox'
 
-export const ContainerStyle = styled.div`
-  position: relative;
-`
-
 export const ItemStyle = styled(Flex)`
   position: relative;
 
@@ -16,6 +12,14 @@ export const ItemStyle = styled(Flex)`
     cursor: pointer;
     color: ${p => p.theme.colors.primary};
   }
+
+  &.odd {
+    background-color: ${p => p.theme.colors.base};
+  }
+`
+
+export const EditableItemStyle = styled.div`
+  position: relative;
 `
 
 export const FormStyle = styled.div`
