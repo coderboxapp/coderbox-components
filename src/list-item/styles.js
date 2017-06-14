@@ -3,6 +3,7 @@ import Flex from '../flexbox'
 
 export const ItemStyle = styled(Flex)`
   position: relative;
+  text-align: left;
 
   & > div:first-child {
     margin-right: 15px;
