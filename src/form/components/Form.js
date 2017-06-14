@@ -1,5 +1,5 @@
 import React from 'react'
-import PropTypes from 'proptypes'
+import PropTypes from 'prop-types'
 import { Button } from '../../core'
 import { FormStyle } from '../styles'
 
@@ -47,10 +47,10 @@ class Form extends React.Component {
 
   render () {
     return (
-      <FormStyle className='react-form'>
+      <FormStyle className='Form'>
         {this.props.children}
         {this.props.showButtons
-          ? <div className='react-form-buttons'>
+          ? <div className='Form-buttons'>
             {this.props.showSave &&
             <Button primary onClick={() => this.props.onSave(this)}>
               {this.props.saveLabel}

@@ -1,5 +1,5 @@
 import React, { createElement } from 'react'
-import PropTypes from 'proptypes'
+import PropTypes from 'prop-types'
 import { isUndefined, isString } from 'lodash'
 import { FormItemStyle } from '../styles'
 
@@ -76,7 +76,7 @@ class FormItem extends React.Component {
     let element = createElement(this.props.component, elementProps, this.props.componentChildren)
 
     return (
-      <FormItemStyle className='react-form-item'>
+      <FormItemStyle className='FormItem'>
         {this.props.label && <label>{this.props.label}{isRequired ? <label className='error'>*</label> : null}</label>}
         <div className='element'>
           {element}

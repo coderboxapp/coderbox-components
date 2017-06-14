@@ -38,7 +38,7 @@
     "js-md5": "^0.4.2",
     "loadash": "^0.0.1",
     "moment": "^2.18.1",
-    "proptypes": "^1.1.0",
+    "prop-types": "^15.5.10",
     "react": "^15.5.4",
     "react-autosuggest": "^9.0.1",
     "react-dom": "^15.5.4",

@@ -62,13 +62,13 @@ class DateRangeComponent extends React.Component<any, Props, State> {
     const { range } = this.state
 
     return (
-      <DateRangeContainer className='react-daterange'>
+      <DateRangeContainer className='DateRange'>
         <Flex alignItems='center'>
           <DatePicker
             value={range.start}
             onChange={v => this.handletDateChange(v, 'start')}
             hideMonths={this.props.hideMonths}
-            className='react-startdate'
+            className='DateRange-startdate'
           />
           <Icon className='material-icons'>trending_flat</Icon>
           {range.end
@@ -76,7 +76,7 @@ class DateRangeComponent extends React.Component<any, Props, State> {
               value={range.end}
               onChange={v => this.handletDateChange(v, 'end')}
               hideMonths={this.props.hideMonths}
-              className='react-enddate'
+              className='DateRange-enddate'
               />
             : <div>Present</div>}
         </Flex>

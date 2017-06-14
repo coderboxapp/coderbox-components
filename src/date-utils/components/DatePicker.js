@@ -3,15 +3,23 @@ import React from 'react'
 import { DatePickerContainer } from '../styles'
 import moment from 'moment'
 
-const DatePickerComponent = (props: { value: Date, onChange: Function, hideMonths?: boolean, }) => {
-  let month = moment(props.value).month()
-  let year = moment(props.value).year()
+import type Moment from 'moment'
+
+type Props = {
+  value: Date,
+  hideMonths?: boolean,
+  onChange: (date: Moment) => void,
+}
+
+const DatePickerComponent = ({ value, hideMonths, onChange }: Props) => {
+  let month = moment(value).month()
+  let year = moment(value).year()
 
   return (
     <DatePickerContainer>
       {
-        !props.hideMonths &&
-          <select value={month} onChange={e => props.onChange(moment().year(year).month(e.target.value))}>
+        !hideMonths &&
+          <select value={month} onChange={e => onChange(moment().year(year).month(e.target.value))}>
             <option value='0'>January</option>
             <option value='1'>February</option>
             <option value='2'>March</option>
@@ -27,7 +35,7 @@ const DatePickerComponent = (props: { value: Date, onChange: Function, hideMonth
           </select>
       }
 
-      <select value={year} onChange={e => props.onChange(moment().year(e.target.value).month(month))}>
+      <select value={year} onChange={e => onChange(moment().year(e.target.value).month(month))}>
         <option value='2017'>2017</option>
         <option value='2016'>2016</option>
         <option value='2015'>2015</option>
@@ -56,6 +64,14 @@ const DatePickerComponent = (props: { value: Date, onChange: Function, hideMonth
         <option value='1992'>1992</option>
         <option value='1991'>1991</option>
         <option value='1990'>1990</option>
+        <option value='1989'>1989</option>
+        <option value='1988'>1988</option>
+        <option value='1987'>1987</option>
+        <option value='1986'>1986</option>
+        <option value='1985'>1985</option>
+        <option value='1984'>1984</option>
+        <option value='1983'>1983</option>
+        <option value='1982'>1982</option>
       </select>
     </DatePickerContainer>
   )

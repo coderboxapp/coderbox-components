@@ -4,7 +4,7 @@ export const FormStyle = styled.div`
   margin: auto;
   text-align: left;
 
-  & .react-form-buttons {
+  & .Form-buttons {
     padding: 5px 0px;
   }
 
