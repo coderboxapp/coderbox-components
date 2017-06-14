@@ -55,21 +55,35 @@ class EditableListItem extends React.Component<any, Props, State> {
 
   renderToolbar () {
     let { onDelete } = this.props
+    let { editMode, isSaving } = this.state
 
     return (
       <ToolbarStyle className='ListItem-toolbar'>
-        {this.state.isSaving
-          ? <SpinnerStyle>
-            <Spinner color='primary' size={30} hideLabel hideOverlay />
-          </SpinnerStyle>
-          : <div>
-            <i className='material-icons' onClick={() => this.handleEdit()}>
-                edit
-              </i>
-            <i className='material-icons' onClick={() => onDelete()}>
-                delete
-              </i>
-          </div>}
+        {(() => {
+          if (isSaving) {
+            return (
+              <SpinnerStyle>
+                <Spinner color='primary' size={30} hideLabel hideOverlay />
+              </SpinnerStyle>
+            )
+          } else {
+            if (!editMode) {
+              return (
+                <div>
+                  <i
+                    className='material-icons'
+                    onClick={() => this.handleEdit()}
+                  >
+                    edit
+                  </i>
+                  <i className='material-icons' onClick={() => onDelete()}>
+                    delete
+                  </i>
+                </div>
+              )
+            }
+          }
+        })()}
       </ToolbarStyle>
     )
   }
@@ -92,10 +106,7 @@ class EditableListItem extends React.Component<any, Props, State> {
 
     return (
       <EditableItemStyle className={className}>
-        {editMode
-          ? FormElement
-          : ItemElement
-        }
+        {editMode ? FormElement : ItemElement}
         {this.renderToolbar()}
       </EditableItemStyle>
     )
