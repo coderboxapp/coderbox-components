@@ -9,6 +9,10 @@ export const AutocompleteTagsStyle = styled.div`
   & input {
     border: 1px dashed ${p => p.theme.borderColors.base} !important;
   }
+
+  .pac-container {
+    border: 1px solid red;
+  }
 `
 
 export const TagsStyle = styled.div`

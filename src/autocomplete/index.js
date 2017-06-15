@@ -1,7 +1,6 @@
 // @flow
 import React from 'react'
 import Autosuggest from 'react-autosuggest'
-import { trim } from 'lodash'
 import styles from './styles'
 import type { Tag } from 'coderbox-components'
 
@@ -85,9 +84,9 @@ class AutoComplete extends React.Component<any, Props, State> {
   }
 
   onChange (event :Event, data: { newValue: string }) {
-    this.setState({ searchText: trim(data.newValue) })
+    this.setState({ searchText: data.newValue })
     if (this.props.onChange) {
-      this.props.onChange(this.firstSuggestion(data.newValue) || { name: trim(data.newValue) })
+      this.props.onChange(this.firstSuggestion(data.newValue) || { name: data.newValue })
     }
   }
 

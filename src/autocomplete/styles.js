@@ -41,6 +41,8 @@ export default {
     boxSizing: 'border-box',
     border: '1px solid #dadada',
     borderRadius: 4,
+    fontSize: 14,
+    fontFamily: 'Open Sans',
     padding: '8px 8px',
     outline: 'none'
   }
