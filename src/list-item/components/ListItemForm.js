@@ -10,12 +10,8 @@ import { DateRange } from '../../date-utils'
 // styles
 import { FormStyle } from '../styles'
 
-// types
-import type { Tag } from 'coderbox-components'
-
 type Props = {
   item: Object,
-  suggestedTags?: Tag[],
   settings?: any,
   onSave: Function,
   onCancel: Function,
@@ -89,15 +85,15 @@ const ListItemForm = ({ item, settings, onSave, onCancel }: Props) => {
       value = value.concat()
     }
 
-    if (item.hasOwnProperty(elementProps.name)) {
-      let element = createElement(FormItem, {
-        ...elementProps,
-        value: value,
-        key: index
-      })
+    // if (item.hasOwnProperty(elementProps.name)) {
+    let element = createElement(FormItem, {
+      ...elementProps,
+      value: value,
+      key: index
+    })
 
-      children.push(element)
-    }
+    children.push(element)
+    // }
   })
 
   return (

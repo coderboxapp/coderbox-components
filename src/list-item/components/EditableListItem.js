@@ -98,10 +98,10 @@ class EditableListItem extends React.Component<any, Props, State> {
     })
 
     let FormElement = createElement(ListItemForm, {
-      ...formProps,
-      item,
       onSave: this.handleFormSave,
-      onCancel: this.handleFormCancel
+      onCancel: this.handleFormCancel,
+      ...formProps,
+      item
     })
 
     return (
