@@ -85,15 +85,15 @@ const ListItemForm = ({ item, settings, onSave, onCancel }: Props) => {
       value = value.concat()
     }
 
-    // if (item.hasOwnProperty(elementProps.name)) {
-    let element = createElement(FormItem, {
-      ...elementProps,
-      value: value,
-      key: index
-    })
+    if (elementProps !== null) {
+      let element = createElement(FormItem, {
+        ...elementProps,
+        value: value,
+        key: index
+      })
 
-    children.push(element)
-    // }
+      children.push(element)
+    }
   })
 
   return (
