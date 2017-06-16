@@ -74,18 +74,18 @@ const defaultSettings = {
 
 const ListItemForm = ({ item, settings, onSave, onCancel }: Props) => {
   let mergedSettings = merge({}, defaultSettings, settings || {})
-  let settingsKeys: string[] = sortBy(keys(mergedSettings), key => mergedSettings[key].sort)
+  let settingsKeys: string[] = sortBy(keys(mergedSettings), key => mergedSettings[key] && mergedSettings[key].sort)
   let children = []
 
   settingsKeys.forEach((key, index) => {
     let elementProps = mergedSettings[key]
-    let value = item[elementProps.name]
-
-    if (isArray(value)) {
-      value = value.concat()
-    }
-
     if (elementProps !== null) {
+      let value = item[elementProps.name]
+
+      if (isArray(value)) {
+        value = value.concat()
+      }
+
       let element = createElement(FormItem, {
         ...elementProps,
         value: value,
