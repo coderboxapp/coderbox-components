@@ -32,7 +32,7 @@ export const FormItemStyle = styled.div`
   & textarea,
   & input[type="text"],
   & input[type="number"],
-  & input[type="email"],
+  & input[type="password"],
   & input[type="email"] {
     width: 100%;
     box-sizing: border-box;

@@ -41,8 +41,8 @@ export const ButtonStyle = styled.button`
 `
 
 export const LogoStyle = styled.div`
-  display: 'inline-block';
-  vertical-align: 'middle';
+  display: inline-block;
+  vertical-align: middle;
   width: ${p => p.size};
   height: ${p => p.size};
 `
