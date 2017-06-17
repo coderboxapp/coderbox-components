@@ -13,14 +13,14 @@ type Props = {
   item: Object,
   itemProps: Object,
   formProps: Object,
+  loading: boolean,
   className: string,
   onSave: (data: any) => void,
   onDelete: () => void,
 }
 
 type State = {
-  editMode: boolean,
-  isSaving: boolean,
+  editMode: boolean
 }
 
 class EditableListItem extends React.Component<any, Props, State> {
@@ -50,13 +50,13 @@ class EditableListItem extends React.Component<any, Props, State> {
   }
 
   renderToolbar () {
-    let { item, onDelete } = this.props
+    let { onDelete, loading } = this.props
     let { editMode } = this.state
 
     return (
       <ToolbarStyle className='ListItem-toolbar'>
         {(() => {
-          if (item.isFetching) {
+          if (loading) {
             return (
               <SpinnerStyle>
                 <Spinner color='primary' size={30} hideLabel hideOverlay />
