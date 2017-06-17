@@ -24,15 +24,11 @@ type State = {
 }
 
 class EditableListItem extends React.Component<any, Props, State> {
-  state = { editMode: false, isSaving: false }
+  state = { editMode: false }
   static defaultProps = {
     itemProps: {},
     formProps: {},
     className: ''
-  }
-
-  componentWillReceiveProps () {
-    this.setState({ isSaving: false })
   }
 
   handleFormSave = (form: any) => {
@@ -41,7 +37,7 @@ class EditableListItem extends React.Component<any, Props, State> {
     if (form.validate()) {
       let data = form.data()
       onSave(assign({}, item, data))
-      this.setState({ editMode: false, isSaving: true })
+      this.setState({ editMode: false })
     }
   }
 
@@ -54,13 +50,13 @@ class EditableListItem extends React.Component<any, Props, State> {
   }
 
   renderToolbar () {
-    let { onDelete } = this.props
-    let { editMode, isSaving } = this.state
+    let { item, onDelete } = this.props
+    let { editMode } = this.state
 
     return (
       <ToolbarStyle className='ListItem-toolbar'>
         {(() => {
-          if (isSaving) {
+          if (item.isFetching) {
             return (
               <SpinnerStyle>
                 <Spinner color='primary' size={30} hideLabel hideOverlay />
