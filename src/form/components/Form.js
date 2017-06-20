@@ -1,18 +1,37 @@
 import React from 'react'
-import PropTypes from 'prop-types'
+import { bool, string, func, object } from 'prop-types'
 import { Button } from '../../core'
 import { FormStyle } from '../styles'
 
 class Form extends React.Component {
-  constructor (props) {
-    super(props)
-    this.items = []
+  items = []
+
+  static propTypes = {
+    showButtons: bool,
+    showSave: bool,
+    showCancel: bool,
+    saveLabel: string,
+    cancelLabel: string,
+    onSave: func,
+    onCancel: func
+  }
+
+  static defaultProps = {
+    saveLabel: 'Save',
+    cancelLabel: 'Cancel',
+    showButtons: true,
+    showSave: true,
+    showCancel: true,
+    onSave: () => true,
+    onCancel: () => true
+  }
+
+  static childContextTypes = {
+    form: object
   }
 
   getChildContext () {
-    return {
-      form: this
-    }
+    return { form: this }
   }
 
   validate () {
@@ -46,48 +65,33 @@ class Form extends React.Component {
   }
 
   render () {
+    let {
+      children,
+      showButtons,
+      showSave,
+      showCancel,
+      saveLabel,
+      cancelLabel
+    } = this.props
+
     return (
       <FormStyle className='Form'>
-        {this.props.children}
-        {this.props.showButtons
+        {children}
+        {showButtons
           ? <div className='Form-buttons'>
-            {this.props.showSave &&
+            {showSave &&
             <Button primary onClick={() => this.props.onSave(this)}>
-              {this.props.saveLabel}
+              {saveLabel}
             </Button>}
-            {this.props.showCancel &&
+            {showCancel &&
             <Button onClick={() => this.props.onCancel()}>
-              {this.props.cancelLabel}
+              {cancelLabel}
             </Button>}
           </div>
           : null}
       </FormStyle>
     )
   }
-}
-
-Form.propTypes = {
-  showButtons: PropTypes.bool,
-  showSave: PropTypes.bool,
-  showCancel: PropTypes.bool,
-  saveLabel: PropTypes.string,
-  cancelLabel: PropTypes.string,
-  onSave: PropTypes.func,
-  onCancel: PropTypes.func
-}
-
-Form.defaultProps = {
-  saveLabel: 'Save',
-  cancelLabel: 'Cancel',
-  showButtons: true,
-  showSave: true,
-  showCancel: true,
-  onSave: () => true,
-  onCancel: () => true
-}
-
-Form.childContextTypes = {
-  form: PropTypes.object
 }
 
 export default Form

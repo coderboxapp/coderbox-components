@@ -3,6 +3,7 @@ const theme = {
   colors: {
     base: '#F3F3F3',
     primary: '#1B8CEB',
+    primaryLight: '#CDE6FB',
     success: '#72CF89',
     gray: '#888888'
   },

@@ -9,7 +9,8 @@
       "KeyboardEvent"
     ],
     "ignore": [
-      "node_modules/**"
+      "node_modules/**",
+      "types/**"
     ],
     "parser": "babel-eslint"
   }
