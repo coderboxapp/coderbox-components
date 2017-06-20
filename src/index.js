@@ -10,6 +10,7 @@ export * from 'core'
 export * from 'date-utils'
 export * from 'list-item'
 export * from 'form'
+export * from 'navigation'
 export {
   Autocomplete,
   AutocompleteTags,

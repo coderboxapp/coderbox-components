@@ -1,17 +1,36 @@
 import React, { createElement } from 'react'
-import PropTypes from 'prop-types'
+import { any, string, func, object, array, oneOfType } from 'prop-types'
 import { isUndefined, isString } from 'lodash'
 import { FormItemStyle } from '../styles'
 
 class FormItem extends React.Component {
-  constructor (props) {
-    super(props)
-
-    this.state = {
-      value: props.value || props.defaultValue,
-      valid: true
-    }
+  state = {
+    value: this.props.value || this.props.defaultValue,
+    valid: true
   }
+
+  static propTypes = {
+    value: any,
+    defaultValue: any,
+    label: string,
+    error: string,
+    component: oneOfType([func, string]).isRequired,
+    componentProps: object,
+    validator: func,
+    valueFromEvent: func,
+    valueField: string,
+    onChange: func,
+    onEnter: func,
+    componentChildren: array
+  }
+
+  static defaultProps = {
+    componentProps: {},
+    defaultValue: undefined,
+    valueField: 'value'
+  }
+
+  static contextTypes = { form: object }
 
   componentDidMount () {
     this.context.form.register(this)
@@ -85,31 +104,6 @@ class FormItem extends React.Component {
       </FormItemStyle>
     )
   }
-}
-
-FormItem.propTypes = {
-  value: PropTypes.any,
-  defaultValue: PropTypes.any,
-  label: PropTypes.string,
-  error: PropTypes.string,
-  component: PropTypes.oneOfType([PropTypes.func, PropTypes.string]).isRequired,
-  componentProps: PropTypes.object,
-  validator: PropTypes.func,
-  valueFromEvent: PropTypes.func,
-  valueField: PropTypes.string,
-  onChange: PropTypes.func,
-  onEnter: PropTypes.func,
-  componentChildren: PropTypes.array
-}
-
-FormItem.defaultProps = {
-  componentProps: {},
-  defaultValue: undefined,
-  valueField: 'value'
-}
-
-FormItem.contextTypes = {
-  form: PropTypes.object
 }
 
 export default FormItem
