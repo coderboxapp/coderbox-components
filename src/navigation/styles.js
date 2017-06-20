@@ -53,7 +53,7 @@ export const NavbarBodyStyle = styled.div`
   }
 `
 
-export const NavbarItemStyle = styled.div`
+export const NavbarItemStyle = styled.a`
   cursor: pointer;
   text-decoration: none;
   text-align: center;
