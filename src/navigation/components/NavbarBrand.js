@@ -1,10 +1,11 @@
 import React from 'react'
+import { NavbarBrandStyle } from '../styles'
 
 const NavbarBrand = ({ children }) => {
   return (
-    <div className='NavbarBrand'>
+    <NavbarBrandStyle className='NavbarBrand'>
       {children}
-    </div>
+    </NavbarBrandStyle>
   )
 }
 

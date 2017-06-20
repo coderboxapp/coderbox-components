@@ -1,5 +1,6 @@
 import React from 'react'
 import { string, bool, func, object } from 'prop-types'
+import { NavbarItemStyle } from '../styles'
 
 class NavbarItem extends React.Component {
   static propTypes = {
@@ -35,13 +36,13 @@ class NavbarItem extends React.Component {
     let isActive = this.isActive(href, null, false) ? ' active' : ''
 
     return (
-      <a
+      <NavbarItemStyle
         className={`NavbarItem${isActive}`}
         href={href}
         onClick={onClick}>
 
         <i className='material-icons'>{icon}</i> {text}
-      </a>
+      </NavbarItemStyle>
     )
   }
 }

@@ -1,12 +1,11 @@
 import React from 'react'
+import { NavbarTogglerStyle } from '../styles'
 
 const NavbarToggler = ({ onClick }) => {
   return (
-    <div className='NavbarToggler'>
-      <i className='material-icons btn-open' onClick={onClick}>
-        menu
-      </i>
-    </div>
+    <NavbarTogglerStyle className='NavbarToggler'>
+      <i className='material-icons btn-open' onClick={onClick}>menu</i>
+    </NavbarTogglerStyle>
   )
 }
 

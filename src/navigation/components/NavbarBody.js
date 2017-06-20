@@ -1,16 +1,15 @@
 import React from 'react'
 import Flex from '../../flexbox'
+import { NavbarBodyStyle } from '../styles'
 
 const NavbarBody = ({ isOpen, onClose, children }) => {
-  const styleName = isOpen ? 'NavbarBody-open' : 'NavbarBody'
-
   return (
-    <div className={styleName}>
+    <NavbarBodyStyle isOpen={isOpen} className='NavbarBody'>
       <Flex className='items'>
         {children}
       </Flex>
       <div className='overlay' onClick={onClose} />
-    </div>
+    </NavbarBodyStyle>
   )
 }
 

@@ -3,7 +3,6 @@ import { object, bool, func, string, oneOfType } from 'prop-types'
 import { browserHistory } from 'react-router'
 
 // components
-import Flex from '../../flexbox'
 import NavbarBrand from './NavbarBrand'
 import NavbarToggler from './NavbarToggler'
 import NavbarBody from './NavbarBody'
