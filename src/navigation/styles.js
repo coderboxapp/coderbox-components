@@ -9,6 +9,7 @@ export const NavbarStyle = styled(Flex)`
   box-sizing: border-box;
   padding-bottom: 3px;
   background: white;
+  width: 100%;
 
   &:after {
     background: linear-gradient(to right, ${p => p.theme.colors.primary}, ${p => p.theme.colors.primaryLight});
