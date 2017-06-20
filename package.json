@@ -1,6 +1,6 @@
 {
   "name": "coderbox-components",
-  "version": "1.0.26",
+  "version": "1.0.27",
   "description": "React Components used at @Coderbox",
   "main": "lib/coderbox-components.js",
   "scripts": {
