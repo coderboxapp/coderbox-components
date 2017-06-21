@@ -1,10 +1,10 @@
 {
   "name": "coderbox-components",
-  "version": "1.0.34",
+  "version": "1.0.35",
   "description": "React Components used at @Coderbox",
   "main": "lib/coderbox-components.js",
   "scripts": {
-    "prepublish": "yarn build",
+    "prepare": "yarn build",
     "build": "webpack --env production",
     "dev": "webpack --progress --colors --watch --env development"
   },
