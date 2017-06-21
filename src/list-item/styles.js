@@ -97,6 +97,7 @@ export const MarkdownStyle = styled.div`
   }
   ul {
     margin: 0px;
+    padding: 0 20px;
     li {
       margin-bottom: 0.0rem;
     }
