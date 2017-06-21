@@ -84,6 +84,9 @@ export const ToolbarStyle = styled.div`
 
 export const MarkdownStyle = styled.div`
   color: ${p => p.theme.colors.gray};
+  line-height: 22px;
+  font-size: 14px;
+
   p {
     margin-bottom: 15px;
   }
@@ -100,7 +103,7 @@ export const MarkdownStyle = styled.div`
   }
   code {
     margin: 0;
-    padding: 5px;
+    padding: 2px 4px;
     white-space: pre-wrap;
     background-color: #FAFAFA;
     border: 1px solid #E5E5E5;
