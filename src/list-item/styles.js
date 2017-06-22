@@ -71,6 +71,8 @@ export const ToolbarStyle = styled.div`
   right: 10px;
   top: 10px;
   color: #888;
+  min-width: 100px;
+  text-align: right;
 
   & i {
     margin: 0px 5px;

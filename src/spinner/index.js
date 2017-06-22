@@ -7,27 +7,27 @@ type Props = {
   hide?: boolean,
   hideLabel?: boolean,
   hideOverlay?: boolean,
+  align: string,
   size?: number,
   color?: string,
   label?: string,
 }
 
-const SpinnerComponent = (props: Props) => {
+const SpinnerComponent = ({ hide, hideLabel, align, hideOverlay, size, color, label }: Props) => {
   let divs = times(12, String)
 
   return (
-    <SpinnerContainer hide={props.hide}>
-      <Overlay hideOverlay={props.hideOverlay} />
-      <Spinner size={props.size} color={props.color} hideLabel={props.hideLabel}>
+    <SpinnerContainer hide={hide} hideOverlay={hideOverlay} align={align}>
+      <Spinner size={size} color={color} hideLabel={hideLabel}>
         {map(divs, (div, index) => <div key={index} />)}
       </Spinner>
-      {!props.hideLabel &&
-        <SpinnerLabel>{props.label ? props.label : 'Loading...'}</SpinnerLabel>}
+      {!hideLabel && <SpinnerLabel>{label || 'Loading...'}</SpinnerLabel>}
     </SpinnerContainer>
   )
 }
 
 SpinnerComponent.defaultProps = {
+  align: 'center',
   hideLabel: false,
   hideOverlay: false
 }

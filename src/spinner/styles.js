@@ -1,30 +1,29 @@
 import styled, { keyframes } from 'styled-components'
 import { toPx, parseColor } from '../utils'
 
+// const debug = (color) => `border: 1px solid ${color};`
+const full = () => `
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+`
 const scale = keyframes`
   0%, 80%, 100% { transform: scale(0.0) }
   40% { transform: scale(1.0) }
 `
 
 export const SpinnerContainer = styled.div`
+  ${full()}
   display: ${p => p.hide ? 'none' : 'flex'};
   flex-direction: column;
   justify-content: center;
-  align-items: center;
-`
-
-export const Overlay = styled.div`
-  position: absolute;
-  display: ${p => p.hideOverlay ? 'none' : 'block'};
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  align-items: ${p => p.align};
   z-index: 900;
-  background-color: ${p => p.theme.overlay};
-`
-export const SpinnerLabel = styled.label`
-  z-index: 950;
+  min-width: 40px;
+  min-height: 40px;
+  background-color: ${p => p.hideOverlay ? `transparent` : p.theme.overlay};
 `
 
 export const Spinner = styled.div`
@@ -77,4 +76,8 @@ export const Spinner = styled.div`
   & > div:nth-child(10)::before { animation-delay: -0.3s; }
   & > div:nth-child(11)::before { animation-delay: -0.2s; }
   & > div:nth-child(12)::before { animation-delay: -0.1s; }
+`
+
+export const SpinnerLabel = styled.label`
+  z-index: 950;
 `

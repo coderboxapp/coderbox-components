@@ -59,7 +59,7 @@ class EditableListItem extends React.Component<any, Props, State> {
           if (loading) {
             return (
               <SpinnerStyle>
-                <Spinner color='primary' size={30} hideLabel hideOverlay />
+                <Spinner color='primary' align='flex-end' size={32} hideLabel hideOverlay />
               </SpinnerStyle>
             )
           } else {
