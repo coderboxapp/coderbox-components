@@ -18,7 +18,7 @@ const theme = {
     success: '#3BAB57'
   },
   shadow: '0px 0px 1px rgba(0, 0, 1, 0.12)',
-  overlay: 'rgba(0, 0, 0, 0.4)',
+  overlay: 'rgba(255, 255, 255, 0.4)',
   borderRadius: '5px'
 }
 

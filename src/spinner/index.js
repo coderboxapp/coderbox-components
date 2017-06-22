@@ -17,7 +17,7 @@ const SpinnerComponent = ({ hide, hideLabel, align, hideOverlay, size, color, la
   let divs = times(12, String)
 
   return (
-    <SpinnerContainer hide={hide} hideOverlay={hideOverlay} align={align}>
+    <SpinnerContainer className='Spinner' hide={hide} hideOverlay={hideOverlay} align={align}>
       <Spinner size={size} color={color} hideLabel={hideLabel}>
         {map(divs, (div, index) => <div key={index} />)}
       </Spinner>
