@@ -9,25 +9,28 @@ import ListItemForm from './ListItemForm'
 // styles
 import { ToolbarStyle, EditableItemStyle, SpinnerStyle } from '../styles'
 
+// types
+import type { Item } from 'coderbox-components'
+
 type Props = {
   item: Object,
-  itemProps: Object,
-  formProps: Object,
+  itemComponent: any,
+  formComponent: any,
+  formSettings: Object,
   loading: boolean,
   className: string,
+  transform: (data: Object) => Item,
   onSave: (data: any) => void,
   onDelete: () => void,
 }
 
 type State = {
-  editMode: boolean
+  editMode: boolean,
 }
 
 class EditableListItem extends React.Component<any, Props, State> {
   state = { editMode: false }
   static defaultProps = {
-    itemProps: {},
-    formProps: {},
     className: ''
   }
 
@@ -59,7 +62,13 @@ class EditableListItem extends React.Component<any, Props, State> {
           if (loading) {
             return (
               <SpinnerStyle>
-                <Spinner color='primary' align='flex-end' size={32} hideLabel hideOverlay />
+                <Spinner
+                  color='primary'
+                  align='flex-end'
+                  size={32}
+                  hideLabel
+                  hideOverlay
+                />
               </SpinnerStyle>
             )
           } else {
@@ -85,19 +94,26 @@ class EditableListItem extends React.Component<any, Props, State> {
   }
 
   render () {
-    let { item, itemProps, formProps, className } = this.props
+    let {
+      item,
+      transform,
+      itemComponent,
+      formComponent,
+      formSettings,
+      className
+    } = this.props
     let { editMode } = this.state
 
-    let ItemElement = createElement(itemProps.component || ListItem, {
-      ...itemProps,
-      item
+    let ItemElement = createElement(itemComponent || ListItem, {
+      item,
+      transform
     })
 
-    let FormElement = createElement(ListItemForm, {
+    let FormElement = createElement(formComponent || ListItemForm, {
       onSave: this.handleFormSave,
       onCancel: this.handleFormCancel,
-      ...formProps,
-      item
+      item,
+      settings: formSettings
     })
 
     return (
