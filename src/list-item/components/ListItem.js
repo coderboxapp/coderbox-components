@@ -124,6 +124,10 @@ class ListItem extends React.Component<any, Props, State> {
     )
   }
 
+  renderExtra (item) {
+    return null
+  }
+
   render () {
     let { item, isOdd, className, transform, renderExtra } = this.props
     item = transform(item)
@@ -139,6 +143,7 @@ class ListItem extends React.Component<any, Props, State> {
           {this.renderTitleSubtitle(item.title, item.subtitle)}
           {this.renderTags(item.tags)}
           {this.renderDescription(trim(item.description))}
+          {this.renderExtra(item)}
           {renderExtra && <div className='ListItem-extra'>{renderExtra(item)}</div>}
         </div>
       </ItemStyle>
