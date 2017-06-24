@@ -3,9 +3,9 @@ import React, { createElement } from 'react'
 import { merge, keys, isArray, sortBy } from 'lodash'
 
 // libs
-import { Form, FormItem } from '../../form'
-import AutocompleteTags from '../../autocomplete-tags'
-import { DateRange } from '../../date-utils'
+import { Form, FormItem } from 'Form'
+import AutocompleteTags from 'AutocompleteTags'
+import { DateRange } from 'DateUtils'
 
 // styles
 import { FormStyle } from '../styles'

@@ -6,20 +6,19 @@ type Props = {
   column?: boolean,
   justifyContent?: 'flex-start' | 'center' | 'flex-end' | 'space-between',
   alignItems?: 'flex-start' | 'center' | 'flex-end' | 'stretch',
-  className?: string,
   children?: any
 }
 
-const FlexComponent = (props: Props) => {
+const FlexComponent = ({column, justifyContent, alignItems, children, ...props}: Props) => {
   return (
-    <FlexStyle className={props.className} {...props}>
-      {props.children}
+    <FlexStyle
+      column={column}
+      justifyContent={justifyContent}
+      alignItems={alignItems}
+      {...props}>
+      {children}
     </FlexStyle>
   )
-}
-
-FlexComponent.defaultProps = {
-  className: ''
 }
 
 export default FlexComponent

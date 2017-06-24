@@ -1,5 +1,5 @@
 import React from 'react'
-import Flex from '../../flexbox'
+import Flex from 'Flexbox'
 import { NavbarBodyStyle } from '../styles'
 
 const NavbarBody = ({ isOpen, onClose, children }) => {

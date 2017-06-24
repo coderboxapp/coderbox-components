@@ -1,9 +1,9 @@
 // @flow
 import React from 'react'
 import { findIndex, remove, last, isArray, assign } from 'lodash'
-import { AutocompleteTagsStyle, TagsStyle } from './styles'
-import { Tags } from '../core'
-import Autocomplete from '../autocomplete'
+import { AutocompleteTagsStyle, TagsStyle } from './style'
+import Tags from 'Tags'
+import Autocomplete from 'Autocomplete'
 
 // Types
 import type { Tag } from 'coderbox-components'

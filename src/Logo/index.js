@@ -1,19 +1,21 @@
 // @flow
 import React from 'react'
-import { LogoStyle, LogoSvgStyle } from '../styles'
+import { LogoStyle, LogoSvgStyle } from './style'
 
 type Props = {
-  color: 'base' | 'primary' | 'success',
   size: number,
-  className?: string
+  color?: string,
+  href?: string,
+  palette?: string
 }
 
-const LogoComponent = ({ size = 50, color = 'base', className = '' }: Props) => {
+const LogoComponent = ({ size = 50, palette = 'grayscale', color, href, ...props }: Props) => {
   return (
-    <LogoStyle size={`${size}px`} className={className}>
-      <a href='/'>
+    <LogoStyle size={size} {...props}>
+      <a href={href}>
         <LogoSvgStyle
           color={color}
+          palette={palette}
           version='1.1'
           xmlns='http://www.w3.org/2000/svg'
           x='0px'

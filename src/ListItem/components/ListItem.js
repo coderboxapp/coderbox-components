@@ -5,7 +5,7 @@ import Markdown from 'react-markdown'
 import { trim } from 'lodash'
 
 // libs
-import { Tags } from '../../core'
+import Tags from 'Tags'
 
 // styles
 import {
@@ -124,7 +124,7 @@ class ListItem extends React.Component<any, Props, State> {
     )
   }
 
-  renderExtra (item) {
+  renderExtra () {
     return null
   }
 

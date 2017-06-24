@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import Flex from '../flexbox'
+import Flex from 'Flexbox'
 
 export const ItemStyle = styled(Flex)`
   position: relative;

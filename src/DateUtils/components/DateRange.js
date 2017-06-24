@@ -1,7 +1,7 @@
 // @flow
 import React from 'react'
 import DatePicker from './DatePicker'
-import Flex from '../../flexbox'
+import Flex from 'Flexbox'
 import { DateRangeContainer, Icon } from '../styles'
 
 // Types

@@ -6,7 +6,9 @@
   "scripts": {
     "prepare": "yarn build",
     "build": "webpack --env production",
-    "dev": "webpack --progress --colors --watch --env development"
+    "dev": "webpack --progress --colors --watch --env development",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook"
   },
   "repository": {
     "type": "git",
@@ -19,6 +21,7 @@
   "author": "Ghiura Alexandru <ghalex@gmail.com>",
   "license": "ISC",
   "devDependencies": {
+    "@storybook/react": "^3.1.5",
     "babel-cli": "6.24.1",
     "babel-core": "6.24.1",
     "babel-eslint": "7.2.3",
@@ -36,6 +39,7 @@
     "yargs": "7.1.0"
   },
   "dependencies": {
+    "@storybook/react": "^3.1.5",
     "js-md5": "^0.4.2",
     "loadash": "^0.0.1",
     "moment": "^2.18.1",
@@ -47,6 +51,7 @@
     "react-markdown": "^2.5.0",
     "react-router": "^4.1.1",
     "react-spinkit": "^3.0.0",
-    "styled-components": "^2.0.1"
+    "styled-components": "^2.0.1",
+    "styled-theme": "^0.3.3"
   }
 }

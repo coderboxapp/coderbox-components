@@ -1,6 +1,6 @@
 import React from 'react'
 import { bool, string, func, object } from 'prop-types'
-import { Button } from '../../core'
+import Button from 'Button'
 import { FormStyle } from '../styles'
 
 class Form extends React.Component {

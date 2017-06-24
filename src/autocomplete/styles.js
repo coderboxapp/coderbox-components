@@ -31,6 +31,7 @@ export default {
   suggestion: {
     padding: '8px 12px',
     textAlign: 'left',
+    fontFamily: 'Open Sans',
     borderBottom: '1px solid #DADADA'
   },
   suggestionHighlighted: {

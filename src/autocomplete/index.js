@@ -1,7 +1,11 @@
 // @flow
 import React from 'react'
 import Autosuggest from 'react-autosuggest'
+
+// styles
 import styles from './styles'
+
+// types
 import type { Tag } from 'coderbox-components'
 
 type Props = {
@@ -9,6 +13,7 @@ type Props = {
   suggestions: Tag[],
   placeholder: string,
   onChange: (suggestion: Tag) => void,
+  onSuggestion: (suggestion: Tag) => void,
   onKeyDown: (event: KeyboardEvent) => void,
   renderSuggestion: () => void
 }
@@ -81,6 +86,9 @@ class AutoComplete extends React.Component<any, Props, State> {
 
   onSuggestion (event: Event, data: SuggestionData) {
     this.setState({ suggestion: data.suggestion })
+    if (this.props.onSuggestion) {
+      this.props.onSuggestion(data.suggestion)
+    }
   }
 
   onChange (event :Event, data: { newValue: string }) {
