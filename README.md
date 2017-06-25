@@ -19,24 +19,29 @@ yarn add coderbox-components
 Works with [browserify](https://github.com/substack/node-browserify) and should work with [webpack](https://github.com/visionmedia/superagent/wiki/SuperAgent-for-Webpack).
 
 # Demo
-[See DEMO Page](https://coderboxapp.github.io/coderbox-components-demo/)
+[DEMO Page](https://coderboxapp.github.io/coderbox-components/)
+
+For code example check `.stories.js` files from each component.
 
 # Components List
 
 ```
 .
 ├── Autocomplete               #
+├── AutocompleteLocation       #
 ├── AutocompleteTags           #
-├── Tags                       # 
-├── Flex                       # 
-├── Logo                       # 
-├── Button                     #
 ├── Avatar                     #
-├── Spinner                    #
+├── Button                     #
 ├── DatePicker                 #
 ├── DateRange                  #
+├── Flex                       # 
+├── Icon                       #
+├── Logo                       # 
+├── Navigation                 #
 ├── Form                       #
 ├── FormItem                   #
+├── Spinner                    #
+├── Tags                       # 
 ```
 # Build
 
