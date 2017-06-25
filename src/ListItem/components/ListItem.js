@@ -124,27 +124,28 @@ class ListItem extends React.Component<any, Props, State> {
     )
   }
 
-  renderExtra () {
+  renderExtra (item: Item) {
     return null
   }
 
   render () {
     let { item, isOdd, className, transform, renderExtra } = this.props
-    item = transform(item)
+    let transformedItem = transform(item)
+
     className += isOdd ? ' odd' : ''
 
     return (
       <ItemStyle className={`ListItem ${className}`} alignItems='stretch'>
         <div className='ListItem-left'>
-          {this.renderLogo(item.image)}
+          {this.renderLogo(transformedItem.image)}
         </div>
         <div className='ListItem-right'>
-          {this.renderDate(item.dateRange)}
-          {this.renderTitleSubtitle(item.title, item.subtitle)}
-          {this.renderTags(item.tags)}
-          {this.renderDescription(trim(item.description))}
-          {this.renderExtra(item)}
-          {renderExtra && <div className='ListItem-extra'>{renderExtra(item)}</div>}
+          {this.renderDate(transformedItem.dateRange)}
+          {this.renderTitleSubtitle(transformedItem.title, transformedItem.subtitle)}
+          {this.renderTags(transformedItem.tags)}
+          {this.renderDescription(trim(transformedItem.description))}
+          {this.renderExtra(transformedItem)}
+          {renderExtra && <div className='ListItem-extra'>{renderExtra(transformedItem)}</div>}
         </div>
       </ItemStyle>
     )

@@ -28,3 +28,7 @@ export const parseColor = (value, colors) => {
       return value
   }
 }
+
+export const ucfirst = (txt) => {
+  return txt.charAt(0).toUpperCase() + txt.slice(1)
+}

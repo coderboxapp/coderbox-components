@@ -6,6 +6,8 @@ import Button from 'Button'
 import DatePicker from 'DatePicker'
 import DateRange from 'DateRange'
 import Flex from 'Flexbox'
+import Form from 'Form'
+import FormItem from 'FormItem'
 import Icon from 'Icon'
 import Logo from 'Logo'
 import Spinner from 'Spinner'
@@ -15,7 +17,6 @@ import theme from './theme'
 import utils from './utils'
 
 export * from 'ListItem'
-export * from 'Form'
 export * from 'Navigation'
 export {
   Autocomplete,
@@ -26,6 +27,8 @@ export {
   DatePicker,
   DateRange,
   Flex,
+  Form,
+  FormItem,
   Icon,
   Logo,
   Spinner,

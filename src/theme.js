@@ -40,7 +40,7 @@ theme.sizes = {
   fontSize: '14px',
   fontSizeSmall: '12px',
   iconSize: '24px',
-  radius: '4px'
+  radius: '3px'
 }
 
 export default theme
