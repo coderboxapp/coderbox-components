@@ -1,7 +1,7 @@
 // @flow
 import React from 'react'
 import { findIndex, remove, last, isArray, assign } from 'lodash'
-import { AutocompleteTagsStyle, TagsStyle } from './style'
+import { AutocompleteTagsStyle, TagsStyle } from './styles'
 import Tags from 'Tags'
 import Autocomplete from 'Autocomplete'
 
@@ -16,7 +16,7 @@ type Props = {
   placeholder?: string,
   className?: string,
   onChange?: (tags: Tag[]) => void,
-  color?: 'base' | 'primary' | 'success'
+  palette?: 'grayscale' | 'primary' | 'success'
 }
 
 type State = {
@@ -35,7 +35,7 @@ const Keys = {
 
 class AutocompleteTags extends React.Component<any, Props, State> {
   static defaultProps = {
-    color: 'primary',
+    palette: 'primary',
     className: '',
     allowNew: false,
     toLowercase: false
@@ -105,7 +105,7 @@ class AutocompleteTags extends React.Component<any, Props, State> {
   }
 
   render () {
-    let { suggestions, color, placeholder, className } = this.props
+    let { suggestions, palette, placeholder, className } = this.props
     let { tags, suggestion } = this.state
 
     if (!className) {
@@ -115,7 +115,7 @@ class AutocompleteTags extends React.Component<any, Props, State> {
     return (
       <AutocompleteTagsStyle className={`AutocompleteTags ${className}`}>
         <TagsStyle display={tags.length > 0}>
-          <Tags color={color} tags={tags} onClick={(tag) => this.removeTag(tag)} withClose />
+          <Tags palette={palette} tags={tags} onClick={(tag) => this.removeTag(tag)} withClose />
         </TagsStyle>
         <Autocomplete
           value={suggestion}

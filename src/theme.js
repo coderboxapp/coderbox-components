@@ -1,4 +1,3 @@
-import { reversePalette } from 'styled-theme/composer'
 
 const theme = {
   fontFamily: 'Open Sans',

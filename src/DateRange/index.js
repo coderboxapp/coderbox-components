@@ -1,8 +1,9 @@
 // @flow
 import React from 'react'
-import DatePicker from './DatePicker'
+import DatePicker from 'DatePicker'
 import Flex from 'Flexbox'
-import { DateRangeContainer, Icon } from '../styles'
+import Icon from 'Icon'
+import { DateRangeStyle } from './styles'
 
 // Types
 import type { DateRange } from 'coderbox-components'
@@ -62,7 +63,7 @@ class DateRangeComponent extends React.Component<any, Props, State> {
     const { range } = this.state
 
     return (
-      <DateRangeContainer className='DateRange'>
+      <DateRangeStyle className='DateRange'>
         <Flex alignItems='center'>
           <DatePicker
             value={range.start}
@@ -70,7 +71,7 @@ class DateRangeComponent extends React.Component<any, Props, State> {
             hideMonths={this.props.hideMonths}
             className='DateRange-startdate'
           />
-          <Icon className='material-icons'>trending_flat</Icon>
+          <Icon name='trending_flat' />
           {range.end
             ? <DatePicker
               value={range.end}
@@ -88,7 +89,7 @@ class DateRangeComponent extends React.Component<any, Props, State> {
           />
           {this.props.label || 'I still work here'}
         </Flex>
-      </DateRangeContainer>
+      </DateRangeStyle>
     )
   }
 }

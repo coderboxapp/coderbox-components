@@ -1,21 +1,19 @@
 import styled from 'styled-components'
+import { font, palette, size } from 'styled-theme'
 import Flex from 'Flexbox'
 
-export const Icon = styled.i`
-  margin: 0px 10px
-`
-
-export const DateRangeContainer = styled.div`
-  font-size: 14px;
-  
+export const DatePickerStyle = styled(Flex)`
   & select {
-    border: 1px solid ${p => p.theme.borderColors.base};
-    border-radius: 4px;
+    border: 1px solid;
+    border-color: ${palette(1)};
+    border-radius: ${size('radius')};
+    font-family: ${font('primary')};
+    font-size: ${size('fontSize')};
+    box-sizing: border-box;
     padding: 4px 4px;
+    outline: none;
   }
-`
 
-export const DatePickerContainer = styled(Flex)`
   & select:first-child {
     border-top-right-radius: 0;
     border-bottom-right-radius: 0;

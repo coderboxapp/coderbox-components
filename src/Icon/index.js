@@ -1,6 +1,6 @@
 // @flow
 import React from 'react'
-import { IconStyle } from './style'
+import { IconStyle } from './styles'
 
 type Props = {
   name: string,

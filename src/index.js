@@ -3,6 +3,8 @@ import AutocompleteLocation from 'AutocompleteLocation'
 import AutocompleteTags from 'AutocompleteTags'
 import Avatar from 'Avatar'
 import Button from 'Button'
+import DatePicker from 'DatePicker'
+import DateRange from 'DateRange'
 import Flex from 'Flexbox'
 import Icon from 'Icon'
 import Logo from 'Logo'
@@ -12,7 +14,6 @@ import Tags from 'Tags'
 import theme from './theme'
 import utils from './utils'
 
-export * from 'DateUtils'
 export * from 'ListItem'
 export * from 'Form'
 export * from 'Navigation'
@@ -22,6 +23,8 @@ export {
   AutocompleteTags,
   Avatar,
   Button,
+  DatePicker,
+  DateRange,
   Flex,
   Icon,
   Logo,

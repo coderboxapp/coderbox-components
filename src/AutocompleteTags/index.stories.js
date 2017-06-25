@@ -1,5 +1,5 @@
 import React from 'react'
-import { storiesOf, action } from '@storybook/react'
+import { storiesOf } from '@storybook/react'
 import AutocompleteTags from '.'
 
 const technologies = [
@@ -14,6 +14,17 @@ storiesOf('AutocompleteTags', module)
     return (
       <div>
         <AutocompleteTags
+          suggestions={technologies}
+          placeholder='Add technology (ex: java, react)' />
+      </div>
+    )
+  })
+  .add('with different color', () => {
+    return (
+      <div>
+        <AutocompleteTags
+          allowNew
+          palette='danger'
           suggestions={technologies}
           placeholder='Add technology (ex: java, react)' />
       </div>

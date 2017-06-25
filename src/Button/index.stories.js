@@ -1,7 +1,7 @@
 
 import React from 'react'
-import styled from 'styled-components'
 import { storiesOf, action } from '@storybook/react'
+import styled from 'styled-components'
 import Button from '.'
 import Flex from 'Flexbox'
 

@@ -5,7 +5,7 @@ import { merge, keys, isArray, sortBy } from 'lodash'
 // libs
 import { Form, FormItem } from 'Form'
 import AutocompleteTags from 'AutocompleteTags'
-import { DateRange } from 'DateUtils'
+import DateRange from 'DateRange'
 
 // styles
 import { FormStyle } from '../styles'

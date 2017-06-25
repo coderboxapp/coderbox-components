@@ -1,25 +1,29 @@
 // @flow
 import React from 'react'
-import { DatePickerContainer } from '../styles'
 import moment from 'moment'
 
+// style
+import { DatePickerStyle } from './styles'
+
+// types
 import type Moment from 'moment'
 
 type Props = {
   value: Date,
+  palette?: string,
   hideMonths?: boolean,
   onChange: (date: Moment) => void,
 }
 
-const DatePickerComponent = ({ value, hideMonths, onChange }: Props) => {
+const DatePickerComponent = ({ value, palette = 'grayscale', hideMonths, onChange, ...props }: Props) => {
   let month = moment(value).month()
   let year = moment(value).year()
 
   return (
-    <DatePickerContainer>
+    <DatePickerStyle palette={palette} {...props}>
       {
         !hideMonths &&
-          <select value={month} onChange={e => onChange(moment().year(year).month(e.target.value))}>
+          <select value={month} onChange={evt => onChange(moment().year(year).month(evt.target.value))}>
             <option value='0'>January</option>
             <option value='1'>February</option>
             <option value='2'>March</option>
@@ -35,7 +39,7 @@ const DatePickerComponent = ({ value, hideMonths, onChange }: Props) => {
           </select>
       }
 
-      <select value={year} onChange={e => onChange(moment().year(e.target.value).month(month))}>
+      <select value={year} onChange={evt => onChange(moment().year(evt.target.value).month(month))}>
         <option value='2017'>2017</option>
         <option value='2016'>2016</option>
         <option value='2015'>2015</option>
@@ -73,7 +77,7 @@ const DatePickerComponent = ({ value, hideMonths, onChange }: Props) => {
         <option value='1983'>1983</option>
         <option value='1982'>1982</option>
       </select>
-    </DatePickerContainer>
+    </DatePickerStyle>
   )
 }
 

@@ -1,35 +1,49 @@
 // @flow
 import React from 'react'
 import { times, map } from 'lodash'
-import { Overlay, Spinner, SpinnerLabel, SpinnerContainer } from './styles'
+import { Spinner, SpinnerLabel, SpinnerContainer } from './styles'
 
 type Props = {
   hide?: boolean,
   hideLabel?: boolean,
   hideOverlay?: boolean,
-  align: string,
+  palette?: string,
+  align?: string,
+  overlay?: string,
   size?: number,
   color?: string,
   label?: string,
 }
 
-const SpinnerComponent = ({ hide, hideLabel, align, hideOverlay, size, color, label }: Props) => {
+const SpinnerComponent = ({
+  hide,
+  hideLabel,
+  hideOverlay,
+  align = 'center',
+  palette = 'primary',
+  overlay = 'rgba(255, 255, 255, 0.4)',
+  size,
+  color,
+  label,
+  ...props
+}: Props) => {
   let divs = times(12, String)
 
   return (
-    <SpinnerContainer className='Spinner' hide={hide} hideOverlay={hideOverlay} align={align}>
-      <Spinner size={size} color={color} hideLabel={hideLabel}>
+    <SpinnerContainer
+      className='Spinner'
+      hide={hide}
+      hideOverlay={hideOverlay}
+      overlay={overlay}
+      align={align}
+      {...props}
+    >
+      <Spinner palette={palette} size={size} color={color} hideLabel={hideLabel}>
         {map(divs, (div, index) => <div key={index} />)}
       </Spinner>
-      {!hideLabel && <SpinnerLabel>{label || 'Loading...'}</SpinnerLabel>}
+      {!hideLabel && <SpinnerLabel palette={palette}>{label || 'Loading...'}</SpinnerLabel>}
     </SpinnerContainer>
   )
-}
-
-SpinnerComponent.defaultProps = {
-  align: 'center',
-  hideLabel: false,
-  hideOverlay: false
 }
 
 export default SpinnerComponent

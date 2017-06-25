@@ -1,7 +1,7 @@
 // @flow
 import React from 'react'
 import md5 from 'js-md5'
-import { AvatarStyle, AvatarImageStyle } from './style'
+import { AvatarStyle, AvatarImageStyle } from './styles'
 
 type Props = {
   email?: string,

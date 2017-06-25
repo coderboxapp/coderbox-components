@@ -25,7 +25,7 @@ type Props = {
   className: string,
   hideBlocks?: string[],
   transform: (data: Object) => Item,
-  renderExtra: (item: Item) => any
+  renderExtra: (item: Item) => React.Element<*>
 }
 
 type State = {
@@ -38,7 +38,7 @@ class ListItem extends React.Component<any, Props, State> {
   static defaultProps = {
     hideBlocks: [],
     className: '',
-    transform: (data) => data
+    transform: (data: Object) => data
   }
 
   toggleReadMore () {

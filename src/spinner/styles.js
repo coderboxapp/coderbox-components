@@ -1,7 +1,7 @@
 import styled, { keyframes } from 'styled-components'
-import { toPx, parseColor } from '../utils'
+import { font, palette, size } from 'styled-theme'
+import { toPx } from '../utils'
 
-// const debug = (color) => `border: 1px solid ${color};`
 const full = () => `
   position: absolute;
   top: 0;
@@ -16,6 +16,8 @@ const scale = keyframes`
 
 export const SpinnerContainer = styled.div`
   ${full()}
+  font-family: ${font('primary')};
+  font-size: ${size('fontSize')};
   display: ${p => p.hide ? 'none' : 'flex'};
   flex-direction: column;
   justify-content: center;
@@ -23,7 +25,7 @@ export const SpinnerContainer = styled.div`
   z-index: 900;
   min-width: 40px;
   min-height: 40px;
-  background-color: ${p => p.hideOverlay ? `transparent` : p.theme.overlay};
+  background-color: ${p => p.hideOverlay ? `transparent` : p.overlay};
 `
 
 export const Spinner = styled.div`
@@ -42,7 +44,7 @@ export const Spinner = styled.div`
   }
 
   & > div::before {
-    background-color: ${p => parseColor(p.color, p.theme.colors)};
+    background-color: ${palette(1)};
     content: '';
     display: block;
     margin: 0 auto;
@@ -80,4 +82,5 @@ export const Spinner = styled.div`
 
 export const SpinnerLabel = styled.label`
   z-index: 950;
+  color: ${palette(1)};
 `

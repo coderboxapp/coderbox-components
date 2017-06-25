@@ -8,7 +8,8 @@
     "build": "webpack --env production",
     "dev": "webpack --progress --colors --watch --env development",
     "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "build-storybook": "build-storybook",
+    "deploy-storybook": "storybook-to-ghpages"
   },
   "repository": {
     "type": "git",
@@ -40,6 +41,7 @@
   },
   "dependencies": {
     "@storybook/react": "^3.1.5",
+    "@storybook/storybook-deployer": "^2.0.0",
     "js-md5": "^0.4.2",
     "loadash": "^0.0.1",
     "moment": "^2.18.1",

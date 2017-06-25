@@ -1,6 +1,6 @@
 // @flow
 import React from 'react'
-import { LogoStyle, LogoSvgStyle } from './style'
+import { LogoStyle, LogoSvgStyle } from './styles'
 
 type Props = {
   size: number,
