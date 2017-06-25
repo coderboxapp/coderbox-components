@@ -12,11 +12,11 @@ import Icon from 'Icon'
 import Logo from 'Logo'
 import Spinner from 'Spinner'
 import Tags from 'Tags'
+import ListItem from 'ListItem'
 
 import theme from './theme'
 import utils from './utils'
 
-export * from 'ListItem'
 export * from 'Navigation'
 export {
   Autocomplete,
@@ -30,6 +30,7 @@ export {
   Form,
   FormItem,
   Icon,
+  ListItem,
   Logo,
   Spinner,
   Tags,

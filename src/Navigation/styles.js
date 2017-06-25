@@ -45,7 +45,7 @@ export const NavbarBodyStyle = styled.div`
       width: 140px;
       bottom: 0;
       background: white;
-      box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.15);
+      box-shadow: ${p => p.theme.shadow};
       transition: right 0.25s;
     }
     & .overlay {

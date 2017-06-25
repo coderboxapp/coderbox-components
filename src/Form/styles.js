@@ -8,7 +8,7 @@ export const FormStyle = styled.div`
     padding: 5px 0px;
   }
 
-  & button {
+  & .Form-buttons a {
     margin-right: 5px;
   }
 
