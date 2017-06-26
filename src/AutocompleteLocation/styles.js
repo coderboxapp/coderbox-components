@@ -6,7 +6,7 @@ export const AutocompleteLocationStyle = styled.div`
     box-sizing: border-box;
     font-family: ${p => p.theme.fontFamily};
     font-size: 14px;
-    border: 1px solid ${p => p.theme.borderColors.base};
+    border: 1px solid #D8D8D8;
     border-radius: 4px;
     padding: 8px 8px;
     outline: none;
