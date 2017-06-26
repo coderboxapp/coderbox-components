@@ -1,7 +1,6 @@
 import { isNumber } from 'lodash'
 
 export const toPx = value => {
-  console.log(value)
   if (isNumber(value)) {
     return `${value}px`
   }
