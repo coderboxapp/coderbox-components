@@ -1,7 +1,10 @@
 import styled from 'styled-components'
+import { font, palette, size } from 'styled-theme'
 import Flex from 'Flexbox'
 
 export const ItemStyle = styled(Flex)`
+  font-family: ${font('primary')};
+  font-size: ${size('fontSize')};
   position: relative;
   text-align: left;
 
@@ -11,20 +14,12 @@ export const ItemStyle = styled(Flex)`
 
   & a {
     cursor: pointer;
-    color: ${p => p.theme.colors.primary};
+    color: ${palette(1)};
   }
 
   &.odd {
-    background-color: ${p => p.theme.colors.base};
+    background-color: ${palette('grayscale', 2)};
   }
-`
-
-export const EditableItemStyle = styled.div`
-  position: relative;
-`
-
-export const FormStyle = styled.div`
-  background-color: #F7F7F7;
 `
 
 export const LogoStyle = styled.div`
@@ -32,9 +27,10 @@ export const LogoStyle = styled.div`
   height: 70px;
   margin: auto;
   padding: 5px;
-  border: 1px solid ${p => p.theme.borderColors.base};
+  border: 1px solid;
+  border-color: ${palette('grayscale', 2)};
+  border-radius: ${size('radius')};
   box-shadow: ${p => p.theme.shadow};
-  border-radius: 5px;
   box-sizing: border-box;
 
   & > div {
@@ -50,15 +46,14 @@ export const TitleSubtitleStyle = styled.div`
   margin-bottom: 8px;
 
   & > div:first-child {
-    font-size: 19px;
+    font-size: 18px;
   }
 `
 
 export const DatesStyle = styled(Flex)`
-  font-size: 14px;
   line-height: 20px;
   margin-bottom: -4px;
-  color: ${p => p.theme.colors.gray};
+  color: ${palette('grayscale', 0)};
 
   & i {
     font-size: 26px;
@@ -66,26 +61,8 @@ export const DatesStyle = styled(Flex)`
   }
 `
 
-export const ToolbarStyle = styled.div`
-  position: absolute;
-  right: 10px;
-  top: 10px;
-  color: #888;
-  min-width: 100px;
-  text-align: right;
-
-  & i {
-    margin: 0px 5px;
-    cursor: pointer;
-  }
-  
-  & i:hover {
-    color: ${p => p.theme.colors.primary};
-  }
-`
-
 export const MarkdownStyle = styled.div`
-  color: ${p => p.theme.colors.gray};
+  color: ${palette('grayscale', 0)};
   line-height: 22px;
   font-size: 14px;
 
@@ -112,12 +89,12 @@ export const MarkdownStyle = styled.div`
     border: 1px solid #E5E5E5;
     border-radius: 2px;
   }
-`
 
-export const SpinnerStyle = styled.div`
-  position: relative;
-  margin: 0px 5px;
-  & label {
-    margin-right: 10px;
+  & .ListItem-readmore {
+    border: 1px solid #CCC;
+    padding: 2px 14px;
+    border-radius: ${size('radius')};
+    margin: 10px 0px;
+    display: inline-block;
   }
 `

@@ -4,8 +4,31 @@ import { storiesOf, action } from '@storybook/react'
 import Form from 'Form'
 import FormItem from 'FormItem'
 
+const settings = {
+  title: {
+    name: 'title',
+    label: 'Title:',
+    component: 'input',
+    componentProps: {
+      type: 'text',
+      placeholder: 'Your title'
+    },
+    sort: 0
+  },
+  subtitle: {
+    name: 'email',
+    label: 'Email:',
+    component: 'input',
+    componentProps: {
+      type: 'email',
+      placeholder: 'Your email'
+    },
+    sort: 1
+  }
+}
+
 storiesOf('Form & FormItem', module)
-  .add('default', () => {
+  .addWithInfo('simple usage', () => {
     return (
       <Form onSave={form => action('form submit')(form.data())}>
         <FormItem
@@ -40,7 +63,7 @@ storiesOf('Form & FormItem', module)
       </Form>
     )
   })
-  .add('with validators', () => {
+  .addWithInfo('with validators', () => {
     const handleSave = form => {
       if (form.validate()) {
         action('form submit')(form.data())
@@ -63,7 +86,7 @@ storiesOf('Form & FormItem', module)
         <FormItem
           name='description'
           label='Description:'
-          validator={Form.Validators.minLength({length: 5})}
+          validator={Form.Validators.minLength({ length: 5 })}
           component='textarea'
           componentProps={{
             rows: 5,
@@ -71,5 +94,10 @@ storiesOf('Form & FormItem', module)
           }}
         />
       </Form>
+    )
+  })
+  .addWithInfo('using settings', () => {
+    return (
+      <Form settings={settings} onSave={form => action('form submit')(form.data())} />
     )
   })

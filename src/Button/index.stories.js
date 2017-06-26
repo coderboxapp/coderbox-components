@@ -12,10 +12,11 @@ const Wrapper = styled(Flex)`
 `
 
 storiesOf('Button', module)
-  .add('default', () => {
-    return <Button withBorder>Hello</Button>
-  })
-  .add('with different colors', () => {
+  .addWithInfo(
+    'simple usage',
+    () => <Button withBorder>Hello</Button>
+  )
+  .addWithInfo('with different colors', () => {
     return (
       <Wrapper>
         <Button palette='primary' onClick={action('it works')}>Primary Button</Button>
@@ -23,7 +24,7 @@ storiesOf('Button', module)
       </Wrapper>
     )
   })
-  .add('with icon', () => {
+  .addWithInfo('with icon', () => {
     return (
       <Wrapper>
         <Button icon='people'>Star Button</Button>

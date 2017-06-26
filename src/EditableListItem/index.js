@@ -1,13 +1,14 @@
 // @flow
 import React, { createElement } from 'react'
-import { assign } from 'lodash'
-import Spinner from 'Spinner'
+import { assign, merge } from 'lodash'
 
-import ListItem from './ListItem'
-import ListItemForm from './ListItemForm'
+import Spinner from 'Spinner'
+import ListItem from 'ListItem'
+import Form from 'Form'
+import defaultFormSettings from './formSettings'
 
 // styles
-import { ToolbarStyle, EditableItemStyle, SpinnerStyle } from '../styles'
+import { ToolbarStyle, EditableItemStyle, SpinnerStyle } from './styles'
 
 // types
 import type { Item } from 'coderbox-components'
@@ -18,6 +19,7 @@ type Props = {
   formComponent: any,
   formSettings: Object,
   loading: boolean,
+  palette: string,
   className: string,
   transform: (data: Object) => Item,
   onSave: (data: any) => void,
@@ -30,7 +32,9 @@ type State = {
 
 class EditableListItem extends React.Component<any, Props, State> {
   state = { editMode: false }
+
   static defaultProps = {
+    palette: 'primary',
     className: ''
   }
 
@@ -53,11 +57,11 @@ class EditableListItem extends React.Component<any, Props, State> {
   }
 
   renderToolbar () {
-    let { onDelete, loading } = this.props
+    let { onDelete, loading, palette } = this.props
     let { editMode } = this.state
 
     return (
-      <ToolbarStyle className='ListItem-toolbar'>
+      <ToolbarStyle palette={palette} className='ListItem-toolbar'>
         {(() => {
           if (loading) {
             return (
@@ -109,11 +113,11 @@ class EditableListItem extends React.Component<any, Props, State> {
       transform
     })
 
-    let FormElement = createElement(formComponent || ListItemForm, {
+    let FormElement = createElement(formComponent || Form, {
       onSave: this.handleFormSave,
       onCancel: this.handleFormCancel,
       item,
-      settings: formSettings
+      settings: merge({}, defaultFormSettings, formSettings)
     })
 
     return (

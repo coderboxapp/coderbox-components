@@ -11,7 +11,7 @@ const Wrapper = styled.div`
 `
 
 storiesOf('Avatar', module)
-  .add('default', () => {
+  .add('simple usage', () => {
     return <Avatar />
   })
   .add('using email', () => {

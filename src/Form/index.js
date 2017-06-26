@@ -1,7 +1,10 @@
-import React from 'react'
+import React, { createElement } from 'react'
 import { bool, string, func, object } from 'prop-types'
 import { ucfirst } from 'utils'
+import { keys, sortBy, isArray } from 'lodash'
+
 import Button from 'Button'
+import FormItem from 'FormItem'
 
 // styles
 import { FormStyle } from './styles'
@@ -15,6 +18,8 @@ class Form extends React.Component {
     showCancel: bool,
     saveLabel: string,
     cancelLabel: string,
+    item: object,
+    settings: object,
     onSave: func,
     onCancel: func
   }
@@ -25,6 +30,8 @@ class Form extends React.Component {
     showButtons: true,
     showSave: true,
     showCancel: true,
+    item: null,
+    settings: null,
     onSave: () => true,
     onCancel: () => true
   }
@@ -67,15 +74,51 @@ class Form extends React.Component {
     this.items.push(item)
   }
 
+  createChildrenFromSettings (settings) {
+    let children = []
+    let { item } = this.props
+    let formKeys = sortBy(keys(settings), key => settings[key] && settings[key].sort)
+
+    formKeys.forEach((key, index) => {
+      let elementProps = settings[key]
+      if (elementProps !== null) {
+        let value = null
+
+        if (item) {
+          value = item[elementProps.name]
+
+          if (isArray(value)) {
+            value = value.concat()
+          }
+        }
+
+        let element = createElement(FormItem, {
+          ...elementProps,
+          value: value,
+          key: index
+        })
+
+        children.push(element)
+      }
+    })
+
+    return children
+  }
+
   render () {
     let {
       children,
       showButtons,
       showSave,
       showCancel,
+      settings,
       saveLabel,
       cancelLabel
     } = this.props
+
+    if (settings) {
+      children = this.createChildrenFromSettings(settings)
+    }
 
     return (
       <FormStyle className='Form'>

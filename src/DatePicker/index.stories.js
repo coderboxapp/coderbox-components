@@ -4,6 +4,6 @@ import { storiesOf, action } from '@storybook/react'
 import DatePicker from '.'
 
 storiesOf('DatePicker', module)
-  .add('default', () => {
+  .addWithInfo('simple usage', () => {
     return <DatePicker onChange={action('date selected: ')} />
   })
