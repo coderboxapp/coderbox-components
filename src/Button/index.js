@@ -1,5 +1,6 @@
 // @flow
 import React from 'react'
+import { bool, string } from 'prop-types'
 import { ButtonStyle } from './styles'
 import Icon from 'Icon'
 
@@ -21,6 +22,17 @@ const Button = ({ palette = 'grayscale', primary, icon, children, ...props }: Pr
       {children}
     </ButtonStyle>
   )
+}
+
+Button.propTypes = {
+  palette: string,
+  primary: bool,
+  icon: string
+}
+
+Button.defaultProps = {
+  primary: false,
+  palette: 'grayscale'
 }
 
 export default Button

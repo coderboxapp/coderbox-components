@@ -1,6 +1,6 @@
 {
-  "name": "coderbox-components",
-  "version": "1.0.40",
+  "name": "@coderbox/components",
+  "version": "1.0.41",
   "description": "React Components used at @Coderbox",
   "main": "lib/coderbox-components.js",
   "scripts": {
@@ -40,6 +40,7 @@
     "yargs": "7.1.0"
   },
   "dependencies": {
+    "@storybook/addon-info": "^3.1.6",
     "@storybook/react": "^3.1.5",
     "@storybook/storybook-deployer": "^2.0.0",
     "js-md5": "^0.4.2",

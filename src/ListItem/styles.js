@@ -89,4 +89,12 @@ export const MarkdownStyle = styled.div`
     border: 1px solid #E5E5E5;
     border-radius: 2px;
   }
+
+  & .ListItem-readmore {
+    border: 1px solid #CCC;
+    padding: 2px 14px;
+    border-radius: ${size('radius')};
+    margin: 10px 0px;
+    display: inline-block;
+  }
 `

@@ -21,14 +21,29 @@ const position = {
     end: new Date(2016, 5, 4)
   },
   technologies: [{ name: 'javascript' }, { name: 'css' }],
-  description: 'My job at **Coderbox** Software Inc. is divided into two roles.First, I act as Full-stack Developer and my responsibility is to implement the necessary features.'
+  description: 'My job at **Coderbox** Software Inc. is divided into two roles. \n\n First, I act as Full-stack Developer and my responsibility is to implement the necessary features.'
+}
+
+const transformPosition = p => {
+  let item = {}
+
+  item.id = p._id
+  item.title = p.title
+  item.subtitle = p.company.name
+  item.image = p.company.logo
+  item.description = p.description || ''
+  item.tags = p.technologies
+  item.dateRange = p.dateRange
+
+  return item
 }
 
 storiesOf('ListItem', module).add('default', () => {
   return (
     <Wrapper>
       <ListItem
-        item={position} />
+        item={position}
+        transform={transformPosition} />
     </Wrapper>
   )
 })

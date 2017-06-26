@@ -13,6 +13,7 @@ import Logo from 'Logo'
 import Spinner from 'Spinner'
 import Tags from 'Tags'
 import ListItem from 'ListItem'
+import EditableListItem from 'EditableListItem'
 
 import theme from './theme'
 import utils from './utils'
@@ -31,6 +32,7 @@ export {
   FormItem,
   Icon,
   ListItem,
+  EditableListItem,
   Logo,
   Spinner,
   Tags,

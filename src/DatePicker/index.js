@@ -1,5 +1,6 @@
 // @flow
 import React from 'react'
+import { bool, date, func, string, instanceOf } from 'prop-types'
 import moment from 'moment'
 
 // style
@@ -15,7 +16,7 @@ type Props = {
   onChange: (date: Moment) => void,
 }
 
-const DatePickerComponent = ({ value, palette = 'grayscale', hideMonths, onChange, ...props }: Props) => {
+const DatePicker = ({ value, palette = 'grayscale', hideMonths, onChange, ...props }: Props) => {
   let month = moment(value).month()
   let year = moment(value).year()
 
@@ -81,4 +82,11 @@ const DatePickerComponent = ({ value, palette = 'grayscale', hideMonths, onChang
   )
 }
 
-export default DatePickerComponent
+DatePicker.propTypes = {
+  value: instanceOf(Date),
+  palette: string,
+  hideMonths: bool,
+  onChange: func
+}
+
+export default DatePicker
