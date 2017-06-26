@@ -10,7 +10,7 @@ const technologies = [
 ]
 
 storiesOf('Autocomplete', module)
-  .add('default', () => {
+  .add('simple usage', () => {
     return (
       <div>
         <Autocomplete

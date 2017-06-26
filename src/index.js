@@ -18,7 +18,6 @@ import EditableListItem from 'EditableListItem'
 import theme from './theme'
 import utils from './utils'
 
-export * from 'Navigation'
 export {
   Autocomplete,
   AutocompleteLocation,

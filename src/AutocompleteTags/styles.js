@@ -7,7 +7,7 @@ export const AutocompleteTagsStyle = styled.div`
   border-radius: 4px;
 
   & input {
-    border: 1px dashed ${p => p.theme.borderColors.base} !important;
+    border: 1px dashed #D8D8D8 !important;
   }
 
   .pac-container {
