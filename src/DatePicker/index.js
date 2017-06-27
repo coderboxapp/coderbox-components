@@ -1,6 +1,6 @@
 // @flow
 import React from 'react'
-import { bool, oneOf, func, string, instanceOf } from 'prop-types'
+import { bool, oneOfType, func, string, instanceOf } from 'prop-types'
 import moment from 'moment'
 
 // style
@@ -83,7 +83,7 @@ const DatePicker = ({ value, palette = 'grayscale', hideMonths, onChange, ...pro
 }
 
 DatePicker.propTypes = {
-  value: oneOf([instanceOf(Date), string]),
+  value: oneOfType([instanceOf(Date), string]),
   palette: string,
   hideMonths: bool,
   onChange: func

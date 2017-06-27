@@ -22,3 +22,11 @@ export const ToolbarStyle = styled.div`
     color: ${palette(1)};
   }
 `
+
+export const SpinnerStyle = styled.div`
+  position: relative;
+  margin: 0px 5px;
+  & label {
+    margin-right: 10px;
+  }
+`

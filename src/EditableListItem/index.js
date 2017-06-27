@@ -106,6 +106,7 @@ class EditableListItem extends React.Component<any, Props, State> {
       formSettings,
       className
     } = this.props
+
     let { editMode } = this.state
 
     let ItemElement = createElement(itemComponent || ListItem, {
