@@ -3,6 +3,7 @@
 [![npm](https://img.shields.io/npm/dm/@coderbox/components.svg)](https://www.npmjs.com/package/@coderbox/components)
 [![npm](https://img.shields.io/npm/v/@coderbox/components.svg)](https://www.npmjs.com/package/@coderbox/components)
 [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
+[![codebeat badge](https://codebeat.co/badges/881b0552-e916-41a5-b2df-632f1610f7b9)](https://codebeat.co/projects/github-com-coderboxapp-coderbox-components-master)
 [![styled with prettier](https://img.shields.io/badge/styled_with-prettier-ff69b4.svg)](https://github.com/prettier/prettier)
 
 # Introduction
