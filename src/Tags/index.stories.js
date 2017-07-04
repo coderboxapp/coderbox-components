@@ -18,7 +18,7 @@ const Wrapper = styled.div`
 
 storiesOf('Tags', module)
   .add('default', () => {
-    return <Tags tags={technologies} />
+    return <Tags tags={technologies} tone={3} />
   })
   .add('with different color', () => {
     return (

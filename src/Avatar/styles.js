@@ -1,14 +1,14 @@
 import styled from 'styled-components'
-import { palette, size } from 'styled-theme'
+import { palette, size, key } from 'styled-theme'
 import { toPx } from '../utils'
 
 export const AvatarStyle = styled.div`
   display: inline-block;
-  padding: 10px;
+  padding: ${p => toPx(p.padding) || '10px'};
   border: 1px solid;
   border-color: ${palette('grayscale', 2)};
   border-radius: ${size('radius')};
-  box-shadow: ${p => p.theme.shadow};
+  box-shadow: ${key(['shadows', 'normal'])};
   background-color: white;
   text-align: center;
 `

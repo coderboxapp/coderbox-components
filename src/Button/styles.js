@@ -2,9 +2,9 @@ import styled from 'styled-components'
 import { font, palette, size } from 'styled-theme'
 import { toPx } from '../utils'
 
-const backgroundColor = p => palette(1, {grayscale: 3})
-const borderColor = p => palette(0, {grayscale: 2})
-const textColor = p => p.palette === 'grayscale' ? palette('grayscale', 0) : palette('grayscale', 4)
+const backgroundColor = p => palette(p.tone)
+const borderColor = p => palette(p.tone > 0 ? p.tone - 1 : 0)
+const textColor = p => palette('white', p.tone)
 
 export const ButtonStyle = styled.a`
   display: inline-flex;
@@ -23,7 +23,7 @@ export const ButtonStyle = styled.a`
   outline: none;
 
   &:hover {
-    background-color: ${p => palette(0, {grayscale: 2})}
+    background-color: ${p => palette((p.tone + 1) % 5)};
   }
 
   & i {

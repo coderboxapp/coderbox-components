@@ -7,14 +7,16 @@ import type { Tag } from 'coderbox-components'
 type Props = {
   tags: Tag[],
   palette?: string,
+  tone?: number,
   withClose?: boolean,
   onClick?: (tag: Tag) => void,
 }
 
 const TagsComponent = ({
   tags = [],
-  palette = 'grayscale',
-  withClose = false,
+  palette,
+  tone,
+  withClose,
   onClick,
   ...props
 }: Props) => {
@@ -27,8 +29,8 @@ const TagsComponent = ({
           <TagElement
             key={index}
             palette={palette}
-            onClick={() => onClick && onClick(tag)}
-          >
+            tone={tone}
+            onClick={() => onClick && onClick(tag)} >
             {tag.name}
           </TagElement>
         )
@@ -37,4 +39,9 @@ const TagsComponent = ({
   )
 }
 
+TagsComponent.defaultProps = {
+  palette: 'grayscale',
+  withClose: false,
+  tone: 1
+}
 export default TagsComponent

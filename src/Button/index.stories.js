@@ -19,8 +19,10 @@ storiesOf('Button', module)
   .addWithInfo('with different colors', () => {
     return (
       <Wrapper>
-        <Button palette='primary' onClick={action('it works')}>Primary Button</Button>
-        <Button palette='danger' onClick={action('it works')}>Danger Button</Button>
+        <Button palette='primary' withBorder tone={0} onClick={action('it works')}>Primary Button</Button>
+        <Button palette='primary' withBorder tone={3}>Primary Tone</Button>
+        <Button palette='grayscale' withBorder tone={1}>Grayscale</Button>
+        <Button palette='danger' withBorder>Danger Button</Button>
       </Wrapper>
     )
   })
