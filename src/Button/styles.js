@@ -4,7 +4,7 @@ import { toPx } from '../utils'
 
 const backgroundColor = p => palette(p.tone)
 const borderColor = p => palette(p.tone > 0 ? p.tone - 1 : 0)
-const textColor = p => palette('white', p.tone)
+const textColor = p => palette('grayscale', 0, p.palette !== 'grayscale')
 
 export const ButtonStyle = styled.a`
   display: inline-flex;
