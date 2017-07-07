@@ -24,7 +24,7 @@ storiesOf('Avatar', module)
     return (
       <Wrapper>
         <Avatar size={60} url='https://pbs.twimg.com/profile_images/618782450890575874/CWY4_Mef.jpg' />
-        <Avatar size={80} url='https://pbs.twimg.com/profile_images/618782450890575874/CWY4_Mef.jpg' />
+        <Avatar size={80} padding={5} url='https://pbs.twimg.com/profile_images/618782450890575874/CWY4_Mef.jpg' />
       </Wrapper>
     )
   })

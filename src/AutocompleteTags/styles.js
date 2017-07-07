@@ -1,13 +1,17 @@
 import styled from 'styled-components'
+import { size, palette } from 'styled-theme'
+
+const borderColor = p => palette('grayscale', 1)
 
 export const AutocompleteTagsStyle = styled.div`
   padding: 4px;
   box-sizing: border-box;
-  border: 1px solid rgb(218, 218, 218);
-  border-radius: 4px;
+  border: 1px solid;
+  border-color: ${borderColor};
+  border-radius: ${size('radius')};
 
   & input {
-    border: 1px dashed #D8D8D8 !important;
+    border: 1px dashed ${borderColor} !important;
   }
 
   .pac-container {

@@ -7,17 +7,18 @@ import Icon from 'Icon'
 type Props = {
   palette: string,
   primary?: boolean,
+  tone: number,
   icon?: string,
   children?: any,
 }
 
-const Button = ({ palette = 'grayscale', primary, icon, children, ...props }: Props) => {
+const Button = ({ palette = 'grayscale', tone, primary, icon, children, ...props }: Props) => {
   if (primary) {
     palette = 'primary'
   }
 
   return (
-    <ButtonStyle palette={palette} {...props}>
+    <ButtonStyle palette={palette} tone={tone} {...props}>
       {icon && <Icon name={icon} palette='white' />}
       {children}
     </ButtonStyle>
@@ -32,7 +33,8 @@ Button.propTypes = {
 
 Button.defaultProps = {
   primary: false,
-  palette: 'grayscale'
+  palette: 'grayscale',
+  tone: 1
 }
 
 export default Button
