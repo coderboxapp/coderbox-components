@@ -6,6 +6,7 @@
 		"stage-0"
 	],
 	"plugins": [
+		["styled-components"],
 		[
 			"module-resolver", {
 				"root": ["./src"],

@@ -29,11 +29,7 @@
   dependencies:
     "@storybook/addons" "^3.1.5"
 
-"@storybook/addons@^3.1.5":
-  version "3.1.5"
-  resolved "https://registry.yarnpkg.com/@storybook/addons/-/addons-3.1.5.tgz#3527f896dc130b9acefe6d5bad8c1b55201379b4"
-
-"@storybook/addons@^3.1.6":
+"@storybook/addons@^3.1.5", "@storybook/addons@^3.1.6":
   version "3.1.6"
   resolved "https://registry.yarnpkg.com/@storybook/addons/-/addons-3.1.6.tgz#29ef2348550f5a74d5e83dd75d04714cac751c39"
 
@@ -635,6 +631,12 @@ babel-plugin-react-docgen@^1.5.0:
     babel-types "^6.24.1"
     lodash "4.x.x"
     react-docgen "^2.15.0"
+
+babel-plugin-styled-components@^1.1.7:
+  version "1.1.7"
+  resolved "https://registry.yarnpkg.com/babel-plugin-styled-components/-/babel-plugin-styled-components-1.1.7.tgz#a92c239779cc80e7838b645c12865c61c4ca71ce"
+  dependencies:
+    stylis "^3.2.1"
 
 babel-plugin-syntax-async-functions@^6.8.0:
   version "6.13.0"
@@ -5224,6 +5226,10 @@ styled-tools@^0.1.4:
 stylis@^3.0.19:
   version "3.1.9"
   resolved "https://registry.yarnpkg.com/stylis/-/stylis-3.1.9.tgz#638370451f980437f57c59e58d2e296be29fafb7"
+
+stylis@^3.2.1:
+  version "3.2.3"
+  resolved "https://registry.yarnpkg.com/stylis/-/stylis-3.2.3.tgz#fed751d792af3f48a247769f55aca05c1a100a09"
 
 supports-color@^2.0.0:
   version "2.0.0"
