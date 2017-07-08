@@ -10,6 +10,11 @@ const technologies = [
   { name: 'react' }
 ]
 
+const selectedTechnologies = [
+  { name: '.net' },
+  { name: 'java' }
+]
+
 const Wrapper = styled.div`
   > * {
     margin-bottom: 4px;
@@ -36,6 +41,17 @@ storiesOf('Tags', module)
         palette='primary'
         withClose
         onClick={action('remove tag:')}
+      />
+    )
+  })
+  .add('selected', () => {
+    return (
+      <Tags
+        tags={technologies}
+        selected={selectedTechnologies}
+        palette='grayscale'
+        selectedPalette='danger'
+        tone={2}
       />
     )
   })

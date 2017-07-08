@@ -12,6 +12,10 @@ theme.palette = {
   black: coolorsToHex('https://coolors.co/000000-000000-000000-000000-000000')
 }
 
+theme.hoverPalette = {
+  primary: coolorsToHex('https://coolors.co/c2185b-e91e63-f06292-f48caf-f8bbd0')
+}
+
 theme.reversePalette = reversePalette(theme.palette)
 theme.opositePalette = {
   black: theme.palette.primary,

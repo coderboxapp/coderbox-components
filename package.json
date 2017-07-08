@@ -22,8 +22,8 @@
   "author": "Ghiura Alexandru <ghalex@gmail.com>",
   "license": "ISC",
   "devDependencies": {
-    "@storybook/react": "^3.1.5",
     "@storybook/addon-info": "^3.1.6",
+    "@storybook/react": "^3.1.5",
     "@storybook/storybook-deployer": "^2.0.0",
     "babel-cli": "6.24.1",
     "babel-core": "6.24.1",
