@@ -62,7 +62,7 @@ export const DatesStyle = styled(Flex)`
 `
 
 export const MarkdownStyle = styled.div`
-  color: ${palette('grayscale', 0)};
+  color: ${palette('grayscale', 1)};
   line-height: 22px;
   font-size: 14px;
 

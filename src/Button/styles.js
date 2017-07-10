@@ -16,7 +16,7 @@ export const ButtonStyle = styled.a`
   color: ${textColor};
   border-radius: ${p => toPx(p.radius) || 0};
   padding: 0px 35px;
-  line-height: 40px;
+  line-height: 38px;
   font-family: ${font('primary')};
   font-size: ${size('fontSize')};
   font-weight: 400;

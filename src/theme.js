@@ -4,7 +4,7 @@ import { reversePalette } from 'styled-theme/composer'
 const theme = {}
 
 theme.palette = {
-  grayscale: coolorsToHex('https://coolors.co/2B2B2B-888888-c1c1c1-e0e0e0-ffffff'),
+  grayscale: coolorsToHex('https://coolors.co/2B2B2B-888888-c1c1c1-e2e2e2-ffffff'),
   primary: coolorsToHex('https://coolors.co/106cb9-1b8ceb-65b3e3-82c3ed-cde6fb'),
   success: coolorsToHex('https://coolors.co/388e3c-4caf50-7cc47f-9fd4a1-c8e6c9'),
   danger: coolorsToHex('https://coolors.co/c2185b-e91e63-f06292-f48caf-f8bbd0'),

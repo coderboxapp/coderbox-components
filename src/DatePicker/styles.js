@@ -5,7 +5,7 @@ import Flex from 'Flexbox'
 export const DatePickerStyle = styled(Flex)`
   & select {
     border: 1px solid;
-    border-color: ${palette(1)};
+    border-color: ${palette(2)};
     border-radius: ${size('radius')};
     font-family: ${font('primary')};
     font-size: ${size('fontSize')};
