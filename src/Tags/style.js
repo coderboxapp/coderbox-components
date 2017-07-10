@@ -1,16 +1,17 @@
 import styled from 'styled-components'
 import { font, palette, key } from 'styled-theme'
+import { fromProps, darken } from 'styled-utils'
 
-const backgroundColor = p => palette(p.tone)
-const borderColor = p => palette(p.tone > 0 ? p.tone - 1 : 0)
-const textColor = p => palette('grayscale', 0, p.palette !== 'grayscale')
+const backgroundColor = p => palette(fromProps(p), p.tone)
+const borderColor = p => darken(palette(fromProps(p), p.tone, p.reverse), 0.30)
+const textColor = p => palette('grayscale', 0, true)
 
 export const TagStyle = styled.div`
   display: inline-block;
   font-family: ${font('primary')};
   font-size: 12px;
   margin: 2px 4px 2px 0px;
-  padding: 0px 12px 0px 12px;
+  padding: 0 12px;
   border: 1px solid;
   border-color: ${borderColor};
   background-color: ${backgroundColor};

@@ -1,7 +1,7 @@
 
 import React from 'react'
 import { storiesOf } from '@storybook/react'
-import { toPx } from 'utils'
+import { toPx } from 'styled-utils'
 import styled from 'styled-components'
 import Spinner from '.'
 import Button from 'Button'

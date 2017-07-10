@@ -14,8 +14,8 @@ storiesOf('Logo', module)
     return (
       <Wrapper>
         <Logo />
-        <Logo palette='primary' />
-        <Logo palette='success' />
+        <Logo isPrimary />
+        <Logo isSuccess />
         <Logo color='#FF0000' href='www.google.com' />
       </Wrapper>
     )

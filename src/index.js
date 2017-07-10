@@ -16,7 +16,6 @@ import ListItem from 'ListItem'
 import EditableListItem from 'EditableListItem'
 
 import theme from './theme'
-import utils from './utils'
 
 export {
   Autocomplete,
@@ -35,6 +34,5 @@ export {
   Logo,
   Spinner,
   Tags,
-  theme,
-  utils
+  theme
 }

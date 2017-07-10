@@ -23,14 +23,15 @@ const Wrapper = styled.div`
 
 storiesOf('Tags', module)
   .add('default', () => {
-    return <Tags tags={technologies} tone={3} />
+    return <Tags tags={technologies} />
   })
-  .add('with different color', () => {
+  .add('with all colors', () => {
     return (
       <Wrapper>
-        <Tags tags={technologies} palette='primary' />
-        <Tags tags={technologies} palette='success' />
-        <Tags tags={technologies} palette='danger' />
+        <Tags tags={technologies} reverse />
+        <Tags tags={technologies} isPrimary />
+        <Tags tags={technologies} isPrimary reverse />
+        <Tags tags={technologies} isSuccess />
       </Wrapper>
     )
   })

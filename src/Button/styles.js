@@ -1,10 +1,10 @@
 import styled from 'styled-components'
 import { font, palette, size } from 'styled-theme'
-import { toPx } from '../utils'
+import { fromProps, toPx, darken } from 'styled-utils'
 
-const backgroundColor = p => palette(p.tone)
-const borderColor = p => palette(p.tone > 0 ? p.tone - 1 : 0)
-const textColor = p => palette('grayscale', 0, p.palette !== 'grayscale')
+const backgroundColor = p => palette(fromProps(p), p.tone)
+const borderColor = p => darken(palette(fromProps(p), p.tone, p.reverse), 0.15)
+const textColor = p => palette('grayscale', 0, true)
 
 export const ButtonStyle = styled.a`
   display: inline-flex;
@@ -15,7 +15,8 @@ export const ButtonStyle = styled.a`
   background-color: ${backgroundColor};
   color: ${textColor};
   border-radius: ${p => toPx(p.radius) || 0};
-  padding: 8px 35px;
+  padding: 0px 35px;
+  line-height: 40px;
   font-family: ${font('primary')};
   font-size: ${size('fontSize')};
   font-weight: 400;

@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 import { palette, size, key } from 'styled-theme'
-import { toPx } from '../utils'
+import { toPx } from 'styled-utils'
 
 export const AvatarStyle = styled.div`
   display: inline-block;

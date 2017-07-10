@@ -10,7 +10,7 @@ export default {
     bottom: '-4px',
     zIndex: '4',
     marginTop: '-1px',
-    border: '1px solid #dadada',
+    border: '1px solid #c1c1c1',
     background: 'white',
     fontSize: '14px',
     display: 'none',
@@ -32,7 +32,7 @@ export default {
     padding: '8px 12px',
     textAlign: 'left',
     fontFamily: 'Open Sans',
-    borderBottom: '1px solid #DADADA'
+    borderBottom: '1px solid #c1c1c1'
   },
   suggestionHighlighted: {
     background: '#e8e8e8'
@@ -40,7 +40,7 @@ export default {
   input: {
     width: '100%',
     boxSizing: 'border-box',
-    border: '1px solid #dadada',
+    border: '1px solid #c1c1c1',
     borderRadius: 4,
     fontSize: 14,
     fontFamily: 'Open Sans',

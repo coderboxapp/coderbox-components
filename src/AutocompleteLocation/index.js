@@ -2,7 +2,7 @@
 import React from 'react'
 import { isString } from 'lodash'
 import Autocomplete from 'react-google-autocomplete'
-import { AutocompleteLocationStyle } from './styles'
+import { AutocompleteWrapper } from './styles'
 
 type Address = {
   formatted_address: string,
@@ -68,7 +68,7 @@ class AutocompleteLocation extends React.Component<any, Props, State> {
   render () {
     let { placeholder } = this.props
     return (
-      <AutocompleteLocationStyle>
+      <AutocompleteWrapper>
         <Autocomplete
           types={['(regions)']}
           className='form-input'
@@ -78,7 +78,7 @@ class AutocompleteLocation extends React.Component<any, Props, State> {
           onPlaceSelected={this.onPlaceSelected}
         />
 
-      </AutocompleteLocationStyle>
+      </AutocompleteWrapper>
     )
   }
 }

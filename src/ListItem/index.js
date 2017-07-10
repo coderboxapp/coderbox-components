@@ -101,7 +101,7 @@ class ListItem extends React.Component<any, Props, State> {
     let { hideBlocks } = this.props
     if (hideBlocks && hideBlocks.indexOf('tags') > -1) return null
 
-    return <Tags className='ListItem-tags' tags={tags} tone={3} />
+    return <Tags className='ListItem-tags' tags={tags} reverse />
   }
 
   renderDescription (description: string) {

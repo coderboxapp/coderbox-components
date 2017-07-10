@@ -15,8 +15,8 @@ storiesOf('Icon', module)
     return (
       <Wrapper>
         <Icon name='star' />
-        <Icon name='extension' palette='primary' />
-        <Icon name='work' palette='danger' />
+        <Icon name='extension' isPrimary />
+        <Icon name='work' isDanger />
       </Wrapper>
     )
   })

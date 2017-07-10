@@ -1,6 +1,5 @@
 import React, { createElement } from 'react'
 import { bool, string, func, object } from 'prop-types'
-import { ucfirst } from 'utils'
 import { keys, sortBy, isArray } from 'lodash'
 
 import Button from 'Button'
@@ -126,7 +125,7 @@ class Form extends React.Component {
         {showButtons
           ? <div className='Form-buttons'>
             {showSave &&
-            <Button primary onClick={() => this.props.onSave(this)}>
+            <Button isPrimary onClick={() => this.props.onSave(this)}>
               {saveLabel}
             </Button>}
             {showCancel &&
@@ -138,6 +137,10 @@ class Form extends React.Component {
       </FormStyle>
     )
   }
+}
+
+const ucfirst = txt => {
+  return txt.charAt(0).toUpperCase() + txt.slice(1)
 }
 
 Form.Validators = {

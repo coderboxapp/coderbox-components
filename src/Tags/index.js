@@ -29,14 +29,15 @@ const TagsComponent = ({
   const isSelected = (tag) => findIndex(selected, s => s.name === tag.name) > -1
 
   return (
-    <div {...props}>
+    <div>
       {tags.map((tag, index) => {
         return (
           <TagElement
             key={index}
-            palette={isSelected(tag) ? selectedPalette : palette}
+            palette={palette}
             tone={tone}
-            onClick={() => onClick && onClick(tag)} >
+            onClick={() => onClick && onClick(tag)}
+            {...props} >
             {tag.name}
           </TagElement>
         )

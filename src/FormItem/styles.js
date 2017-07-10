@@ -21,7 +21,7 @@ export const FormItemStyle = styled.div`
     font-size: ${size('fontSize')};
     box-sizing: border-box;
     border: 1px solid;
-    border-color: ${palette('grayscale', 1)};
+    border-color: ${palette('grayscale', 2)};
     border-radius: ${size('radius')};
     padding: 8px 8px;
     outline: none;

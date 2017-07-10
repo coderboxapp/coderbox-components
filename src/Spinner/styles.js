@@ -1,6 +1,6 @@
 import styled, { keyframes } from 'styled-components'
 import { font, palette, size } from 'styled-theme'
-import { toPx } from '../utils'
+import { toPx } from 'styled-utils'
 
 const full = () => `
   position: absolute;

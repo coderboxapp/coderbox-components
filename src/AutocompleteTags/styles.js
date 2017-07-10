@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 import { size, palette } from 'styled-theme'
 
-const borderColor = p => palette('grayscale', 1)
+const borderColor = p => palette('grayscale', 2)
 
 export const AutocompleteTagsStyle = styled.div`
   padding: 4px;

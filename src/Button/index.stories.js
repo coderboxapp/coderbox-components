@@ -16,13 +16,14 @@ storiesOf('Button', module)
     'simple usage',
     () => <Button withBorder>Hello</Button>
   )
-  .addWithInfo('with different colors', () => {
+  .addWithInfo('with all the colors', () => {
     return (
       <Wrapper>
-        <Button palette='primary' withBorder tone={0} onClick={action('it works')}>Primary Button</Button>
-        <Button palette='primary' withBorder tone={3}>Primary Tone</Button>
-        <Button palette='grayscale' withBorder tone={1}>Grayscale</Button>
-        <Button palette='danger' withBorder>Danger Button</Button>
+        <Button isPrimary onClick={action('it works')}>Primary Button</Button>
+        <Button isPrimary reverse>Primary Reverse</Button>
+        <Button isSuccess>Success</Button>
+        <Button isDanger>Danger</Button>
+        <Button isGrayscale>Grayscale</Button>
       </Wrapper>
     )
   })
@@ -30,8 +31,8 @@ storiesOf('Button', module)
     return (
       <Wrapper>
         <Button icon='people'>Star Button</Button>
-        <Button palette='primary' icon='date_range'>Star Button</Button>
-        <Button palette='success' icon='favorite'>Favorite Button</Button>
+        <Button isPrimary icon='date_range'>Star Button</Button>
+        <Button isSuccess reverse icon='favorite'>Favorite Button</Button>
       </Wrapper>
     )
   })
