@@ -1,7 +1,7 @@
 // @flow
 import React from 'react'
 import { findIndex, remove, last, isArray, assign } from 'lodash'
-import { AutocompleteTagsStyle, TagsStyle } from './styles'
+import { AutocompleteTagsWrapper, TagsWrapper } from './styles'
 import Tags from 'Tags'
 import Autocomplete from 'Autocomplete'
 
@@ -14,9 +14,8 @@ type Props = {
   allowNew: boolean,
   toLowercase: boolean,
   placeholder?: string,
-  className?: string,
   onChange?: (tags: Tag[]) => void,
-  palette?: 'grayscale' | 'primary' | 'success'
+  palette?: 'grayscale' | 'primary' | 'success' | 'danger',
 }
 
 type State = {
@@ -36,7 +35,6 @@ const Keys = {
 class AutocompleteTags extends React.Component<any, Props, State> {
   static defaultProps = {
     palette: 'primary',
-    className: '',
     allowNew: false,
     toLowercase: false
   }
@@ -56,16 +54,22 @@ class AutocompleteTags extends React.Component<any, Props, State> {
     let tags = this.state.tags.concat()
 
     if (findIndex(tags, t => t.name === tag.name) === -1) {
-      tags.push(assign({}, tag, {name: this.props.toLowercase ? tag.name.toLocaleLowerCase() : tag.name}))
+      tags.push(
+        assign({}, tag, {
+          name: this.props.toLowercase
+            ? tag.name.toLocaleLowerCase()
+            : tag.name
+        })
+      )
 
       if (this.props.allowNew) {
-        this.setState({tags: tags})
+        this.setState({ tags: tags })
         if (this.props.onChange) {
           this.props.onChange(tags)
         }
       } else {
         if (findIndex(this.props.suggestions, t => t.name === tag.name) > -1) {
-          this.setState({tags: tags})
+          this.setState({ tags: tags })
           if (this.props.onChange) {
             this.props.onChange(tags)
           }
@@ -77,7 +81,7 @@ class AutocompleteTags extends React.Component<any, Props, State> {
   removeTag (tag: Tag) {
     let tags = remove(this.state.tags, t => t.name !== tag.name)
 
-    this.setState({tags: tags})
+    this.setState({ tags: tags })
 
     if (this.props.onChange) {
       this.props.onChange(tags)
@@ -85,15 +89,12 @@ class AutocompleteTags extends React.Component<any, Props, State> {
   }
 
   onKeyDown (evt: KeyboardEvent) {
-    if (
-      evt.keyCode === Keys.ENTER ||
-      evt.keyCode === Keys.COMMA
-    ) {
+    if (evt.keyCode === Keys.ENTER || evt.keyCode === Keys.COMMA) {
       evt.preventDefault()
 
       if (this.state.suggestion) {
         this.addTag(this.state.suggestion)
-        this.setState({suggestion: null})
+        this.setState({ suggestion: null })
       }
     }
 
@@ -105,26 +106,30 @@ class AutocompleteTags extends React.Component<any, Props, State> {
   }
 
   render () {
-    let { suggestions, palette, placeholder, className } = this.props
+    let { suggestions, palette, placeholder, ...props } = this.props
     let { tags, suggestion } = this.state
-
-    if (!className) {
-      className = ''
-    }
+    // let { isPrimary, isSecondary, isSuccess, isDanger, isGrayscale } = this.props
 
     return (
-      <AutocompleteTagsStyle className={`AutocompleteTags ${className}`}>
-        <TagsStyle display={tags.length > 0}>
-          <Tags palette={palette} tags={tags} onClick={(tag) => this.removeTag(tag)} withClose />
-        </TagsStyle>
+      <AutocompleteTagsWrapper {...props}>
+        <TagsWrapper display={tags.length > 0}>
+          <Tags
+            palette={palette}
+            tags={tags}
+            onClick={tag => this.removeTag(tag)}
+            withClose
+            {...props}
+          />
+        </TagsWrapper>
         <Autocomplete
           value={suggestion}
           suggestions={suggestions}
           placeholder={placeholder}
-          onChange={(suggestion: Tag) => this.setState({suggestion: suggestion})}
+          onChange={(suggestion: Tag) =>
+            this.setState({ suggestion: suggestion })}
           onKeyDown={(evt: KeyboardEvent) => this.onKeyDown(evt)}
         />
-      </AutocompleteTagsStyle>
+      </AutocompleteTagsWrapper>
     )
   }
 }

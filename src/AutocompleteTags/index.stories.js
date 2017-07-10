@@ -14,6 +14,7 @@ storiesOf('AutocompleteTags', module)
     return (
       <div>
         <AutocompleteTags
+          isPrimary
           suggestions={technologies}
           placeholder='Add technology (ex: java, react)' />
       </div>
@@ -24,7 +25,8 @@ storiesOf('AutocompleteTags', module)
       <div>
         <AutocompleteTags
           allowNew
-          palette='danger'
+          isGrayscale
+          reverse
           suggestions={technologies}
           placeholder='Add technology (ex: java, react)' />
       </div>
