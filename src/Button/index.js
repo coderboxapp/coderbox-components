@@ -1,6 +1,6 @@
 // @flow
 import React from 'react'
-import { bool, string } from 'prop-types'
+import { string } from 'prop-types'
 import { ButtonStyle } from './styles'
 import Icon from 'Icon'
 

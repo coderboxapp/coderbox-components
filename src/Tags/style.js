@@ -3,7 +3,7 @@ import { font, palette, key } from 'styled-theme'
 import { fromProps, darken } from 'styled-utils'
 
 const backgroundColor = p => palette(fromProps(p), p.tone)
-const borderColor = p => darken(palette(fromProps(p), p.tone, p.reverse), 0.30)
+const borderColor = p => darken(palette(fromProps(p), p.tone, p.reverse), 0.20)
 const textColor = p => palette('grayscale', 0, true)
 
 export const TagStyle = styled.div`

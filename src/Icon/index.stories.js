@@ -21,5 +21,8 @@ storiesOf('Icon', module)
     )
   })
   .add('with custom size', () => (
-    <Icon name='redeem' palette='success' size={48} />
+    <Wrapper>
+      <Icon name='redeem' size={48} />
+      <Icon name='bug_report' isDanger size={50} />
+    </Wrapper>
   ))

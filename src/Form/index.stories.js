@@ -28,12 +28,14 @@ const settings = {
 }
 
 storiesOf('Form & FormItem', module)
-  .addWithInfo('simple usage', () => {
+  .add('simple usage', () => {
     return (
       <Form onSave={form => action('form submit')(form.data())}>
         <FormItem
           name='name'
           label='Name:'
+          value=''
+          defaultValue=''
           component='input'
           componentProps={{
             type: 'text',
@@ -63,7 +65,7 @@ storiesOf('Form & FormItem', module)
       </Form>
     )
   })
-  .addWithInfo('with validators', () => {
+  .add('with validators', () => {
     const handleSave = form => {
       if (form.validate()) {
         action('form submit')(form.data())
@@ -96,7 +98,7 @@ storiesOf('Form & FormItem', module)
       </Form>
     )
   })
-  .addWithInfo('using settings', () => {
+  .add('using settings', () => {
     return (
       <Form settings={settings} onSave={form => action('form submit')(form.data())} />
     )
