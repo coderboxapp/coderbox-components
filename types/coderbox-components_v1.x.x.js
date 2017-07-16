@@ -21,4 +21,14 @@ declare module 'coderbox-components' {
     icon: string,
     description: string
   }
+
+  declare type Colors = {
+    palette: string,
+    tone: number,
+    isPrimary: boolean,
+    isSecondary: boolean,
+    isSuccess: boolean,
+    isDanger: boolean,
+    isGrayscale: boolean
+  }
 }

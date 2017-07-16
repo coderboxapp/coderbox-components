@@ -1,22 +1,22 @@
 // @flow
 import React from 'react'
 import { string } from 'prop-types'
-import { ButtonStyle } from './styles'
 import Icon from 'Icon'
+import { ButtonWrapper } from './styles'
 
-type Props = {
-  palette: string,
-  tone: number,
+import type { Colors } from 'coderbox-components'
+
+type Props = Colors & {
   icon?: string,
   children?: any,
 }
 
-const Button = ({ palette = 'grayscale', tone, icon, children, ...props }: Props) => {
+const Button = ({ palette, tone, icon, children, ...props }: Props) => {
   return (
-    <ButtonStyle palette={palette} tone={tone} {...props}>
+    <ButtonWrapper palette={palette} tone={tone} {...props}>
       {icon && <Icon name={icon} palette='white' />}
       {children}
-    </ButtonStyle>
+    </ButtonWrapper>
   )
 }
 
@@ -26,8 +26,8 @@ Button.propTypes = {
 }
 
 Button.defaultProps = {
-  palette: 'grayscale',
-  tone: 1
+  palette: 'white',
+  tone: 0
 }
 
 export default Button
