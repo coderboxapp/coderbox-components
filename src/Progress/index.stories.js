@@ -13,7 +13,7 @@ const Wrapper = styled.div`
 storiesOf('Progress', module)
   .addWithInfo(
     'simple usage',
-    () => <Progress value={35} />
+    () => <Progress value={35} isGrayscale />
   )
   .addWithInfo(
     'different colors',

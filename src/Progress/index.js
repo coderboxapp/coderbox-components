@@ -17,8 +17,7 @@ const Progress = ({ value, max, ...props }: Props) => {
 
 Progress.defaultProps = {
   value: 0,
-  max: 100,
-  tone: 1
+  max: 100
 }
 
 export default Progress

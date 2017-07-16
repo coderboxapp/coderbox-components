@@ -1,32 +1,28 @@
 // @flow
 import React from 'react'
-import { findIndex } from 'lodash'
+import { array, string } from 'prop-types'
+// import { findIndex } from 'lodash'
 import { TagStyle, TagCloseStyle } from './style'
 
-import type { Tag } from 'coderbox-components'
+import type { Tag, Colors } from 'coderbox-components'
 
-type Props = {
+type Props = Colors & {
   tags: Tag[],
   selected?: Tag[],
-  palette?: string,
-  selectedPalette?: string,
-  tone?: number,
   withClose?: boolean,
   onClick?: (tag: Tag) => void,
 }
 
-const TagsComponent = ({
+const Tags = ({
   tags = [],
   selected = [],
   palette,
-  selectedPalette,
-  tone,
   withClose,
   onClick,
   ...props
 }: Props) => {
   const TagElement = withClose ? TagCloseStyle : TagStyle
-  const isSelected = (tag) => findIndex(selected, s => s.name === tag.name) > -1
+  // const isSelected = (tag) => findIndex(selected, s => s.name === tag.name) > -1
 
   return (
     <div>
@@ -35,7 +31,6 @@ const TagsComponent = ({
           <TagElement
             key={index}
             palette={palette}
-            tone={tone}
             onClick={() => onClick && onClick(tag)}
             {...props} >
             {tag.name}
@@ -46,11 +41,15 @@ const TagsComponent = ({
   )
 }
 
-TagsComponent.defaultProps = {
-  palette: 'grayscale',
-  selectedPalette: 'primary',
-  selected: [],
-  withClose: false,
-  tone: 1
+Tags.propTypes = {
+  tags: array,
+  selected: array,
+  palette: string
 }
-export default TagsComponent
+
+Tags.defaultProps = {
+  palette: 'white',
+  selected: [],
+  withClose: false
+}
+export default Tags

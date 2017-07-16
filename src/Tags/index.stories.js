@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import { storiesOf, action } from '@storybook/react'
+import { storiesOf } from '@storybook/react'
 import Tags from '.'
 
 const technologies = [
@@ -28,21 +28,37 @@ storiesOf('Tags', module)
   .add('with all colors', () => {
     return (
       <Wrapper>
-        <Tags tags={technologies} reverse />
+        <Tags tags={technologies} />
         <Tags tags={technologies} isPrimary />
-        <Tags tags={technologies} isPrimary reverse />
         <Tags tags={technologies} isSuccess />
+        <Tags tags={technologies} isDanger />
+        <Tags tags={technologies} isGrayscale />
+        <Tags tags={technologies} isBlack />
       </Wrapper>
     )
   })
   .add('with close', () => {
     return (
-      <Tags
-        tags={technologies}
-        palette='primary'
-        withClose
-        onClick={action('remove tag:')}
-      />
+      <Wrapper>
+        <Tags tags={technologies} withClose />
+        <Tags tags={technologies} isPrimary withClose />
+        <Tags tags={technologies} isSuccess withClose />
+        <Tags tags={technologies} isDanger withClose />
+        <Tags tags={technologies} isGrayscale withClose />
+        <Tags tags={technologies} isBlack withClose />
+      </Wrapper>
+    )
+  })
+  .add('outlined', () => {
+    return (
+      <Wrapper>
+        <Tags tags={technologies} withClose isOutlined />
+        <Tags tags={technologies} isPrimary withClose isOutlined />
+        <Tags tags={technologies} isSuccess withClose isOutlined />
+        <Tags tags={technologies} isDanger withClose isOutlined />
+        <Tags tags={technologies} isGrayscale withClose isOutlined />
+        <Tags tags={technologies} isBlack withClose isOutlined />
+      </Wrapper>
     )
   })
   .add('selected', () => {
@@ -51,8 +67,7 @@ storiesOf('Tags', module)
         tags={technologies}
         selected={selectedTechnologies}
         palette='grayscale'
-        selectedPalette='danger'
-        tone={2}
+        reverse
       />
     )
   })

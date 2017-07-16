@@ -2,14 +2,15 @@
 import React from 'react'
 import { LogoStyle, LogoSvgStyle } from './styles'
 
-type Props = {
+import type { Colors } from 'coderbox-components'
+
+type Props = Colors & {
   size: number,
   color?: string,
-  href?: string,
-  palette?: string
+  href?: string
 }
 
-const LogoComponent = ({ size = 50, palette = 'grayscale', color, href, ...props }: Props) => {
+const LogoComponent = ({ size = 50, palette = 'white', color, href, ...props }: Props) => {
   return (
     <LogoStyle size={size} {...props}>
       <a href={href}>

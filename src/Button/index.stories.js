@@ -19,6 +19,7 @@ storiesOf('Button', module)
           <Button isSuccess>Success</Button>
           <Button isDanger>Danger</Button>
           <Button isGrayscale>Grayscale</Button>
+          <Button isBlack>Black</Button>
         </div>
         <div>
           <Button reverse>Normal</Button>
@@ -26,6 +27,7 @@ storiesOf('Button', module)
           <Button isSuccess reverse>Success</Button>
           <Button isDanger reverse>Danger</Button>
           <Button isGrayscale reverse>Grayscale</Button>
+          <Button isBlack reverse>Black</Button>
         </div>
         <div>
           <Button>Normal</Button>
@@ -33,6 +35,7 @@ storiesOf('Button', module)
           <Button isSuccess isOutlined>Success</Button>
           <Button isDanger isOutlined>Danger</Button>
           <Button isGrayscale isOutlined>Grayscale</Button>
+          <Button isBlack isOutlined>Black</Button>
         </div>
       </Wrapper>
     )

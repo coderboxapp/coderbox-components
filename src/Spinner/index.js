@@ -1,13 +1,15 @@
 // @flow
 import React from 'react'
 import { times, map } from 'lodash'
+import { extractProps } from 'styled-utils'
 import { Spinner, SpinnerLabel, SpinnerContainer } from './styles'
 
-type Props = {
+import type { Colors } from 'coderbox-components'
+
+type Props = Colors & {
   hide?: boolean,
   hideLabel?: boolean,
   hideOverlay?: boolean,
-  palette?: string,
   align?: string,
   overlay?: string,
   size?: number,
@@ -20,7 +22,7 @@ const SpinnerComponent = ({
   hideLabel,
   hideOverlay,
   align = 'center',
-  palette = 'primary',
+  palette = 'white',
   overlay = 'rgba(255, 255, 255, 0.4)',
   size,
   color,
@@ -28,6 +30,7 @@ const SpinnerComponent = ({
   ...props
 }: Props) => {
   let divs = times(12, String)
+  let colors = extractProps(props)
 
   return (
     <SpinnerContainer
@@ -38,10 +41,10 @@ const SpinnerComponent = ({
       align={align}
       {...props}
     >
-      <Spinner palette={palette} size={size} color={color} hideLabel={hideLabel}>
+      <Spinner palette={palette} size={size} color={color} hideLabel={hideLabel} {...colors}>
         {map(divs, (div, index) => <div key={index} />)}
       </Spinner>
-      {!hideLabel && <SpinnerLabel palette={palette}>{label || 'Loading...'}</SpinnerLabel>}
+      {!hideLabel && <SpinnerLabel palette={palette} {...colors}>{label || 'Loading...'}</SpinnerLabel>}
     </SpinnerContainer>
   )
 }

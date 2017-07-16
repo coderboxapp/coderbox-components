@@ -9,7 +9,7 @@ theme.palette = {
   success: coolorsToHex('https://coolors.co/388e3c-4caf50-7cc47f-9fd4a1-c8e6c9'),
   danger: coolorsToHex('https://coolors.co/c2185b-e91e63-f06292-f48caf-f8bbd0'),
   white: coolorsToHex('https://coolors.co/ffffff-ffffff-ffffff-ffffff-000000'),
-  black: coolorsToHex('https://coolors.co/000000-000000-000000-000000-FFFFFF')
+  black: coolorsToHex('https://coolors.co/000000-000000-000000-000000-ffffff')
 }
 
 theme.reversePalette = reversePalette(theme.palette)

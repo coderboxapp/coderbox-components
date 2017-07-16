@@ -13,9 +13,10 @@ storiesOf('Logo', module)
   .add('with different color', () => {
     return (
       <Wrapper>
-        <Logo />
+        <Logo isBlack />
         <Logo isPrimary />
         <Logo isSuccess />
+        <Logo isDanger />
         <Logo color='#FF0000' href='www.google.com' />
       </Wrapper>
     )

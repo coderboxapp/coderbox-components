@@ -1,22 +1,14 @@
 import styled from 'styled-components'
-import { font, palette, size } from 'styled-theme'
-import { fromProps, toPx } from 'styled-utils'
-
-const isWhite = p => fromProps(p) === 'white'
-const hasBorder = p => isWhite(p) || p.isOutlined
-const tone = p => p.isGrayscale && !p.tone ? 1 : p.tone
-
-const backgroundColor = p => p.isOutlined ? 'transparent' : palette(fromProps(p), tone(p))
-const borderColor = p => isWhite(p) ? palette('grayscale', 2) : palette(fromProps(p), tone(p))
-const textColor = p => p.isOutlined ? palette(fromProps(p), tone(p)) : palette('grayscale', 0, !isWhite(p))
+import { font, size } from 'styled-theme'
+import { hasBorder, textColor, bgColor, borderColor, toPx } from 'styled-utils'
 
 export const ButtonWrapper = styled.a`
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  border: ${p => hasBorder(p) ? '1px solid' : 'none'};
-  border-color: ${borderColor};
-  background-color: ${backgroundColor};
+  border: 1px solid;
+  border-color: ${p => hasBorder(p) ? borderColor(p) : 'transparent'};
+  background-color: ${bgColor};
   color: ${textColor};
   border-radius: ${p => toPx(p.radius) || '2px'};
   padding: 0px 35px;

@@ -11,9 +11,9 @@ type Props = Colors & {
   children?: any,
 }
 
-const Button = ({ palette, tone, icon, children, ...props }: Props) => {
+const Button = ({ palette, icon, children, ...props }: Props) => {
   return (
-    <ButtonWrapper palette={palette} tone={tone} {...props}>
+    <ButtonWrapper palette={palette} {...props}>
       {icon && <Icon name={icon} palette='white' />}
       {children}
     </ButtonWrapper>
@@ -26,8 +26,7 @@ Button.propTypes = {
 }
 
 Button.defaultProps = {
-  palette: 'white',
-  tone: 0
+  palette: 'white'
 }
 
 export default Button

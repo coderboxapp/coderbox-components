@@ -1,6 +1,6 @@
 import styled, { keyframes } from 'styled-components'
-import { font, palette, size } from 'styled-theme'
-import { toPx } from 'styled-utils'
+import { font, size } from 'styled-theme'
+import { toPx, bgColor } from 'styled-utils'
 
 const full = () => `
   position: absolute;
@@ -44,7 +44,7 @@ export const Spinner = styled.div`
   }
 
   & > div::before {
-    background-color: ${palette(1)};
+    background-color: ${bgColor};
     content: '';
     display: block;
     margin: 0 auto;
@@ -82,5 +82,5 @@ export const Spinner = styled.div`
 
 export const SpinnerLabel = styled.label`
   z-index: 950;
-  color: ${palette(1)};
+  color: ${bgColor};
 `
