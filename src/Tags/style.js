@@ -1,10 +1,11 @@
 import styled from 'styled-components'
-import { font, key } from 'styled-theme'
+import { font, key, palette } from 'styled-theme'
 import {
   bgColor,
   textColor,
   borderColor,
-  hasBorder
+  hasBorder,
+  fromProps
 } from 'styled-utils'
 
 export const TagStyle = styled.div`
@@ -14,7 +15,7 @@ export const TagStyle = styled.div`
   margin: 2px 4px 2px 0px;
   padding: 0 12px;
   border: 1px solid;
-  border-color: ${p => hasBorder(p) ? borderColor(p) : 'transparent'};
+  border-color: ${p => hasBorder(p) ? borderColor(p) : palette(fromProps(p), 1)};
   background-color: ${bgColor};
   color: ${textColor};
   border-radius: 2px;
@@ -36,7 +37,7 @@ export const TagCloseStyle = styled(TagStyle)`
     content: '\\2715';
     font-size: 11px;
     border-left: 1px solid;
-    border-color: ${p => hasBorder(p) ? borderColor(p) : 'rgba(255, 255, 255, 0.5)'};
+    border-color: ${p => hasBorder(p) ? borderColor(p) : palette(fromProps(p), 1)};
     margin-left: 8px;
     width: 24px;
     text-align: center;
