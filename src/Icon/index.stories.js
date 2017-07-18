@@ -14,7 +14,7 @@ storiesOf('Icon', module)
   .add('default', () => {
     return (
       <Wrapper>
-        <Icon name='star' />
+        <Icon name='star' isBlack />
         <Icon name='extension' isPrimary />
         <Icon name='work' isDanger />
       </Wrapper>
@@ -22,7 +22,7 @@ storiesOf('Icon', module)
   })
   .add('with custom size', () => (
     <Wrapper>
-      <Icon name='redeem' size={48} />
+      <Icon name='redeem' isBlack size={48} />
       <Icon name='bug_report' isDanger size={50} />
     </Wrapper>
   ))

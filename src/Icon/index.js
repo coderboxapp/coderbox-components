@@ -2,6 +2,7 @@
 import React from 'react'
 import { IconStyle } from './styles'
 
+// types
 import type { Colors } from 'coderbox-components'
 
 type Props = Colors & {

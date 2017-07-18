@@ -23,7 +23,6 @@ declare module 'coderbox-components' {
   }
 
   declare type Colors = {
-    palette?: string,
     isPrimary?: boolean,
     isSecondary?: boolean,
     isSuccess?: boolean,
