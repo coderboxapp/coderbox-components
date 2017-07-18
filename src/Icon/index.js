@@ -1,10 +1,10 @@
 // @flow
 import React from 'react'
 import { IconStyle } from './styles'
+import type { Colors } from 'coderbox-components'
 
-type Props = {
-  name: string,
-  palette?: string
+type Props = Colors & {
+  name: string
 }
 
 const Icon = ({ name, ...props }: Props) => {
