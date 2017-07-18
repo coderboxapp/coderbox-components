@@ -7,8 +7,8 @@ export const EditableItemStyle = styled.div`
 
 export const ToolbarStyle = styled.div`
   position: absolute;
-  right: 10px;
-  top: 10px;
+  right: 0px;
+  top: 0px;
   color: #888;
   min-width: 100px;
   text-align: right;

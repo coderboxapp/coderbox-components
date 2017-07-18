@@ -5288,11 +5288,12 @@ styled-tools@^0.1.4:
   dependencies:
     lodash "^4.17.4"
 
-styled-utils@^1.0.8:
-  version "1.0.8"
-  resolved "https://registry.yarnpkg.com/styled-utils/-/styled-utils-1.0.8.tgz#217d7eda32c152cd4fed0425d11cf33ce7954241"
+styled-utils@^1.0.10:
+  version "1.0.10"
+  resolved "https://registry.yarnpkg.com/styled-utils/-/styled-utils-1.0.10.tgz#e03495672aacc24b8c49c95928558f0836c35958"
   dependencies:
     lodash "^4.17.4"
+    styled-theme "^0.3.3"
 
 stylis@^3.2.1:
   version "3.2.3"
