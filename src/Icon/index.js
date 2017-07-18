@@ -7,9 +7,9 @@ type Props = {
   palette?: string
 }
 
-const Icon = ({ name, palette = 'grayscale', ...props }: Props) => {
+const Icon = ({ name, ...props }: Props) => {
   return (
-    <IconStyle className='material-icons' palette={palette} {...props}>
+    <IconStyle className='material-icons' {...props}>
       {name}
     </IconStyle>
   )
