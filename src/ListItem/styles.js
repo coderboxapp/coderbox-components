@@ -14,7 +14,7 @@ export const ItemStyle = styled(Flex)`
 
   & a {
     cursor: pointer;
-    color: ${palette(1)};
+    color: ${palette('primary', 1)};
   }
 
   &.odd {

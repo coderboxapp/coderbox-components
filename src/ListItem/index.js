@@ -22,7 +22,6 @@ import type { Item, Tag, DateRange } from 'coderbox-components'
 type Props = {
   item: Object,
   isOdd?: boolean,
-  palette?: string,
   className: string,
   hideBlocks?: string[],
   transform: (data: Object) => Item,
@@ -38,7 +37,6 @@ class ListItem extends React.Component<any, Props, State> {
 
   static defaultProps = {
     hideBlocks: [],
-    palette: 'primary',
     className: '',
     transform: (data: Object) => data
   }
@@ -131,13 +129,13 @@ class ListItem extends React.Component<any, Props, State> {
   }
 
   render () {
-    let { item, isOdd, className, transform, palette, renderExtra } = this.props
+    let { item, isOdd, className, transform, renderExtra } = this.props
     let transformedItem = transform(item)
 
     className += isOdd ? ' odd' : ''
 
     return (
-      <ItemStyle className={`ListItem ${className}`} palette={palette} alignItems='stretch'>
+      <ItemStyle className={`ListItem ${className}`} alignItems='stretch'>
         <div className='ListItem-left'>
           {this.renderLogo(transformedItem.image)}
         </div>

@@ -25,7 +25,7 @@ export default {
     label: 'Tags:',
     component: AutocompleteTags,
     componentProps: {
-      color: 'primary',
+      palette: 'primary',
       allowNew: true,
       toLowercase: true,
       suggestions: [],

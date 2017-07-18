@@ -4,24 +4,23 @@ import { bool, oneOfType, func, string, instanceOf } from 'prop-types'
 import moment from 'moment'
 
 // style
-import { DatePickerStyle } from './styles'
+import { DatePickerWrapper } from './styles'
 
 // types
 import type Moment from 'moment'
 
 type Props = {
   value: Date,
-  palette?: string,
   hideMonths?: boolean,
   onChange: (date: Moment) => void,
 }
 
-const DatePicker = ({ value, palette = 'grayscale', hideMonths, onChange, ...props }: Props) => {
+const DatePicker = ({ value, hideMonths, onChange, ...props }: Props) => {
   let month = moment(value).month()
   let year = moment(value).year()
 
   return (
-    <DatePickerStyle palette={palette} {...props}>
+    <DatePickerWrapper {...props}>
       {
         !hideMonths &&
           <select value={month} onChange={evt => onChange(moment().year(year).month(evt.target.value))}>
@@ -78,13 +77,12 @@ const DatePicker = ({ value, palette = 'grayscale', hideMonths, onChange, ...pro
         <option value='1983'>1983</option>
         <option value='1982'>1982</option>
       </select>
-    </DatePickerStyle>
+    </DatePickerWrapper>
   )
 }
 
 DatePicker.propTypes = {
   value: oneOfType([instanceOf(Date), string]),
-  palette: string,
   hideMonths: bool,
   onChange: func
 }

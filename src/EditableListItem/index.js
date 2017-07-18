@@ -19,7 +19,6 @@ type Props = {
   formComponent: any,
   formSettings: Object,
   loading: boolean,
-  palette: string,
   className: string,
   transform: (data: Object) => Item,
   onSave: (data: any) => void,
@@ -34,8 +33,8 @@ class EditableListItem extends React.Component<any, Props, State> {
   state = { editMode: false }
 
   static defaultProps = {
-    palette: 'primary',
-    className: ''
+    className: '',
+    loading: false
   }
 
   handleFormSave = (form: any) => {
@@ -57,17 +56,17 @@ class EditableListItem extends React.Component<any, Props, State> {
   }
 
   renderToolbar () {
-    let { onDelete, loading, palette } = this.props
+    let { onDelete, loading } = this.props
     let { editMode } = this.state
 
     return (
-      <ToolbarStyle palette={palette} className='ListItem-toolbar'>
+      <ToolbarStyle className='ListItem-toolbar'>
         {(() => {
           if (loading) {
             return (
               <SpinnerStyle>
                 <Spinner
-                  color='primary'
+                  isPrimary
                   align='flex-end'
                   size={32}
                   hideLabel

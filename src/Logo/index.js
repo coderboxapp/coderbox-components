@@ -10,13 +10,12 @@ type Props = Colors & {
   href?: string
 }
 
-const LogoComponent = ({ size = 50, palette = 'white', color, href, ...props }: Props) => {
+const LogoComponent = ({ size = 50, color, href, ...props }: Props) => {
   return (
     <LogoStyle size={size} {...props}>
       <a href={href}>
         <LogoSvgStyle
           color={color}
-          palette={palette}
           version='1.1'
           xmlns='http://www.w3.org/2000/svg'
           x='0px'

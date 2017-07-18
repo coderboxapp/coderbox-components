@@ -66,8 +66,6 @@ storiesOf('Tags', module)
       <Tags
         tags={technologies}
         selected={selectedTechnologies}
-        palette='grayscale'
-        reverse
       />
     )
   })

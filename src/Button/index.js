@@ -2,8 +2,11 @@
 import React from 'react'
 import { string } from 'prop-types'
 import Icon from 'Icon'
+
+// styles
 import { ButtonWrapper } from './styles'
 
+// types
 import type { Colors } from 'coderbox-components'
 
 type Props = Colors & {
@@ -11,17 +14,16 @@ type Props = Colors & {
   children?: any,
 }
 
-const Button = ({ palette, icon, children, ...props }: Props) => {
+const Button = ({ icon, children, ...props }: Props) => {
   return (
-    <ButtonWrapper palette={palette} {...props}>
-      {icon && <Icon name={icon} palette='white' />}
+    <ButtonWrapper {...props}>
+      {icon && <Icon name={icon} />}
       {children}
     </ButtonWrapper>
   )
 }
 
 Button.propTypes = {
-  palette: string,
   icon: string
 }
 

@@ -2,9 +2,9 @@
 # yarn lockfile v1
 
 
-"@storybook/addon-actions@^3.1.8":
-  version "3.1.8"
-  resolved "https://registry.yarnpkg.com/@storybook/addon-actions/-/addon-actions-3.1.8.tgz#2b6d7aa97530b19965c1010b822f40b130ebbc4d"
+"@storybook/addon-actions@^3.1.9":
+  version "3.1.9"
+  resolved "https://registry.yarnpkg.com/@storybook/addon-actions/-/addon-actions-3.1.9.tgz#2fb0e686742b9d645d9c622f01e5ba99acab8b69"
   dependencies:
     "@storybook/addons" "^3.1.6"
     deep-equal "^1.0.1"
@@ -13,9 +13,9 @@
     react-inspector "^2.1.1"
     uuid "^3.1.0"
 
-"@storybook/addon-info@^3.1.6":
-  version "3.1.6"
-  resolved "https://registry.yarnpkg.com/@storybook/addon-info/-/addon-info-3.1.6.tgz#db85f9d46f5debe9e7fd3a95488fddf8a7f5ff91"
+"@storybook/addon-info@^3.1.9":
+  version "3.1.9"
+  resolved "https://registry.yarnpkg.com/@storybook/addon-info/-/addon-info-3.1.9.tgz#e2c096c27257a864ff6936a8dbca13d6a42ee461"
   dependencies:
     "@storybook/addons" "^3.1.6"
     babel-runtime "^6.23.0"
@@ -55,15 +55,15 @@
     fuse.js "^3.0.1"
     prop-types "^15.5.9"
 
-"@storybook/react@^3.1.5":
-  version "3.1.8"
-  resolved "https://registry.yarnpkg.com/@storybook/react/-/react-3.1.8.tgz#4d140c5ae7e9b5eaf627f2071d7324aa38c7af49"
+"@storybook/react@^3.1.9":
+  version "3.1.9"
+  resolved "https://registry.yarnpkg.com/@storybook/react/-/react-3.1.9.tgz#80ef22aa6f678f09326005c43b16b5acc331fbb2"
   dependencies:
-    "@storybook/addon-actions" "^3.1.8"
+    "@storybook/addon-actions" "^3.1.9"
     "@storybook/addon-links" "^3.1.6"
     "@storybook/addons" "^3.1.6"
     "@storybook/channel-postmessage" "^3.1.6"
-    "@storybook/ui" "^3.1.6"
+    "@storybook/ui" "^3.1.9"
     airbnb-js-shims "^1.1.1"
     autoprefixer "^7.1.1"
     babel-core "^6.24.1"
@@ -90,6 +90,7 @@
     json-loader "^0.5.4"
     json-stringify-safe "^5.0.1"
     json5 "^0.5.1"
+    lodash.flattendeep "^4.4.0"
     lodash.pick "^4.4.0"
     postcss-flexbugs-fixes "^3.0.0"
     postcss-loader "^2.0.5"
@@ -116,9 +117,9 @@
     shelljs "^0.7.0"
     yargs "^8.0.1"
 
-"@storybook/ui@^3.1.6":
-  version "3.1.6"
-  resolved "https://registry.yarnpkg.com/@storybook/ui/-/ui-3.1.6.tgz#5d47c6003a2d78c06ede43861089747d986d918e"
+"@storybook/ui@^3.1.9":
+  version "3.1.9"
+  resolved "https://registry.yarnpkg.com/@storybook/ui/-/ui-3.1.9.tgz#38e9a0aaf21e49f7d20f9b393449a89fec715759"
   dependencies:
     "@storybook/react-fuzzy" "^0.4.0"
     babel-runtime "^6.23.0"
@@ -3438,6 +3439,10 @@ lodash.cond@^4.3.0:
   version "4.5.2"
   resolved "https://registry.yarnpkg.com/lodash.cond/-/lodash.cond-4.5.2.tgz#f471a1da486be60f6ab955d17115523dd1d255d5"
 
+lodash.flattendeep@^4.4.0:
+  version "4.4.0"
+  resolved "https://registry.yarnpkg.com/lodash.flattendeep/-/lodash.flattendeep-4.4.0.tgz#fb030917f86a3134e5bc9bec0d69e0013ddfedb2"
+
 lodash.isarguments@^3.0.0:
   version "3.1.0"
   resolved "https://registry.yarnpkg.com/lodash.isarguments/-/lodash.isarguments-3.1.0.tgz#2f573d85c6a24289ff00663b491c1d338ff3458a"
@@ -4615,9 +4620,9 @@ react-modal@^1.7.6, react-modal@^1.7.7:
     prop-types "^15.5.7"
     react-dom-factories "^1.0.0"
 
-react-router@^4.1.1:
-  version "4.1.1"
-  resolved "https://registry.yarnpkg.com/react-router/-/react-router-4.1.1.tgz#d448f3b7c1b429a6fbb03395099949c606b1fe95"
+react-router@^4.1.2:
+  version "4.1.2"
+  resolved "https://registry.yarnpkg.com/react-router/-/react-router-4.1.2.tgz#7ae027341abc42eb08ad9f7a8cac08d0563672ce"
   dependencies:
     history "^4.6.0"
     hoist-non-react-statics "^1.2.0"
@@ -5288,9 +5293,9 @@ styled-tools@^0.1.4:
   dependencies:
     lodash "^4.17.4"
 
-styled-utils@^1.0.10:
-  version "1.0.10"
-  resolved "https://registry.yarnpkg.com/styled-utils/-/styled-utils-1.0.10.tgz#e03495672aacc24b8c49c95928558f0836c35958"
+styled-utils@^1.1.4:
+  version "1.1.4"
+  resolved "https://registry.yarnpkg.com/styled-utils/-/styled-utils-1.1.4.tgz#94adc566651c3f3591393d5f3f2608eaec29fb2c"
   dependencies:
     lodash "^4.17.4"
     styled-theme "^0.3.3"
@@ -5764,35 +5769,11 @@ yargs-parser@^4.2.0:
   dependencies:
     camelcase "^3.0.0"
 
-yargs-parser@^5.0.0:
-  version "5.0.0"
-  resolved "https://registry.yarnpkg.com/yargs-parser/-/yargs-parser-5.0.0.tgz#275ecf0d7ffe05c77e64e7c86e4cd94bf0e1228a"
-  dependencies:
-    camelcase "^3.0.0"
-
 yargs-parser@^7.0.0:
   version "7.0.0"
   resolved "https://registry.yarnpkg.com/yargs-parser/-/yargs-parser-7.0.0.tgz#8d0ac42f16ea55debd332caf4c4038b3e3f5dfd9"
   dependencies:
     camelcase "^4.1.0"
-
-yargs@7.1.0:
-  version "7.1.0"
-  resolved "https://registry.yarnpkg.com/yargs/-/yargs-7.1.0.tgz#6ba318eb16961727f5d284f8ea003e8d6154d0c8"
-  dependencies:
-    camelcase "^3.0.0"
-    cliui "^3.2.0"
-    decamelize "^1.1.1"
-    get-caller-file "^1.0.1"
-    os-locale "^1.4.0"
-    read-pkg-up "^1.0.1"
-    require-directory "^2.1.1"
-    require-main-filename "^1.0.1"
-    set-blocking "^2.0.0"
-    string-width "^1.0.2"
-    which-module "^1.0.0"
-    y18n "^3.2.1"
-    yargs-parser "^5.0.0"
 
 yargs@^6.0.0:
   version "6.6.0"
@@ -5812,7 +5793,7 @@ yargs@^6.0.0:
     y18n "^3.2.1"
     yargs-parser "^4.2.0"
 
-yargs@^8.0.1:
+yargs@^8.0.1, yargs@^8.0.2:
   version "8.0.2"
   resolved "https://registry.yarnpkg.com/yargs/-/yargs-8.0.2.tgz#6299a9055b1cefc969ff7e79c1d918dceb22c360"
   dependencies:

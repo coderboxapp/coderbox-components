@@ -1,9 +1,12 @@
 // @flow
 import React from 'react'
-import { array, string } from 'prop-types'
+import { array } from 'prop-types'
 // import { findIndex } from 'lodash'
-import { TagStyle, TagCloseStyle } from './style'
 
+// styles
+import { TagStyle, TagCloseStyle } from './styles'
+
+// types
 import type { Tag, Colors } from 'coderbox-components'
 
 type Props = Colors & {
@@ -16,7 +19,6 @@ type Props = Colors & {
 const Tags = ({
   tags = [],
   selected = [],
-  palette,
   withClose,
   onClick,
   ...props
@@ -30,7 +32,6 @@ const Tags = ({
         return (
           <TagElement
             key={index}
-            palette={palette}
             onClick={() => onClick && onClick(tag)}
             {...props} >
             {tag.name}
@@ -43,13 +44,12 @@ const Tags = ({
 
 Tags.propTypes = {
   tags: array,
-  selected: array,
-  palette: string
+  selected: array
 }
 
 Tags.defaultProps = {
-  palette: 'white',
   selected: [],
-  withClose: false
+  withClose: false,
+  palette: 'white'
 }
 export default Tags

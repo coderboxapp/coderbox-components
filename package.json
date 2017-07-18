@@ -1,6 +1,6 @@
 {
   "name": "@coderbox/components",
-  "version": "1.0.55",
+  "version": "1.0.56",
   "description": "React Components used at @Coderbox",
   "main": "lib/coderbox-components.js",
   "scripts": {
@@ -22,8 +22,8 @@
   "author": "Ghiura Alexandru <ghalex@gmail.com>",
   "license": "ISC",
   "devDependencies": {
-    "@storybook/addon-info": "^3.1.6",
-    "@storybook/react": "^3.1.5",
+    "@storybook/addon-info": "^3.1.9",
+    "@storybook/react": "^3.1.9",
     "@storybook/storybook-deployer": "^2.0.0",
     "babel-cli": "^6.24.1",
     "babel-core": "6.24.1",
@@ -40,7 +40,7 @@
     "standard": "^10.0.2",
     "webpack": "2.4.1",
     "webpack-node-externals": "^1.6.0",
-    "yargs": "7.1.0"
+    "yargs": "^8.0.2"
   },
   "dependencies": {
     "js-md5": "^0.4.2",
@@ -52,10 +52,10 @@
     "react-dom": "^15.5.4",
     "react-google-autocomplete": "^1.0.13",
     "react-markdown": "^2.5.0",
-    "react-router": "^4.1.1",
+    "react-router": "^4.1.2",
     "react-spinkit": "^3.0.0",
     "styled-components": "^2.0.1",
     "styled-theme": "^0.3.3",
-    "styled-utils": "^1.0.10"
+    "styled-utils": "^1.1.4"
   }
 }

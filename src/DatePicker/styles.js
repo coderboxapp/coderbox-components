@@ -2,10 +2,10 @@ import styled from 'styled-components'
 import { font, palette, size } from 'styled-theme'
 import Flex from 'Flexbox'
 
-export const DatePickerStyle = styled(Flex)`
+export const DatePickerWrapper = styled(Flex)`
   & select {
     border: 1px solid;
-    border-color: ${palette(2)};
+    border-color: ${palette('grayscale', 2)};
     border-radius: ${size('radius')};
     font-family: ${font('primary')};
     font-size: ${size('fontSize')};

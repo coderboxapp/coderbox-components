@@ -13,7 +13,7 @@ storiesOf('Logo', module)
   .add('with different color', () => {
     return (
       <Wrapper>
-        <Logo isBlack />
+        <Logo />
         <Logo isPrimary />
         <Logo isSuccess />
         <Logo isDanger />

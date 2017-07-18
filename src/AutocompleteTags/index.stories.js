@@ -26,7 +26,6 @@ storiesOf('AutocompleteTags', module)
         <AutocompleteTags
           allowNew
           isGrayscale
-          reverse
           suggestions={technologies}
           placeholder='Add technology (ex: java, react)' />
       </div>

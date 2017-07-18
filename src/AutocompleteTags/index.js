@@ -1,21 +1,23 @@
 // @flow
 import React from 'react'
 import { findIndex, remove, last, isArray, assign } from 'lodash'
-import { AutocompleteTagsWrapper, TagsWrapper } from './styles'
 import Tags from 'Tags'
 import Autocomplete from 'Autocomplete'
+import { styleProps } from 'styled-utils'
+
+// styles
+import { AutocompleteTagsWrapper, TagsWrapper } from './styles'
 
 // Types
-import type { Tag } from 'coderbox-components'
+import type { Tag, Colors } from 'coderbox-components'
 
-type Props = {
+type Props = Colors & {
   value: Tag[],
   suggestions: Tag[],
   allowNew: boolean,
   toLowercase: boolean,
   placeholder?: string,
-  onChange?: (tags: Tag[]) => void,
-  palette?: 'grayscale' | 'primary' | 'success' | 'danger',
+  onChange?: (tags: Tag[]) => void
 }
 
 type State = {
@@ -34,7 +36,6 @@ const Keys = {
 
 class AutocompleteTags extends React.Component<any, Props, State> {
   static defaultProps = {
-    palette: 'primary',
     allowNew: false,
     toLowercase: false
   }
@@ -106,19 +107,18 @@ class AutocompleteTags extends React.Component<any, Props, State> {
   }
 
   render () {
-    let { suggestions, palette, placeholder, ...props } = this.props
+    let { suggestions, placeholder, ...props } = this.props
     let { tags, suggestion } = this.state
-    // let { isPrimary, isSecondary, isSuccess, isDanger, isGrayscale } = this.props
+    let colors = styleProps(props)
 
     return (
       <AutocompleteTagsWrapper {...props}>
         <TagsWrapper display={tags.length > 0}>
           <Tags
-            palette={palette}
             tags={tags}
             onClick={tag => this.removeTag(tag)}
             withClose
-            {...props}
+            {...colors}
           />
         </TagsWrapper>
         <Autocomplete

@@ -1,5 +1,4 @@
 import styled from 'styled-components'
-import { palette } from 'styled-theme'
 
 export const EditableItemStyle = styled.div`
   position: relative;
@@ -19,7 +18,7 @@ export const ToolbarStyle = styled.div`
   }
   
   & i:hover {
-    color: ${palette(1)};
+    opacity: 0.8;
   }
 `
 

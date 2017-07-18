@@ -37,7 +37,7 @@ export const TagCloseStyle = styled(TagStyle)`
     content: '\\2715';
     font-size: 11px;
     border-left: 1px solid;
-    border-color: ${p => hasBorder(p) ? borderColor(p) : palette(fromProps(p), 1)};
+    border-color: ${p => hasBorder(p) ? borderColor(p) : palette(fromProps(p), 1, {grayscale: 2, black: 4})};
     margin-left: 8px;
     width: 24px;
     text-align: center;

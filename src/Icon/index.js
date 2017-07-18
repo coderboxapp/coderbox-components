@@ -2,14 +2,15 @@
 import React from 'react'
 import { IconStyle } from './styles'
 
-type Props = {
-  name: string,
-  palette?: string
+import type { Colors } from 'coderbox-components'
+
+type Props = Colors & {
+  name: string
 }
 
-const Icon = ({ name, palette = 'grayscale', ...props }: Props) => {
+const Icon = ({ name, ...props }: Props) => {
   return (
-    <IconStyle className='material-icons' palette={palette} {...props}>
+    <IconStyle className='material-icons' {...props}>
       {name}
     </IconStyle>
   )

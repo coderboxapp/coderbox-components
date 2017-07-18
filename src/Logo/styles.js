@@ -1,6 +1,5 @@
 
 import styled from 'styled-components'
-import { palette } from 'styled-theme'
 import { bgColor, toPx } from 'styled-utils'
 
 export const LogoStyle = styled.div`

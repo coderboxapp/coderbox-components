@@ -29,6 +29,7 @@ declare module 'coderbox-components' {
     isSuccess?: boolean,
     isDanger?: boolean,
     isBlack?: boolean,
+    isWhite?: boolean,
     isGrayscale?: boolean
   }
 }
