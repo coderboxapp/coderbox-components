@@ -11,14 +11,14 @@ const Wrapper = styled.div`
 storiesOf('Progress', module)
   .add(
     'simple usage',
-    () => <Progress value={35} isGrayscale />
+    () => <Progress value={35} labels={['100$', '500$']} isGrayscale />
   )
   .add(
     'different colors',
     () => (
       <Wrapper>
-        <Progress value={28} isPrimary />
-        <Progress value={48} isSuccess isSmall />
+        <Progress value={28} labels={['0$', '100$']} isPrimary />
+        <Progress value={148} min={100} max={400} labels={['100$', '400$']} isSuccess isSmall />
         <Progress value={32} isDanger isLarge />
       </Wrapper>
     )

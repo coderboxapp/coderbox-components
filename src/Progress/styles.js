@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { palette, font } from 'styled-theme'
+import { palette, font, size } from 'styled-theme'
 import { bgColor } from 'styled-utils'
 
 export const ProgressElement = styled.meter`
@@ -11,7 +11,7 @@ export const ProgressElement = styled.meter`
   height: ${p => (p.isSmall ? '8px' : p.isLarge ? '24px' : '16px')};
   overflow: hidden;
   padding: 0;
-  margin: 25px 0;
+  margin: 5px 0;
 
   &::-webkit-meter-bar {
     background: none;
@@ -22,24 +22,12 @@ export const ProgressElement = styled.meter`
     background: none;
     background-color: ${bgColor};
   }
-
-  &::before {
-    content: '100$';
-    position: absolute;
-    top: -100%;
-  }
-
-  &::after {
-    content: '800$';
-    position: absolute;
-    top: -100%;
-    right: 0;
-  }
 `
 
-  // &::-webkit-meter-bar {
-  //   background-color: ${palette('grayscale', 2)}
-  // }
-  // &::-webkit-meter-inner-element {
-  //   background-color: ${bgColor}
-  // }
+export const ProgressLabels = styled.div`
+  font-family: ${font('primary')};
+  font-size: ${size('fontSize')};
+  display: flex;
+  justify-content: space-between;
+  color: ${bgColor};
+`
