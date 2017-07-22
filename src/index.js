@@ -10,6 +10,7 @@ import Form from 'Form'
 import FormItem from 'FormItem'
 import Icon from 'Icon'
 import Logo from 'Logo'
+import Progress from 'Progress'
 import Spinner from 'Spinner'
 import Tags from 'Tags'
 import ListItem from 'ListItem'
@@ -32,6 +33,7 @@ export {
   ListItem,
   EditableListItem,
   Logo,
+  Progress,
   Spinner,
   Tags,
   theme
