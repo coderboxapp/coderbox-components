@@ -3210,9 +3210,9 @@ js-base64@^2.1.9:
   version "2.1.9"
   resolved "https://registry.yarnpkg.com/js-base64/-/js-base64-2.1.9.tgz#f0e80ae039a4bd654b5f281fc93f04a914a7fcce"
 
-js-md5@^0.4.2:
-  version "0.4.2"
-  resolved "https://registry.yarnpkg.com/js-md5/-/js-md5-0.4.2.tgz#8a1231e60ab392a6d3a75db6d532ec0c59667bc3"
+js-md5@^0.5.0:
+  version "0.5.0"
+  resolved "https://registry.yarnpkg.com/js-md5/-/js-md5-0.5.0.tgz#88df8ec9da1c706853a809d0abf7475c44fbdb1a"
 
 js-tokens@^3.0.0:
   version "3.0.2"
@@ -5253,9 +5253,9 @@ styled-tools@^0.1.4:
   dependencies:
     lodash "^4.17.4"
 
-styled-utils@^1.1.4:
-  version "1.1.4"
-  resolved "https://registry.yarnpkg.com/styled-utils/-/styled-utils-1.1.4.tgz#94adc566651c3f3591393d5f3f2608eaec29fb2c"
+styled-utils@^1.1.5:
+  version "1.1.5"
+  resolved "https://registry.yarnpkg.com/styled-utils/-/styled-utils-1.1.5.tgz#978596ad6f7f356ceb3df9dbcd1e32f19279d3d3"
   dependencies:
     lodash "^4.17.4"
     styled-theme "^0.3.3"
