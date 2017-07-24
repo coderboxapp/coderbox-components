@@ -2,6 +2,10 @@ import styled from 'styled-components'
 import { palette, font, size } from 'styled-theme'
 import { bgColor } from 'styled-utils'
 
+export const ProgressWrapper = styled.div`
+  width: 100%;
+`
+
 export const ProgressElement = styled.meter`
   position: relative;
   width: 100%;

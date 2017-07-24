@@ -1,6 +1,6 @@
 // @flow
 import React from 'react'
-import { ProgressElement, ProgressLabels } from './styles'
+import { ProgressWrapper, ProgressElement, ProgressLabels } from './styles'
 
 type Props = {
   value: number,
@@ -12,7 +12,7 @@ const Progress = ({ value, min, max, labels, ...props }: Props) => {
   let optimum = min + Math.round((max - min) / 2)
 
   return (
-    <div>
+    <ProgressWrapper>
       <ProgressElement value={value} min={min} max={max} low={min} high={max} optimum={optimum} {...props}>
         {value}
       </ProgressElement>
@@ -22,7 +22,7 @@ const Progress = ({ value, min, max, labels, ...props }: Props) => {
           <div>{labels[1]}</div>
         </ProgressLabels>
       }
-    </div>
+    </ProgressWrapper>
   )
 }
 
