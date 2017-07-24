@@ -6,8 +6,8 @@ import Tags from '.'
 const technologies = [
   { name: 'javascript' },
   { name: '.net' },
-  { name: 'java' },
-  { name: 'react' }
+  { name: 'react' },
+  { name: 'java' }
 ]
 
 const selectedTechnologies = [
@@ -66,6 +66,7 @@ storiesOf('Tags', module)
       <Tags
         tags={technologies}
         selected={selectedTechnologies}
+        selectedProps={{isDanger: true, isOutlined: true}}
       />
     )
   })

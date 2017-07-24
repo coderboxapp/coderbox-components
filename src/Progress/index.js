@@ -4,6 +4,7 @@ import { ProgressWrapper, ProgressElement, ProgressLabels } from './styles'
 
 type Props = {
   value: number,
+  labels: [string, string],
   min: number,
   max: number,
 }
